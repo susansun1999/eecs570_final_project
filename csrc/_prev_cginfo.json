@@ -1,0 +1,307 @@
+{
+    "cpu_cycles_pass2_start": 3216864585013558,
+    "CompileStrategy": "fullobj",
+    "CurCompileModules": [
+        "...MASTER...",
+        "vcs_paramclassrepository",
+        "vcs_paramclassrepository",
+        "_vcs_unit__3363450375",
+        "_vcs_unit__3363450375",
+        "std",
+        "common_test",
+        "common_test"
+    ],
+    "perf": [
+        [
+            0.15287017822265625,
+            0.053788999999999997,
+            0.035859000000000002,
+            228476,
+            229144,
+            1614700447.5073581,
+            3216864166102182,
+            "doParsingAndDesignResolution",
+            "entry"
+        ],
+        [
+            0.16174912452697754,
+            0.057229000000000002,
+            0.040161000000000002,
+            228792,
+            229440,
+            1614700447.516237,
+            3216864185587774,
+            "doParsingAndDesignResolution",
+            "exit"
+        ],
+        [
+            0.16184806823730469,
+            0.057287999999999999,
+            0.040202000000000002,
+            228792,
+            229440,
+            1614700447.516336,
+            3216864185744612,
+            "doPostDesignResolutionToVir2Vcs",
+            "entry"
+        ],
+        [
+            0.17811012268066406,
+            0.060678000000000003,
+            0.044497000000000002,
+            230248,
+            230252,
+            1614700447.532598,
+            3216864221515384,
+            "doUptoVir2VcsNoSepCleanup",
+            "entry"
+        ],
+        [
+            0.20017218589782715,
+            0.066838999999999996,
+            0.050636,
+            231040,
+            243396,
+            1614700447.5546601,
+            3216864269905194,
+            "doUptoVir2VcsNoSepCleanup",
+            "exit"
+        ],
+        [
+            0.20028209686279297,
+            0.066902000000000003,
+            0.050684,
+            231040,
+            243396,
+            1614700447.55477,
+            3216864270101112,
+            "doRadify_vir2vcsAll",
+            "entry"
+        ],
+        [
+            0.24066019058227539,
+            0.069188,
+            0.054944,
+            232732,
+            243396,
+            1614700447.5951481,
+            3216864358775408,
+            "doRadify_vir2vcsAll",
+            "exit"
+        ],
+        [
+            0.2407371997833252,
+            0.069232000000000002,
+            0.054977999999999999,
+            232732,
+            243396,
+            1614700447.5952251,
+            3216864358916372,
+            "doPostDesignResolutionToVir2Vcs",
+            "exit"
+        ],
+        [
+            0.24079704284667969,
+            0.069265999999999994,
+            0.055004999999999998,
+            232732,
+            243396,
+            1614700447.5952849,
+            3216864359018532,
+            "doGAToPass2",
+            "entry"
+        ],
+        [
+            0.34371519088745117,
+            0.070446999999999996,
+            0.059215999999999998,
+            231176,
+            243396,
+            1614700447.6982031,
+            3216864584986254,
+            "DoPass2",
+            "entry"
+        ],
+        [
+            0.39358401298522949,
+            0.083045999999999995,
+            0.071905999999999998,
+            235428,
+            243396,
+            1614700447.7480719,
+            3216864694399808,
+            "DoPass2",
+            "exit"
+        ]
+    ],
+    "cycles_program_begin": 3216863879232250,
+    "MlibObjs": {},
+    "Misc": {
+        "VCS_HOME": "/usr/caen/vcs-2017.12-SP2-1",
+        "daidir_abs": "/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/simv.daidir",
+        "vcs_version": "N-2017.12-SP2-1_Full64",
+        "archive_dir": "archive.2",
+        "vcs_build_date": "Build Date = Jul 14 2018 20:29:59",
+        "cwd": "/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project",
+        "daidir": "/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/simv.daidir",
+        "default_output_dir": "csrc",
+        "master_pid": 24373,
+        "csrc": "csrc",
+        "csrc_abs": "/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/csrc"
+    },
+    "PrevCompiledModules": {
+        "vcs_paramclassrepository": {
+            "hEeZs_d": {
+                "bytes": 11096,
+                "mod": "vcs_paramclassrepository",
+                "out": "hEeZs_d.o",
+                "mode": 4,
+                "checksum": 0,
+                "archive": "archive.2/_24373_archive_1.a"
+            }
+        },
+        "std": {
+            "reYIK_d": {
+                "bytes": 32908,
+                "mod": "std",
+                "mode": 4,
+                "checksum": 0,
+                "archive": "archive.2/_prev_archive_1.a",
+                "out": "reYIK_d.o"
+            }
+        },
+        "common_test": {
+            "h1FGN_d": {
+                "bytes": 8178,
+                "mod": "common_test",
+                "out": "h1FGN_d.o",
+                "mode": 4,
+                "checksum": 0,
+                "archive": "archive.2/_24373_archive_1.a"
+            }
+        },
+        "...MASTER...": {
+            "amcQw_d": {
+                "bytes": 8016,
+                "mod": "...MASTER...",
+                "mode": 4,
+                "checksum": 0,
+                "out": "objs/amcQw_d.o"
+            }
+        },
+        "_vcs_unit__3363450375": {
+            "wibLG_d": {
+                "bytes": 7880,
+                "mod": "_vcs_unit__3363450375",
+                "out": "wibLG_d.o",
+                "mode": 4,
+                "checksum": 0,
+                "archive": "archive.2/_24373_archive_1.a"
+            }
+        }
+    },
+    "NameTable": {
+        "vcs_paramclassrepository": [
+            "vcs_paramclassrepository",
+            "hEeZs",
+            "module",
+            1
+        ],
+        "_vcs_unit__3363450375": [
+            "_vcs_unit__3363450375",
+            "wibLG",
+            "module",
+            2
+        ],
+        "std": [
+            "std",
+            "reYIK",
+            "module",
+            3
+        ],
+        "common_test": [
+            "common_test",
+            "h1FGN",
+            "module",
+            4
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
+            "module",
+            5
+        ]
+    },
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.070513999999999993,
+            "ru_majflt": 3,
+            "ru_stime_sec": 0.059272999999999999,
+            "ru_nivcsw": 11,
+            "ru_nvcsw": 220,
+            "ru_maxrss_kb": 63408,
+            "ru_minflt": 24664
+        },
+        "nMops": 672,
+        "realTime": 0.46330404281616211,
+        "totalObjSize": 93136,
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.014741000000000001,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.024813000000000002,
+            "ru_nivcsw": 9,
+            "ru_nvcsw": 46,
+            "ru_maxrss_kb": 16512,
+            "ru_minflt": 6375
+        },
+        "ru_childs_end": {
+            "ru_utime_sec": 0.016858999999999999,
+            "ru_majflt": 0,
+            "ru_stime_sec": 0.027990000000000001,
+            "ru_nivcsw": 11,
+            "ru_nvcsw": 48,
+            "ru_maxrss_kb": 16964,
+            "ru_minflt": 6973
+        },
+        "cpu_cycles_cgstart": 3216864585093590,
+        "outputSizePerQuad": 317.87030716723547,
+        "cpu_cycles_total": 967905136,
+        "nQuads": 293,
+        "mop/quad": 2.2935153583617747,
+        "ru_self_end": {
+            "ru_utime_sec": 0.086206000000000005,
+            "ru_majflt": 3,
+            "ru_stime_sec": 0.075942999999999997,
+            "ru_nivcsw": 18,
+            "ru_nvcsw": 281,
+            "ru_maxrss_kb": 69916,
+            "ru_minflt": 27334
+        },
+        "cpu_cycles_end": 3216864847137386,
+        "mopSpeed": 37731.611454239181,
+        "Frontend(%)": 82.719642943773337,
+        "quadSpeed": 16451.431779898929,
+        "CodeGen(%)": 17.280357056226659,
+        "peak_mem_kb": 243396
+    },
+    "CurCompileUdps": {},
+    "SIMBData": {
+        "text": 0,
+        "out": "amcQwB.o",
+        "bytes": 65982,
+        "archive": "archive.2/_24373_archive_1.a"
+    },
+    "LVLData": [
+        "SIM"
+    ],
+    "incremental": "on",
+    "CompileStatus": "Successful",
+    "PEModules": [],
+    "CompileProcesses": [
+        "cgproc.24373.json"
+    ],
+    "rlimit": {
+        "stack": -1,
+        "data": -1
+    }
+}
