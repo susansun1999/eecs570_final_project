@@ -1,4 +1,10 @@
 {
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        5
+    ],
     "vcs_paramclassrepository": [
         "vcs_paramclassrepository",
         "hEeZs",
@@ -11,22 +17,16 @@
         "module",
         2
     ],
-    "std": [
-        "std",
-        "reYIK",
-        "module",
-        3
-    ],
     "common_test": [
         "common_test",
         "h1FGN",
         "module",
         4
     ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
+    "std": [
+        "std",
+        "reYIK",
         "module",
-        5
+        3
     ]
 }
