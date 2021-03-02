@@ -7,7 +7,7 @@ module common_test (
 
     initial begin
         e = 32'b1111101;
-        r = S1(e);
+        r = maj(1,2,3);
         $display("r is %b", r);
     end
     

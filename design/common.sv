@@ -14,7 +14,7 @@ endfunction
 
 function [31:0] S0;
     input [31:0] a;
-    S1 = math#(2)::rightrotate(a) ^ math#(13)::rightrotate(a) ^ math#(22)::rightrotate(a);
+    S0 = math#(2)::rightrotate(a) ^ math#(13)::rightrotate(a) ^ math#(22)::rightrotate(a);
 endfunction
 
 function [31:0] ch;

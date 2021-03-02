@@ -17,16 +17,16 @@
         "module",
         3
     ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module",
-        5
-    ],
     "common_test": [
         "common_test",
         "h1FGN",
         "module",
         4
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        5
     ]
 }
