@@ -1,1 +1,1 @@
-*.vg *.rep *.db *.chk *.log *.out
+*.vg *.rep *.db *.chk *.log *.out /csrc/*.*
