@@ -1,1 +1,3 @@
-*.vg *.rep *.db *.chk *.log *.out /csrc/*.*
+*.vg *.rep *.db *.chk *.log *.out 
+csrc/ simv.daidir/
+Makefile
