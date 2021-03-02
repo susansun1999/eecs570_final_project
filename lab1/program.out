@@ -1,0 +1,38 @@
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Mar  2 09:36 2021
+Time:   0 clock:0 reset:1 taken:0 transition:0 prediction:xx
+Time:   5 clock:1 reset:1 taken:0 transition:0 prediction:xx
+Time:   6 clock:1 reset:1 taken:0 transition:0 prediction:00
+Time:  10 clock:0 reset:1 taken:0 transition:0 prediction:00
+Time:  15 clock:1 reset:1 taken:0 transition:0 prediction:00
+Time:  20 clock:0 reset:0 taken:0 transition:0 prediction:00
+Time:  25 clock:1 reset:0 taken:0 transition:0 prediction:00
+Time:  30 clock:0 reset:0 taken:1 transition:0 prediction:00
+Time:  35 clock:1 reset:0 taken:1 transition:0 prediction:00
+Time:  36 clock:1 reset:0 taken:1 transition:0 prediction:01
+Time:  40 clock:0 reset:0 taken:1 transition:0 prediction:01
+Time:  45 clock:1 reset:0 taken:1 transition:0 prediction:01
+Time:  50 clock:0 reset:0 taken:0 transition:0 prediction:01
+Time:  55 clock:1 reset:0 taken:0 transition:0 prediction:01
+Time:  56 clock:1 reset:0 taken:0 transition:0 prediction:00
+Time:  60 clock:0 reset:0 taken:1 transition:1 prediction:00
+Time:  65 clock:1 reset:0 taken:1 transition:1 prediction:00
+Time:  66 clock:1 reset:0 taken:1 transition:1 prediction:01
+Time:  70 clock:0 reset:0 taken:0 transition:1 prediction:01
+Time:  75 clock:1 reset:0 taken:0 transition:1 prediction:01
+Time:  76 clock:1 reset:0 taken:0 transition:1 prediction:00
+Time:  80 clock:0 reset:0 taken:0 transition:1 prediction:00
+Time:  85 clock:1 reset:0 taken:0 transition:1 prediction:00
+Time:  86 clock:1 reset:0 taken:0 transition:1 prediction:10
+Time:  90 clock:0 reset:0 taken:1 transition:1 prediction:10
+Time:  95 clock:1 reset:0 taken:1 transition:1 prediction:10
+Time: 100 clock:0 reset:0 taken:1 transition:0 prediction:10
+Time: 105 clock:1 reset:0 taken:1 transition:0 prediction:10
+Time: 106 clock:1 reset:0 taken:1 transition:0 prediction:00
+$finish called from file "arbiter_test.v", line 45.
+$finish at simulation time                  110
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 110
+CPU Time:      0.280 seconds;       Data structure size:   0.0Mb
+Tue Mar  2 09:37:00 2021

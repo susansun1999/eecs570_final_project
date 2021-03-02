@@ -1,0 +1,28 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Expert(TM) in wire load mode
+// Version   : O-2018.06
+// Date      : Fri Jan 10 11:56:16 2020
+/////////////////////////////////////////////////////////////
+
+
+module two_bit_pred ( clock, reset, taken, transition, prediction );
+  input clock, reset, taken, transition;
+  output prediction;
+  wire   \state[0] , \next_state[0] , n2, n3, n4, n5, n6, n7, n8, n9, n10, n11
+;
+  assign \next_state[0]  = taken;
+
+  aoi23s2 U4 ( .DIN3(\state[0] ), .DIN4(\next_state[0] ), .DIN5(transition), 
+        .DIN1(prediction), .DIN2(n9), .Q(n7) );
+  nnd2s2 U5 ( .DIN1(n5), .DIN2(n3), .Q(n9) );
+  oai221s2 U6 ( .DIN1(n5), .DIN2(n6), .DIN3(n8), .DIN4(n3), .DIN5(n4), .Q(n11)
+         );
+  nnd2s2 U7 ( .DIN1(n6), .DIN2(n4), .Q(n8) );
+  dffs1 \state_reg[0]  ( .DIN(n11), .CLK(clock), .Q(\state[0] ), .QN(n3) );
+  dffs2 \state_reg[1]  ( .DIN(n10), .CLK(clock), .Q(prediction), .QN(n2) );
+  oai22s1 U11 ( .DIN1(reset), .DIN2(n7), .DIN3(n8), .DIN4(n2), .Q(n10) );
+  ib1s1 U12 ( .DIN(\next_state[0] ), .Q(n5) );
+  ib1s1 U13 ( .DIN(transition), .Q(n6) );
+  ib1s1 U14 ( .DIN(reset), .Q(n4) );
+endmodule
+

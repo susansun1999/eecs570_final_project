@@ -1,0 +1,474 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : design
+Design : two_bit_pred
+Version: O-2018.06
+Date   : Fri Jan 10 11:56:16 2020
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Local Link Library:
+
+    {lec25dscc25_TT.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+
+    Operating Condition Name : nom_pvt
+    Library : lec25dscc25_TT
+    Process :   1.00
+    Temperature :  25.00
+    Voltage :   2.50
+    Interconnect Model : balanced_tree
+
+Wire Loading Model:
+
+    Selected manually by the user.
+
+Name           :   tsmcwire
+Location       :   lec25dscc25_TT
+Resistance     :   0.2642
+Capacitance    :   0.000132782
+Area           :   0.27
+Slope          :   0.74
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1     0.89
+     2     1.48
+     3     2.44
+     4     3.18
+     5     3.92
+
+
+
+Wire Loading Model Mode: top.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    None Required
+
+Design Parameters:
+
+    None specified.
+1
+ 
+****************************************
+Report : area
+Design : two_bit_pred
+Version: O-2018.06
+Date   : Fri Jan 10 11:56:16 2020
+****************************************
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Number of ports:                            5
+Number of nets:                            16
+Number of cells:                           10
+Number of combinational cells:              8
+Number of sequential cells:                 2
+Number of macros/black boxes:               0
+Number of buf/inv:                          3
+Number of references:                       7
+
+Combinational area:                381.542400
+Buf/Inv area:                       99.532803
+Noncombinational area:             331.776001
+Macro/Black Box area:                0.000000
+Net Interconnect area:               5.442660
+
+Total cell area:                   713.318401
+Total area:                        718.761062
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -input_pins
+        -nets
+        -max_paths 2
+        -transition_time
+Design : two_bit_pred
+Version: O-2018.06
+Date   : Fri Jan 10 11:56:16 2020
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+  Startpoint: state_reg[0]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: state_reg[1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock clock (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  state_reg[0]/CLK (dffs1)                 0.00      0.00       0.00 r
+  state_reg[0]/Q (dffs1)                   0.21      0.18       0.18 r
+  state[0] (net)                 1                   0.00       0.18 r
+  state_reg[0]/QN (dffs1)                  0.16      0.09       0.27 f
+  n3 (net)                       2                   0.00       0.27 f
+  U5/DIN2 (nnd2s2)                         0.16      0.00       0.27 f
+  U5/Q (nnd2s2)                            0.15      0.08       0.35 r
+  n9 (net)                       1                   0.00       0.35 r
+  U4/DIN2 (aoi23s2)                        0.15      0.00       0.35 r
+  U4/Q (aoi23s2)                           0.31      0.07       0.42 f
+  n7 (net)                       1                   0.00       0.42 f
+  U11/DIN2 (oai22s1)                       0.31      0.00       0.42 f
+  U11/Q (oai22s1)                          0.75      0.25       0.67 r
+  n10 (net)                      1                   0.00       0.67 r
+  state_reg[1]/DIN (dffs2)                 0.75      0.01       0.68 r
+  data arrival time                                             0.68
+
+  clock clock (rise edge)                           10.00      10.00
+  clock network delay (ideal)                        0.00      10.00
+  clock uncertainty                                 -0.10       9.90
+  state_reg[1]/CLK (dffs2)                           0.00       9.90 r
+  library setup time                                -0.16       9.74
+  data required time                                            9.74
+  ---------------------------------------------------------------------
+  data required time                                            9.74
+  data arrival time                                            -0.68
+  ---------------------------------------------------------------------
+  slack (MET)                                                   9.06
+
+
+  Startpoint: state_reg[0]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: state_reg[0]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock clock (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  state_reg[0]/CLK (dffs1)                 0.00      0.00       0.00 r
+  state_reg[0]/Q (dffs1)                   0.18      0.19       0.19 f
+  state[0] (net)                 1                   0.00       0.19 f
+  state_reg[0]/QN (dffs1)                  0.18      0.09       0.27 r
+  n3 (net)                       2                   0.00       0.27 r
+  U6/DIN4 (oai221s2)                       0.18      0.00       0.28 r
+  U6/Q (oai221s2)                          0.51      0.19       0.47 f
+  n11 (net)                      1                   0.00       0.47 f
+  state_reg[0]/DIN (dffs1)                 0.51      0.01       0.47 f
+  data arrival time                                             0.47
+
+  clock clock (rise edge)                           10.00      10.00
+  clock network delay (ideal)                        0.00      10.00
+  clock uncertainty                                 -0.10       9.90
+  state_reg[0]/CLK (dffs1)                           0.00       9.90 r
+  library setup time                                -0.19       9.71
+  data required time                                            9.71
+  ---------------------------------------------------------------------
+  data required time                                            9.71
+  data arrival time                                            -0.47
+  ---------------------------------------------------------------------
+  slack (MET)                                                   9.24
+
+
+  Startpoint: transition (input port clocked by clock)
+  Endpoint: state_reg[1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock clock (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  input external delay                               0.10       0.10 r
+  transition (in)                          0.27      0.04       0.14 r
+  transition (net)               2                   0.00       0.14 r
+  U13/DIN (ib1s1)                          0.27      0.00       0.14 r
+  U13/Q (ib1s1)                            0.19      0.09       0.24 f
+  n6 (net)                       2                   0.00       0.24 f
+  U7/DIN1 (nnd2s2)                         0.19      0.00       0.24 f
+  U7/Q (nnd2s2)                            0.16      0.07       0.32 r
+  n8 (net)                       2                   0.00       0.32 r
+  U11/DIN3 (oai22s1)                       0.16      0.00       0.32 r
+  U11/Q (oai22s1)                          0.57      0.30       0.62 f
+  n10 (net)                      1                   0.00       0.62 f
+  state_reg[1]/DIN (dffs2)                 0.57      0.01       0.62 f
+  data arrival time                                             0.62
+
+  clock clock (rise edge)                           10.00      10.00
+  clock network delay (ideal)                        0.00      10.00
+  clock uncertainty                                 -0.10       9.90
+  state_reg[1]/CLK (dffs2)                           0.00       9.90 r
+  library setup time                                -0.20       9.70
+  data required time                                            9.70
+  ---------------------------------------------------------------------
+  data required time                                            9.70
+  data arrival time                                            -0.62
+  ---------------------------------------------------------------------
+  slack (MET)                                                   9.08
+
+
+  Startpoint: transition (input port clocked by clock)
+  Endpoint: state_reg[0]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  clock clock (rise edge)                            0.00       0.00
+  clock network delay (ideal)                        0.00       0.00
+  input external delay                               0.10       0.10 r
+  transition (in)                          0.27      0.04       0.14 r
+  transition (net)               2                   0.00       0.14 r
+  U13/DIN (ib1s1)                          0.27      0.00       0.14 r
+  U13/Q (ib1s1)                            0.19      0.09       0.24 f
+  n6 (net)                       2                   0.00       0.24 f
+  U7/DIN1 (nnd2s2)                         0.19      0.00       0.24 f
+  U7/Q (nnd2s2)                            0.16      0.07       0.32 r
+  n8 (net)                       2                   0.00       0.32 r
+  U6/DIN3 (oai221s2)                       0.16      0.00       0.32 r
+  U6/Q (oai221s2)                          0.51      0.27       0.58 f
+  n11 (net)                      1                   0.00       0.58 f
+  state_reg[0]/DIN (dffs1)                 0.51      0.01       0.59 f
+  data arrival time                                             0.59
+
+  clock clock (rise edge)                           10.00      10.00
+  clock network delay (ideal)                        0.00      10.00
+  clock uncertainty                                 -0.10       9.90
+  state_reg[0]/CLK (dffs1)                           0.00       9.90 r
+  library setup time                                -0.19       9.71
+  data required time                                            9.71
+  ---------------------------------------------------------------------
+  data required time                                            9.71
+  data arrival time                                            -0.59
+  ---------------------------------------------------------------------
+  slack (MET)                                                   9.12
+
+
+  Startpoint: state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: prediction (output port clocked by clock)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  state_reg[1]/CLK (dffs2)                 0.00      0.00       0.00 r
+  state_reg[1]/Q (dffs2)                   0.28      0.25       0.25 f
+  prediction (net)               2                   0.00       0.25 f
+  prediction (out)                         0.28      0.02       0.27 f
+  data arrival time                                             0.27
+
+  max_delay                                         10.00      10.00
+  clock uncertainty                                 -0.10       9.90
+  output external delay                             -0.10       9.80
+  data required time                                            9.80
+  ---------------------------------------------------------------------
+  data required time                                            9.80
+  data arrival time                                            -0.27
+  ---------------------------------------------------------------------
+  slack (MET)                                                   9.53
+
+
+1
+ 
+****************************************
+Report : constraint
+        -verbose
+        -max_delay
+Design : two_bit_pred
+Version: O-2018.06
+Date   : Fri Jan 10 11:56:16 2020
+****************************************
+
+
+  Startpoint: state_reg[0]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: state_reg[1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  state_reg[0]/CLK (dffs1)                 0.00       0.00 r
+  state_reg[0]/Q (dffs1)                   0.18       0.18 r
+  state_reg[0]/QN (dffs1)                  0.09       0.27 f
+  U5/Q (nnd2s2)                            0.08       0.35 r
+  U4/Q (aoi23s2)                           0.07       0.42 f
+  U11/Q (oai22s1)                          0.25       0.67 r
+  state_reg[1]/DIN (dffs2)                 0.01       0.68 r
+  data arrival time                                   0.68
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (ideal)              0.00      10.00
+  clock uncertainty                       -0.10       9.90
+  state_reg[1]/CLK (dffs2)                 0.00       9.90 r
+  library setup time                      -0.16       9.74
+  data required time                                  9.74
+  -----------------------------------------------------------
+  data required time                                  9.74
+  data arrival time                                  -0.68
+  -----------------------------------------------------------
+  slack (MET)                                         9.06
+
+
+  Startpoint: transition (input port clocked by clock)
+  Endpoint: state_reg[1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clock (rise edge)                  0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.10       0.10 r
+  transition (in)                          0.04       0.14 r
+  U13/Q (ib1s1)                            0.10       0.24 f
+  U7/Q (nnd2s2)                            0.08       0.32 r
+  U11/Q (oai22s1)                          0.30       0.62 f
+  state_reg[1]/DIN (dffs2)                 0.01       0.62 f
+  data arrival time                                   0.62
+
+  clock clock (rise edge)                 10.00      10.00
+  clock network delay (ideal)              0.00      10.00
+  clock uncertainty                       -0.10       9.90
+  state_reg[1]/CLK (dffs2)                 0.00       9.90 r
+  library setup time                      -0.20       9.70
+  data required time                                  9.70
+  -----------------------------------------------------------
+  data required time                                  9.70
+  data arrival time                                  -0.62
+  -----------------------------------------------------------
+  slack (MET)                                         9.08
+
+
+  Startpoint: state_reg[1]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: prediction (output port clocked by clock)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  two_bit_pred       tsmcwire              lec25dscc25_TT
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  state_reg[1]/CLK (dffs2)                 0.00       0.00 r
+  state_reg[1]/Q (dffs2)                   0.25       0.25 f
+  prediction (out)                         0.02       0.27 f
+  data arrival time                                   0.27
+
+  max_delay                               10.00      10.00
+  clock uncertainty                       -0.10       9.90
+  output external delay                   -0.10       9.80
+  data required time                                  9.80
+  -----------------------------------------------------------
+  data required time                                  9.80
+  data arrival time                                  -0.27
+  -----------------------------------------------------------
+  slack (MET)                                         9.53
+
+
+1
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : reference
+Design : two_bit_pred
+Version: O-2018.06
+Date   : Fri Jan 10 11:56:16 2020
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+aoi23s2            lec25dscc25_TT    66.355202       1    66.355202
+dffs1              lec25dscc25_TT   157.593994       1   157.593994 n
+dffs2              lec25dscc25_TT   174.182007       1   174.182007 n
+ib1s1              lec25dscc25_TT    33.177601       3    99.532803
+nnd2s2             lec25dscc25_TT    41.472000       2    82.944000
+oai22s1            lec25dscc25_TT    58.060799       1    58.060799
+oai221s2           lec25dscc25_TT    74.649597       1    74.649597
+-----------------------------------------------------------------------------
+Total 7 references                                    713.318401
+1

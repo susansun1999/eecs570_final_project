@@ -1,0 +1,33 @@
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Jan 10 11:56 2020
+Time:   0 clock:0 reset:1 taken:0 transition:1 prediction:x
+Time:   5 clock:1 reset:1 taken:0 transition:1 prediction:x
+Time:   6 clock:1 reset:1 taken:0 transition:1 prediction:0
+Time:  10 clock:0 reset:1 taken:0 transition:1 prediction:0
+Time:  15 clock:1 reset:1 taken:0 transition:1 prediction:0
+Time:  20 clock:0 reset:0 taken:0 transition:1 prediction:0
+Time:  25 clock:1 reset:0 taken:0 transition:1 prediction:0
+Time:  30 clock:0 reset:0 taken:1 transition:1 prediction:0
+Time:  35 clock:1 reset:0 taken:1 transition:1 prediction:0
+Time:  40 clock:0 reset:0 taken:1 transition:0 prediction:0
+Time:  45 clock:1 reset:0 taken:1 transition:0 prediction:0
+Time:  50 clock:0 reset:0 taken:1 transition:0 prediction:0
+Time:  55 clock:1 reset:0 taken:1 transition:0 prediction:0
+Time:  60 clock:0 reset:0 taken:1 transition:1 prediction:0
+Time:  63 clock:0 reset:0 taken:1 transition:0 prediction:0
+Time:  65 clock:1 reset:0 taken:1 transition:0 prediction:0
+Time:  70 clock:0 reset:0 taken:1 transition:1 prediction:0
+Time:  75 clock:1 reset:0 taken:1 transition:1 prediction:0
+Time:  76 clock:1 reset:0 taken:1 transition:1 prediction:1
+Time:  80 clock:0 reset:0 taken:0 transition:1 prediction:1
+Time:  85 clock:1 reset:0 taken:0 transition:1 prediction:1
+Time:  90 clock:0 reset:0 taken:0 transition:1 prediction:1
+Time:  95 clock:1 reset:0 taken:0 transition:1 prediction:1
+Time:  96 clock:1 reset:0 taken:0 transition:1 prediction:0
+$finish called from file "tut_test.v", line 44.
+$finish at simulation time                  100
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 100
+CPU Time:      0.200 seconds;       Data structure size:   0.1Mb
+Fri Jan 10 11:56:20 2020
