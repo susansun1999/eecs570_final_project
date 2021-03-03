@@ -22,9 +22,9 @@ all:	simv
 # Modify starting here
 #####
 
-TESTBENCH = testbench/common_test.sv
-SIMFILES = design/common.sv
-SYNFILES = two_bit_pred.vg
+TESTBENCH = testbench/cnter_test.sv
+SIMFILES = design/common.sv design/cnter/top.sv
+SYNFILES = Cnter.vg
 
 #####
 # Should be no need to modify after here
@@ -50,3 +50,6 @@ clean:
 
 nuke:	clean
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out DVEfiles/
+
+Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
+	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
