@@ -1,5 +1,5 @@
 0 
-28
+29
 +define+
 +vc
 -Mamsrun=
@@ -26,15 +26,16 @@
 -picarchive
 -sverilog
 /usr/caen/vcs-2017.12-SP2-1/linux64/bin/vcs1
+design/cnter/top.sv
 design/common.sv
-testbench/common_test.sv
+testbench/cnter_test.sv
 47
 sysc_uni_pwd=/home/zwtao/Documents/eecs570_final_project
 _LMFILES_=/usr/caen/misc/modules/gcc/6.2.0:/usr/caen/misc/modules/spectre/17.10.307:/usr/caen/misc/modules/cadence-ic/6.1.7.500.2100:/afs/umich.edu/class/coe/modules/eecs312/f18:/usr/caen/misc/modules/vcs/2017.12-SP2-1
-XDG_SESSION_ID=5259
+XDG_SESSION_ID=5659
 XDG_RUNTIME_DIR=/run/user/114151295
 XDG_DATA_DIRS=/home/zwtao/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-VSCODE_IPC_HOOK_CLI=/run/user/114151295/vscode-ipc-7bac1cbb-23b5-4fa3-8d7e-8ac6e7d2c221.sock
+VSCODE_IPC_HOOK_CLI=/run/user/114151295/vscode-ipc-d7de58e2-8d5e-40e7-a269-fe840bc7ae70.sock
 VSCODE_GIT_IPC_HANDLE=/run/user/114151295/vscode-git-2186ea8683.sock
 VSCODE_GIT_ASKPASS_NODE=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/node
 VSCODE_GIT_ASKPASS_MAIN=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/extensions/git/dist/askpass-main.js
@@ -49,8 +50,8 @@ TOOL_HOME=/usr/caen/vcs-2017.12-SP2-1/linux64
 TERM_PROGRAM_VERSION=1.53.2
 TERM_PROGRAM=vscode
 SW_VCS=2017.12-SP2-1
-SSH_CONNECTION=68.36.55.94 54797 141.213.74.61 22
-SSH_CLIENT=68.36.55.94 54797 22
+SSH_CONNECTION=68.36.55.94 50388 141.213.74.77 22
+SSH_CLIENT=68.36.55.94 50388 22
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 SNPS_VCS_CLANG_PATH=/fs/src/interfaces/LLVM_Project/QSCM/opt/llvm-3.9.1/linux64
 SCRNAME=vcs
@@ -69,7 +70,7 @@ LESSOPEN=||/usr/bin/lesspipe.sh %s
 LD_RUN_PATH=/usr/um/gcc-6.2.0/lib64
 LC_ALL=C
 LAMMPS_POTENTIALS=/usr/share/lammps/potentials
-KRB5CCNAME=FILE:/tmp/krb5cc_114151295_zvh0cd
+KRB5CCNAME=FILE:/tmp/krb5cc_114151295_aoD7Aw
 KDEDIRS=/usr
 HISTCONTROL=ignoredups
 GIT_ASKPASS=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/622cb03f7e070a9670c94bae1a45d78d7181fbd4/extensions/git/dist/askpass.sh
@@ -77,13 +78,14 @@ COLORTERM=truecolor
 CINNAMON_2D=1
 BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 0
-2
-1614706864 design/common.sv
-1614706966 testbench/common_test.sv
+3
+1614788035 design/cnter/top.sv
+1614707003 design/common.sv
+1614788043 testbench/cnter_test.sv
 5
 0 
 1531625631 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/libvirsim.so
 1531624898 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/liberrorinf.so
 1531624871 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/libsnpsmalloc.so
 1531625298 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/libvfs.so
-1614706969 simv.daidir
+1614788046 simv.daidir

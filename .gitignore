@@ -1,3 +1,4 @@
 *.vg *.rep *.db *.chk *.log *.out 
-csrc/ simv.daidir/
+csrc/ 
+simv.daidir/
 Makefile

@@ -1,3 +1,21 @@
+function automatic [3:0]get_index;
+    input [3:0] counter_mod;
+    input int a, b, c, d, e, f, g, h;
+    case (counter_mod)
+        4'd0: get_index = a;
+        4'd1: get_index = b;
+        4'd2: get_index = c;
+        4'd3: get_index = d;
+        4'd4: get_index = e;
+        4'd5: get_index = f;
+        4'd6: get_index = g;
+        4'd7: get_index = h;
+        default: get_index = 0;
+    endcase
+    
+endfunction
+
+
 module Cnter (
     input [0:7][31:0]  H_in,
     input [0:63][31:0] W,
@@ -6,7 +24,7 @@ module Cnter (
     output logic done,
     output logic [255:0] H_out
 );
-    enum {A, B, C, D, E, F, G, H} Place;
+    // enum {A, B, C, D, E, F, G, H} Place;
 
     logic [0:63][31:0] K = {32'h428a2f98, 32'h71374491, 32'hb5c0fbcf, 32'he9b5dba5, 32'h3956c25b, 32'h59f111f1, 32'h923f82a4, 32'hab1c5ed5,
                             32'hd807aa98, 32'h12835b01, 32'h243185be, 32'h550c7dc3, 32'h72be5d74, 32'h80deb1fe, 32'h9bdc06a7, 32'hc19bf174,
@@ -24,28 +42,41 @@ module Cnter (
     logic [31:0] new_a;
     logic [31:0] new_e;
     logic [31:0] temp1, temp2;
-    logic [3:0] new_a_idx, new_e_idx;
-    logic [0:7][3:0] idx_array;
+    logic [3:0] counter_mod;
+    // logic [3:0] new_a_idx, new_e_idx;
+    // logic [0:7][3:0] idx_array;
+    logic [3:0] a = get_index(counter_mod, 0, 7, 6, 5, 4, 3, 2, 1);
+    logic [3:0] b = get_index(counter_mod, 1, 0, 7, 6, 5, 4, 3, 2);
+    logic [3:0] c = get_index(counter_mod, 2, 1, 0, 7, 6, 5, 4, 3);
+    logic [3:0] d = get_index(counter_mod, 3, 2, 1, 0, 7, 6, 5, 4);
+    logic [3:0] e = get_index(counter_mod, 4, 3, 2, 1, 0, 7, 6, 5);
+    logic [3:0] f = get_index(counter_mod, 5, 4, 3, 2, 1, 0, 7, 6);
+    logic [3:0] g = get_index(counter_mod, 6, 5, 4, 3, 2, 1, 0, 7);
+    logic [3:0] h = get_index(counter_mod, 7, 6, 5, 4, 3, 2, 1, 0);
+
+    assign counter_mod = counter & 3'b111;
  
-    assign temp1 = result[idx_array[Place.H]] + S1(result[idx_array[Place.E]]) + ch(result[idx_array[Place.E]], result[idx_array[Place.F]], result[idx_array[Place.G]]) + K[counter] + W[counter];
-    assign temp2 = S0(result[idx_array[Place.A]]) + maj(result[idx_array[Place.A]], result[idx_array[Place.B]], result[idx_array[Place.C]]);
+    assign temp1 = result[h] + S1(result[e]) + ch(result[e], result[f], result[g]) + K[counter] + W[counter];
+    assign temp2 = S0(result[a]) + maj(result[a], result[b], result[c]);
     assign new_a = temp1 + temp2;
-    assign new_e = result[idx_array[Place.D]] + temp1;
-    assign new_a_idx = 3'd7 - counter & 3'b111;
-    assign new_e_idx = (counter & 3'b111) >= 3'd4 ? 4'd11 -  (counter & 3'b111) : 3'd3 - (counter & 3'b111);
+    assign new_e = result[d] + temp1;
+    // assign new_a_idx = 3'd7 - counter & 3'b111;
+    // assign new_e_idx = (counter & 3'b111) >= 3'd4 ? 4'd11 -  (counter & 3'b111) : 3'd4 - (counter & 3'b111);
 
 
     always_comb begin
         new_result = result;
         for(int i = 0; i < 8; i++)begin
-            if(i == new_a_idx) new_result[i] = new_a;
-            else if(i == new_e_idx) new_result[i] = new_e;
-            idx_array[i] = (counter & 3'b111) > i ? i + 4'd8 - (counter & 3'b111) : i - (counter & 3'b111);
+            // if(i == new_a_idx) new_result[i] = new_a;
+            // else if(i == new_e_idx) new_result[i] = new_e;
+            // idx_array[i] = (counter & 3'b111) > i ? i + 4'd8 - (counter & 3'b111) : i - (counter & 3'b111);
+            if(i == h) new_result[i] = new_a;
+            else if(i == e) new_result[i] = new_e;
         end
     end
 
 
-    always @(posedge clk) begin
+    always_ff @(posedge clk) begin
         if (reset) begin
             counter <= 8'b0;
             result  <= H_in;
