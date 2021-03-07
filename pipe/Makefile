@@ -24,7 +24,7 @@ all:	simv
 
 TESTBENCH = ../testbench/pipe_test.sv
 SIMFILES = ../src/common.sv ../src/pipe.sv
-SYNFILES = Cnter.vg
+SYNFILES = Pipe.vg
 
 #####
 # Should be no need to modify after here
