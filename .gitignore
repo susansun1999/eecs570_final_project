@@ -1,4 +1,9 @@
-*.vg *.rep *.db *.chk *.log *.out 
+*.vg *.rep *.db *.chk *.log *.out *.vpd *.svf *.key *.old
 csrc/ 
 simv.daidir/
-Makefile
+dve.daidir/
+DVEfiles/
+syn_simv.daidir/
+simv
+dve
+syn_simv
