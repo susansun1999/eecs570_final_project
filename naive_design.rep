@@ -1,0 +1,293 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : design
+Design : naive_design
+Version: O-2018.06
+Date   : Sat Mar 13 16:08:59 2021
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Local Link Library:
+
+    {lec25dscc25_TT.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+
+    Operating Condition Name : nom_pvt
+    Library : lec25dscc25_TT
+    Process :   1.00
+    Temperature :  25.00
+    Voltage :   2.50
+    Interconnect Model : balanced_tree
+
+Wire Loading Model:
+
+    Selected manually by the user.
+
+Name           :   tsmcwire
+Location       :   lec25dscc25_TT
+Resistance     :   0.2642
+Capacitance    :   0.000132782
+Area           :   0.27
+Slope          :   0.74
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1     0.89
+     2     1.48
+     3     2.44
+     4     3.18
+     5     3.92
+
+
+
+Wire Loading Model Mode: top.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    None Required
+
+Design Parameters:
+
+    None specified.
+1
+ 
+****************************************
+Report : area
+Design : naive_design
+Version: O-2018.06
+Date   : Sat Mar 13 16:08:59 2021
+****************************************
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Number of ports:                         3167
+Number of nets:                          6106
+Number of cells:                         2831
+Number of combinational cells:           2554
+Number of sequential cells:               270
+Number of macros/black boxes:               0
+Number of buf/inv:                        201
+Number of references:                      28
+
+Combinational area:             159832.924171
+Buf/Inv area:                     6676.992172
+Noncombinational area:           45867.933716
+Macro/Black Box area:                0.000000
+Net Interconnect area:            2028.579838
+
+Total cell area:                205700.857887
+Total area:                     207729.437725
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -input_pins
+        -nets
+        -max_paths 2
+        -transition_time
+Design : naive_design
+Version: O-2018.06
+Date   : Sat Mar 13 16:08:59 2021
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+  Startpoint: result_reg[0][20]
+              (rising edge-triggered flip-flop)
+  Endpoint: H_out[244] (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  naive_design       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  result_reg[0][20]/CLK (dffs1)            0.91      0.00       0.00 r
+  result_reg[0][20]/Q (dffs1)              0.30      0.36       0.36 f
+  n2282 (net)                    3                   0.00       0.36 f
+  result_reg[0][20]/QN (dffs1)             0.29      0.14       0.51 r
+  n91 (net)                      3                   0.00       0.51 r
+  U764/DIN (hi1s1)                         0.29      0.00       0.51 r
+  U764/Q (hi1s1)                           1.85      0.79       1.30 f
+  H_out[244] (net)               1                   0.00       1.30 f
+  H_out[244] (out)                         1.85      0.02       1.32 f
+  data arrival time                                             1.32
+
+  max_delay                                         10.00      10.00
+  output external delay                              0.00      10.00
+  data required time                                           10.00
+  ---------------------------------------------------------------------
+  data required time                                           10.00
+  data arrival time                                            -1.32
+  ---------------------------------------------------------------------
+  slack (MET)                                                   8.68
+
+
+  Startpoint: result_reg[4][17]
+              (rising edge-triggered flip-flop)
+  Endpoint: H_out[113] (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  naive_design       tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  result_reg[4][17]/CLK (dffs1)            1.04      0.00       0.00 r
+  result_reg[4][17]/Q (dffs1)              0.30      0.37       0.37 f
+  n2296 (net)                    3                   0.00       0.37 f
+  result_reg[4][17]/QN (dffs1)             0.23      0.11       0.48 r
+  n190 (net)                     4                   0.00       0.48 r
+  U762/DIN (hi1s1)                         0.23      0.00       0.49 r
+  U762/Q (hi1s1)                           1.85      0.78       1.26 f
+  H_out[113] (net)               1                   0.00       1.26 f
+  H_out[113] (out)                         1.85      0.02       1.29 f
+  data arrival time                                             1.29
+
+  max_delay                                         10.00      10.00
+  output external delay                              0.00      10.00
+  data required time                                           10.00
+  ---------------------------------------------------------------------
+  data required time                                           10.00
+  data arrival time                                            -1.29
+  ---------------------------------------------------------------------
+  slack (MET)                                                   8.71
+
+
+1
+ 
+****************************************
+Report : constraint
+        -verbose
+        -max_delay
+Design : naive_design
+Version: O-2018.06
+Date   : Sat Mar 13 16:08:59 2021
+****************************************
+
+
+  Startpoint: result_reg[0][20]
+              (rising edge-triggered flip-flop)
+  Endpoint: H_out[244] (output port)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  naive_design       tsmcwire              lec25dscc25_TT
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  result_reg[0][20]/CLK (dffs1)            0.00       0.00 r
+  result_reg[0][20]/Q (dffs1)              0.36       0.36 f
+  result_reg[0][20]/QN (dffs1)             0.14       0.51 r
+  U764/Q (hi1s1)                           0.79       1.30 f
+  H_out[244] (out)                         0.02       1.32 f
+  data arrival time                                   1.32
+
+  max_delay                               10.00      10.00
+  output external delay                    0.00      10.00
+  data required time                                 10.00
+  -----------------------------------------------------------
+  data required time                                 10.00
+  data arrival time                                  -1.32
+  -----------------------------------------------------------
+  slack (MET)                                         8.68
+
+
+1
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : reference
+Design : naive_design
+Version: O-2018.06
+Date   : Sat Mar 13 16:09:00 2021
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+and2s1             lec25dscc25_TT    49.766399       2    99.532799
+aoi22s1            lec25dscc25_TT    58.060799    1024 59454.257812
+aoi22s2            lec25dscc25_TT    58.060799      64  3715.891113
+dffcs1             lec25dscc25_TT   165.888000       8  1327.104004 n
+dffs1              lec25dscc25_TT   157.593994       3   472.781982 n
+dffs2              lec25dscc25_TT   174.182007     253 44068.047729 n
+hi1s1              lec25dscc25_TT    33.177601      15   497.664013
+i1s1               lec25dscc25_TT    33.177601       1    33.177601
+i1s3               lec25dscc25_TT    41.472000       1    41.472000
+ib1s1              lec25dscc25_TT    33.177601     183  6071.500957
+naive_design_DW01_add_0        5275.238415       1   5275.238415  h
+naive_design_DW01_add_1        5275.238415       1   5275.238415  h
+naive_design_DW01_add_2        5275.238415       1   5275.238415  h
+naive_design_DW01_add_3        5275.238415       1   5275.238415  h
+naive_design_DW01_add_5        5275.238415       1   5275.238415  h
+naive_design_DW01_add_6        5275.238415       1   5275.238415  h
+naive_design_DW01_inc_0         489.207600       1    489.207600  h
+nnd2s2             lec25dscc25_TT    41.472000     208  8626.176025
+nnd4s1             lec25dscc25_TT    58.060799     288 16721.510010
+nor2s1             lec25dscc25_TT    41.472000      16   663.552002
+nor5s1             lec25dscc25_TT    99.532799       1    99.532799
+oai21s1            lec25dscc25_TT    49.766399     139  6917.529514
+oai21s2            lec25dscc25_TT    49.766399     245 12192.767849
+oai22s1            lec25dscc25_TT    58.060799      22  1277.337570
+oai22s2            lec25dscc25_TT    58.060799      10   580.607986
+or4s1              lec25dscc25_TT    82.944000       1    82.944000
+xnr2s1             lec25dscc25_TT    82.944000     124 10285.056030
+xor2s1             lec25dscc25_TT    82.944000       4   331.776001
+-----------------------------------------------------------------------------
+Total 28 references                                 205700.857887
+1

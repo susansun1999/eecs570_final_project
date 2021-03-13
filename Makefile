@@ -22,9 +22,12 @@ all:	simv
 # Modify starting here
 #####
 
-TESTBENCH = testbench/cnter_test.sv
-SIMFILES = design/common.sv design/cnter/top.sv
-SYNFILES = Cnter.vg
+#TESTBENCH = testbench/cnter_test.sv
+TESTBENCH = testbench/naive_test.sv
+#SIMFILES = design/common.sv design/cnter/top.sv
+SIMFILES = src/common.sv src/naive_design.sv
+#SYNFILES = Cnter.vg
+SYNFILES = naive_design.vg
 
 #####
 # Should be no need to modify after here
@@ -53,3 +56,6 @@ nuke:	clean
 
 Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
+
+naive_design.vg:	src/naive_design.sv synth/naive/naive_synth.tcl
+	dc_shell-t -f synth/naive/naive_synth.tcl | tee synth.out

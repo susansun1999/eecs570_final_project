@@ -1,0 +1,11 @@
+Chronologic VCS simulator copyright 1991-2017
+Contains Synopsys proprietary information.
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Mar 13 16:09 2021
+H is 0000000000000000000000000000000000000000000000000000000000000000
+done is 1
+$finish called from file "testbench/naive_test.sv", line 33.
+$finish at simulation time                  656
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 656
+CPU Time:      0.290 seconds;       Data structure size:   0.4Mb
+Sat Mar 13 16:09:53 2021
