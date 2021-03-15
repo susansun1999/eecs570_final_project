@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06 for linux64 -- May 21, 2018
-#@ # Date:   Wed Mar  3 11:47:04 2021
+#@ # Date:   Wed Mar  3 11:54:13 2021
 #@ # Run by: zwtao@caen-vnc-vm17.engin.umich.edu
 #@ 
 
@@ -6643,7 +6643,7 @@ source -echo -verbose /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_proj
 #@ set design_name Cnter
 #@ set clock_name clock
 #@ set reset_name reset
-#@ set CLK_PERIOD 10
+#@ set CLK_PERIOD 1.18
 #@ 
 #@ 
 #@ 

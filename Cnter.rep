@@ -4,7 +4,7 @@ Information: Updating design information... (UID-85)
 Report : design
 Design : Cnter
 Version: O-2018.06
-Date   : Wed Mar  3 11:47:18 2021
+Date   : Wed Mar  3 11:54:26 2021
 ****************************************
 
 Design allows ideal nets on clock nets.
@@ -86,7 +86,7 @@ Design Parameters:
 Report : area
 Design : Cnter
 Version: O-2018.06
-Date   : Wed Mar  3 11:47:18 2021
+Date   : Wed Mar  3 11:54:26 2021
 ****************************************
 
 Library(s) Used:
@@ -122,7 +122,7 @@ Report : timing
         -transition_time
 Design : Cnter
 Version: O-2018.06
-Date   : Wed Mar  3 11:47:18 2021
+Date   : Wed Mar  3 11:54:26 2021
 ****************************************
 
  * Some/all delay information is back-annotated.
@@ -153,14 +153,14 @@ Wire Load Model Mode: top
   H_out[224] (out)                         1.85      0.02       1.18 f
   data arrival time                                             1.18
 
-  max_delay                                         10.00      10.00
-  output external delay                              0.00      10.00
-  data required time                                           10.00
+  max_delay                                          1.18       1.18
+  output external delay                              0.00       1.18
+  data required time                                            1.18
   ---------------------------------------------------------------------
-  data required time                                           10.00
+  data required time                                            1.18
   data arrival time                                            -1.18
   ---------------------------------------------------------------------
-  slack (MET)                                                   8.82
+  slack (MET)                                                   0.00
 
 
   Startpoint: counter_reg[0]
@@ -189,14 +189,14 @@ Wire Load Model Mode: top
   done (out)                               0.52      0.02       1.15 f
   data arrival time                                             1.15
 
-  max_delay                                         10.00      10.00
-  output external delay                              0.00      10.00
-  data required time                                           10.00
+  max_delay                                          1.18       1.18
+  output external delay                              0.00       1.18
+  data required time                                            1.18
   ---------------------------------------------------------------------
-  data required time                                           10.00
+  data required time                                            1.18
   data arrival time                                            -1.15
   ---------------------------------------------------------------------
-  slack (MET)                                                   8.85
+  slack (MET)                                                   0.03
 
 
 1
@@ -207,7 +207,7 @@ Report : constraint
         -max_delay
 Design : Cnter
 Version: O-2018.06
-Date   : Wed Mar  3 11:47:18 2021
+Date   : Wed Mar  3 11:54:26 2021
 ****************************************
 
 
@@ -230,14 +230,14 @@ Date   : Wed Mar  3 11:47:18 2021
   H_out[224] (out)                         0.02       1.18 f
   data arrival time                                   1.18
 
-  max_delay                               10.00      10.00
-  output external delay                    0.00      10.00
-  data required time                                 10.00
+  max_delay                                1.18       1.18
+  output external delay                    0.00       1.18
+  data required time                                  1.18
   -----------------------------------------------------------
-  data required time                                 10.00
+  data required time                                  1.18
   data arrival time                                  -1.18
   -----------------------------------------------------------
-  slack (MET)                                         8.82
+  slack (MET)                                         0.00
 
 
 1
@@ -247,7 +247,7 @@ Information: Updating graph... (UID-83)
 Report : reference
 Design : Cnter
 Version: O-2018.06
-Date   : Wed Mar  3 11:47:19 2021
+Date   : Wed Mar  3 11:54:27 2021
 ****************************************
 
 Attributes:

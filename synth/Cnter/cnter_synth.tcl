@@ -14,7 +14,7 @@ read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
 set design_name Cnter
 set clock_name clock
 set reset_name reset
-set CLK_PERIOD 10
+set CLK_PERIOD 1.18
 
 
 
