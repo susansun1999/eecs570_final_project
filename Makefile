@@ -12,7 +12,7 @@
 # similar to the information in those scripts but that seems hard to avoid.
 #
 
-VCS = SW_VCS=2017.12-SP2-1 vcs -sverilog +vc -Mupdate -line -full64 +define+
+VCS = vcs -V -sverilog +vc -Mupdate -line -full64 +vcs+vcdpluson -debug_pp 
 LIB = /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
 
 all:	simv
@@ -31,6 +31,7 @@ SYNFILES = Cnter.vg
 #####
 simv:	$(SIMFILES) $(TESTBENCH)
 	$(VCS) $(TESTBENCH) $(SIMFILES) -o simv
+
 
 dve:	$(SIMFILES) $(TESTBENCH) 
 	$(VCS) +memcbk $(TESTBENCH) $(SIMFILES) -o dve -R -gui
@@ -53,3 +54,6 @@ nuke:	clean
 
 Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
+
+power:	design/cnter/top.sv synth/Cnter/cnter_power.tcl
+	dc_shell -topo -f synth/Cnter/cnter_power.tcl | tee synth.out

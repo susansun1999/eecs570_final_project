@@ -1,15 +1,15 @@
 # Begin_DVE_Session_Save_Info
 # DVE restart session
-# Saved on Wed Mar 3 11:07:51 2021
+# Saved on Tue Mar 16 11:42:05 2021
 # Designs open: 1
 #   Sim: /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/dve
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
-#   Source.1: common_test
-#   Wave.1: 3 signals
+#   Source.1: _vcs_unit__644628341
+#   Wave.1: 2 signals
 #   Group count = 1
-#   Group Group1 signal count = 3
+#   Group Group1 signal count = 2
 # End_DVE_Session_Save_Info
 
 # DVE version: N-2017.12-SP2-1_Full64
@@ -38,15 +38,9 @@ set TopLevel.1 TopLevel.1
 # Docked window settings
 set HSPane.1 HSPane.1
 set Hier.1 Hier.1
-set Stack.1 Stack.1
-set Class.1 Class.1
-set Object.1 Object.1
 set DLPane.1 DLPane.1
 set Data.1 Data.1
-set Local.1 Local.1
-set Member.1 Member.1
 set Console.1 Console.1
-set DriverLoad.1 DriverLoad.1
 gui_sync_global -id ${TopLevel.1} -option true
 
 # MDI window settings
@@ -65,7 +59,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 
 # MDI window settings
 set Wave.1 Wave.1
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 445} {child_wave_right 1085} {child_wave_colname 220} {child_wave_colvalue 221} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 445} {child_wave_right 1085} {child_wave_colname 220} {child_wave_colvalue 220} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -74,8 +68,8 @@ gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {d
 
 #<Database>
 
-gui_set_precision 1s
-gui_set_time_units 1s
+gui_set_precision 1ps
+gui_set_time_units 1ps
 #</Database>
 
 # DVE Global setting session: 
@@ -94,11 +88,11 @@ gui_set_time_units 1s
 # Global: Signal Groups
 
 
-set _session_group_2 Group1
-gui_sg_create "$_session_group_2"
-set Group1 "$_session_group_2"
+set _session_group_1 Group1
+gui_sg_create "$_session_group_1"
+set Group1 "$_session_group_1"
 
-gui_sg_addsignal -group "$_session_group_2" { common_test.myCnter.counter common_test.myCnter.clk common_test.myCnter.reset }
+gui_sg_addsignal -group "$_session_group_1" { common_test.myCnter.a common_test.myCnter.counter_mod }
 
 # Global: Highlighting
 
@@ -132,22 +126,13 @@ catch {gui_list_select -id ${Hier.1} {common_test.myCnter}}
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
-# Class 'Class.1'
-gui_list_set_filter -id ${Class.1} -list { {OVM 1} {VMM 1} {All 1} {Object 1} {UVM 1} {RVM 1} }
-gui_list_set_filter -id ${Class.1} -text {*}
-gui_change_design -id ${Class.1} -design Sim
-
-# Member 'Member.1'
-gui_list_set_filter -id ${Member.1} -list { {InternalMember 0} {RandMember 1} {All 0} {BaseMember 0} {PrivateMember 1} {LibBaseMember 0} {AutomaticMember 1} {VirtualMember 1} {PublicMember 1} {ProtectedMember 1} {OverRiddenMember 0} {InterfaceClassMember 1} {StaticMember 1} }
-gui_list_set_filter -id ${Member.1} -text {*}
-
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
 gui_list_show_data -id ${Data.1} {common_test.myCnter}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {common_test.myCnter.reset }}
-gui_view_scroll -id ${Data.1} -vertical -set 0
+catch { gui_list_select -id ${Data.1} {common_test.myCnter.counter_mod }}
+gui_view_scroll -id ${Data.1} -vertical -set 133
 gui_view_scroll -id ${Data.1} -horizontal -set 0
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
@@ -155,12 +140,11 @@ gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Source 'Source.1'
 gui_src_value_annotate -id ${Source.1} -switch false
 gui_set_env TOGGLE::VALUEANNOTATE 0
-gui_open_source -id ${Source.1}  -replace -active common_test /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/testbench/cnter_test.sv
+gui_open_source -id ${Source.1}  -replace -active _vcs_unit__644628341 /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/testbench/cnter_test.sv
 gui_src_value_annotate -id ${Source.1} -switch true
 gui_set_env TOGGLE::VALUEANNOTATE 1
-gui_view_scroll -id ${Source.1} -vertical -set 120
+gui_view_scroll -id ${Source.1} -vertical -set 0
 gui_src_set_reusable -id ${Source.1}
-# Warning: Class view not found.
 
 # View 'Wave.1'
 gui_wv_sync -id ${Wave.1} -switch false
@@ -170,8 +154,9 @@ set origWaveHeight [gui_get_pref_value -category Wave -key waveRowHeight]
 gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
-gui_wv_zoom_timerange -id ${Wave.1} 0 355
+gui_wv_zoom_timerange -id ${Wave.1} 94958 94959
 gui_list_add_group -id ${Wave.1} -after {New Group} {Group1}
+gui_list_select -id ${Wave.1} {common_test.myCnter.counter_mod }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -191,9 +176,6 @@ gui_list_set_insertion_bar  -id ${Wave.1} -group Group1  -position in
 
 gui_view_scroll -id ${Wave.1} -vertical -set 0
 gui_show_grid -id ${Wave.1} -enable false
-
-# DriverLoad 'DriverLoad.1'
-gui_get_drivers -session -id ${DriverLoad.1} -signal common_test.myCnter.reset -time 5 -starttime 5
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
 if {[gui_exist_window -window ${TopLevel.1}]} {

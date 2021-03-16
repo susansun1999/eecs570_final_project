@@ -8,23 +8,24 @@ gui_create_pref_key -category {schem_pin_hc} -key {textExtFont} -value_type {str
 # State setting overrides
 gui_state_default_create -off -ini
 gui_set_state_value -category Globals -key recent_sessions -value {{gui_load_session -ignore_errors -file /afs/umich.edu/user/z/w/zwtao/Documents/470/project2/DVEfiles/dve_checkpoint_25778_1.tcl} {gui_load_session -ignore_errors -file /afs/umich.edu/user/z/w/zwtao/Documents/group5w20/mshr.tcl} {gui_load_session -ignore_errors -file /afs/umich.edu/user/z/w/zwtao/Documents/group5w20/ricky_debug_cache.inter.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /afs/umich.edu/user/z/w/zwtao/Documents/group5w20/cache.tcl -ignore_errors} {gui_load_session -ignore_errors -file /afs/umich.edu/user/z/w/zwtao/Documents/group5w20/cache.tcl}}
+gui_set_state_value -category Globals -key recent_tcl_scripts -value {{gui_dve_source -global /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/synth/Cnter/cnter_synth.tcl}}
 gui_set_state_value -category Layout -key child_assertion_size_x -value 1535
 gui_set_state_value -category Layout -key child_assertion_size_y -value 148
 gui_set_state_value -category Layout -key child_console_size_x -value 1535
-gui_set_state_value -category Layout -key child_console_size_y -value 197
+gui_set_state_value -category Layout -key child_console_size_y -value 194
 gui_set_state_value -category Layout -key child_data_coltype -value 109
 gui_set_state_value -category Layout -key child_data_colvalue -value 12
 gui_set_state_value -category Layout -key child_data_colvariable -value 177
-gui_set_state_value -category Layout -key child_data_size_x -value 296
-gui_set_state_value -category Layout -key child_data_size_y -value 401
+gui_set_state_value -category Layout -key child_data_size_x -value 293
+gui_set_state_value -category Layout -key child_data_size_y -value 404
 gui_set_state_value -category Layout -key child_driver_size_x -value 1263
 gui_set_state_value -category Layout -key child_driver_size_y -value 197
 gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
 gui_set_state_value -category Layout -key child_hier_colhier -value 125
 gui_set_state_value -category Layout -key child_hier_colpd -value 0
 gui_set_state_value -category Layout -key child_hier_coltype -value 65
-gui_set_state_value -category Layout -key child_hier_size_x -value 180
-gui_set_state_value -category Layout -key child_hier_size_y -value 401
+gui_set_state_value -category Layout -key child_hier_size_x -value 177
+gui_set_state_value -category Layout -key child_hier_size_y -value 404
 gui_set_state_value -category Layout -key child_hier_sort_order -value 1
 gui_set_state_value -category Layout -key child_list_down -value 178
 gui_set_state_value -category Layout -key child_list_right -value 443
@@ -36,8 +37,8 @@ gui_set_state_value -category Layout -key child_schematic_size_y -value 492
 gui_set_state_value -category Layout -key child_source_docknewline -value false
 gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
 gui_set_state_value -category Layout -key child_source_pos_y -value {-15}
-gui_set_state_value -category Layout -key child_source_size_x -value 1062
-gui_set_state_value -category Layout -key child_source_size_y -value 396
+gui_set_state_value -category Layout -key child_source_size_x -value 1068
+gui_set_state_value -category Layout -key child_source_size_y -value 399
 gui_set_state_value -category Layout -key child_wave_colname -value 220
 gui_set_state_value -category Layout -key child_wave_colvalue -value 221
 gui_set_state_value -category Layout -key child_wave_left -value 445
@@ -76,9 +77,28 @@ gui_create_state_key -category Widget_History -key {dlgSimSetup|m_setupTab|tab p
 gui_state_default_create -off
 
 # Begin command logging
-gui_set_pref_value -category {Globals} -key {smart_resize} -value {false}
-gui_set_pref_value -category {Globals} -key {smart_resize} -value {true}
-gui_sim_run Ucli -exe dve -args {-ucligui  +vc +define+ +memcbk} -dir .
+gui_sim_run Ucli -exe dve -args {-ucligui  -V +vc +memcbk} -dir .
+gui_list_select -id Data.1 -selected  { {common_test.H_in[0:7][31:0]}   }
 gui_list_expand -id  Hier.1   common_test
 gui_list_select -id Hier.1 -current_item_name common_test.myCnter -current_item_type Scope  -selected  { common_test.myCnter   }
+gui_list_select -id Data.1 -selected  { {common_test.myCnter.H_in[0:7][31:0]}   }
+gui_list_select -id Data.1 -selected  { {common_test.myCnter.H_in[0:7][31:0]}  {common_test.myCnter.result[0:7][31:0]}   }
+gui_list_select -id Hier.1 -current_item_name common_test.myCnter -current_item_type Scope  -selected  {  }
+gui_list_select -id Hier.1 -current_item_name common_test.myCnter -current_item_type Scope  -selected  { common_test.myCnter   }
+gui_list_select -id Data.1 -selected  { {common_test.myCnter.H_in[0:7][31:0]}  {common_test.myCnter.result[0:7][31:0]}  common_test.myCnter.reset   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Data.1 { {common_test.myCnter.H_in[0:7][31:0]} common_test.myCnter.reset {common_test.myCnter.result[0:7][31:0]} } -insertionbar
+gui_wv_zoom_timerange -id  Wave.1 0 355
 gui_sim_continue  
+gui_wv_scroll_hslidermove -id  Wave.1 2982
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_wv_scroll_hslidermove -id  Wave.1 397
+gui_marker_move -id  Wave.1 C1 15000
+gui_wv_scroll_hslidermove -id  Wave.1 420
+gui_zoom -window Wave.1 -factor 0.5
+gui_close_window -window TopLevel.2

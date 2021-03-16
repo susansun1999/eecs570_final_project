@@ -2,7 +2,7 @@
 ****************************************
 check_design summary:
 Version:     O-2018.06
-Date:        Wed Mar  3 11:54:16 2021
+Date:        Tue Mar 16 15:51:08 2021
 ****************************************
 
                    Name                                            Total
@@ -11,5 +11,5 @@ Cells                                                               1
     Cells do not drive (LINT-1)                                     1
 --------------------------------------------------------------------------------
 
-Warning: In design 'Cnter', cell 'B_17' does not drive any nets. (LINT-1)
+Warning: In design 'Cnter', cell 'B_106' does not drive any nets. (LINT-1)
 1

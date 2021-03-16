@@ -1,16 +1,16 @@
 PIC_LD=ld
 
 ARCHIVE_OBJS=
-ARCHIVE_OBJS += _674_archive_1.so
-_674_archive_1.so : archive.19/_674_archive_1.a
+ARCHIVE_OBJS += _26298_archive_1.so
+_26298_archive_1.so : archive.71/_26298_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -o .//../syn_simv.daidir//_674_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -o .//../syn_simv.daidir//_26298_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../syn_simv.daidir//_674_archive_1.so $@
+	@ln -sf .//../syn_simv.daidir//_26298_archive_1.so $@
 
 
 ARCHIVE_OBJS += _prev_archive_1.so
-_prev_archive_1.so : archive.19/_prev_archive_1.a
+_prev_archive_1.so : archive.71/_prev_archive_1.a
 	@$(AR) -s $<
 	@$(PIC_LD) -shared  -o .//../syn_simv.daidir//_prev_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
@@ -33,8 +33,8 @@ $(VCS_ARC0) : $(VCS_OBJS0)
 	@ln -sf .//../syn_simv.daidir//$(VCS_ARC0) $(VCS_ARC0)
 
 CU_UDP_OBJS = \
-objs/udps/aKVa7.o objs/udps/hUcmi.o objs/udps/PjGxs.o objs/udps/MzHq6.o objs/udps/guAtk.o  \
-objs/udps/dKp3B.o objs/udps/F8ezs.o objs/udps/GLrQJ.o 
+objs/udps/F8ezs.o objs/udps/hUcmi.o objs/udps/PjGxs.o objs/udps/MzHq6.o objs/udps/guAtk.o  \
+objs/udps/aKVa7.o objs/udps/GLrQJ.o objs/udps/dKp3B.o 
 
 CU_LVL_OBJS = \
 SIM_l.o 

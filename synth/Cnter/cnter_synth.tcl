@@ -12,7 +12,7 @@
 
 read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
 set design_name Cnter
-set clock_name clock
+set clock_name clk
 set reset_name reset
 set CLK_PERIOD 1.18
 
@@ -45,8 +45,8 @@ set CLK_UNCERTAINTY 0.1
 set CLK_LATENCY 0.1
 
 #/* Input/output Delay values */
-set AVG_INPUT_DELAY 0.1
-set AVG_OUTPUT_DELAY 0.1
+set AVG_INPUT_DELAY 0
+set AVG_OUTPUT_DELAY 0
 
 #/* Critical Range (ns) */
 set CRIT_RANGE 1.0
@@ -131,5 +131,3 @@ if {  $dc_shell_status != [list] } {
 } else {
    quit
 }
-
-
