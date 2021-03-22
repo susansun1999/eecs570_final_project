@@ -1,9 +1,10 @@
 *.vg *.rep *.db *.chk *.log *.out *.vpd *.svf *.key *.old
 csrc/ 
-simv.daidir/
-dve.daidir/
+*.daidir/
 DVEfiles/
-syn_simv.daidir/
 simv
 dve
 syn_simv
+*.saif *.ddc *.svf
+lab1/
+.__*

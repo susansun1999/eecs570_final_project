@@ -22,9 +22,9 @@ all:	simv
 # Modify starting here
 #####
 
-TESTBENCH = testbench/cnter_test.sv
-SIMFILES = design/common.sv design/pipeline/Pipe.sv
-SYNFILES = Pipe.vg
+TESTBENCH = testbench/globals.vh testbench/sha_hash_gb.sv testbench/sha_tb.sv 
+SIMFILES = design/common.sv design/cnter/top.sv
+SYNFILES = Cnter.vg
 
 #####
 # Should be no need to modify after here
@@ -47,7 +47,7 @@ syn:	syn_simv
 clean:
 	rm -rvf simv *.daidir csrc vcs.key program.out \
 	syn_simv syn_simv.daidir syn_program.out \
-	dve *.vpd *.vcd *.dump ucli.key 
+	dve *.vpd *.vcd *.dump ucli.key .*.tcl .*.tcl.old *.saif *.ddc *.svf
 
 nuke:	clean
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out DVEfiles/
