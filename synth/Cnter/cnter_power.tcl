@@ -137,10 +137,10 @@ if {  $dc_shell_status != [list] } {
 #   report_power
 #   write -hier -format verilog -output $netlist_file $design_name
 #   write -hier -format ddc -output $ddc_file $design_name
-  # redirect $power_file { report_power }
-  # report_power -verbose -hierarchy -levels 2 -analysis_effort low > ./power2.out
-  report_power
-#   redirect -append $rep_file { report_area }
+  redirect $power_file { report_power }
+  report_power -verbose -hierarchy -levels 2 -analysis_effort low > ./power2.out
+  # report_power
+  # redirect -append $rep_file { report_area }
 #   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
 #   redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
 #   remove_design -all

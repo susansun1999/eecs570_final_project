@@ -55,8 +55,8 @@ nuke:	clean
 Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
 
-power:	design/pipeline/Pipe.sv synth/Cnter/cnter_power.tcl
-	dc_shell -f synth/Cnter/cnter_power.tcl | tee synth.out
+# power:	design/pipeline/Pipe.sv synth/Cnter/cnter_power.tcl
+# 	dc_shell -f synth/Cnter/cnter_power.tcl | tee synth.out
 
 Pipe.vg:	design/pipeline/Pipe.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
