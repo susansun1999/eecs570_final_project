@@ -10,9 +10,9 @@
 #/* new design                                              */
 #/***********************************************************/
 
-read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
+read_file -f sverilog [list "design/common.sv" "design/pipeline/Pipe.sv"]
 
-set design_name Cnter
+set design_name Pipe
 set clock_name clk
 set reset_name reset
 set CLK_PERIOD 1.18
@@ -34,8 +34,8 @@ set link_library [concat  "*" $target_library]
 #/***********************************************************/
 #/* Set some flags for optimisation */
 
-set compile_top_all_paths "true"
-set auto_wire_load_selection "false"
+# set compile_top_all_paths "true"
+# set auto_wire_load_selection "false"
 
 
 #/***********************************************************/
@@ -91,7 +91,19 @@ set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $des
 
 #/* if we didnt find errors at this point, run */
 if {  $dc_shell_status != [list] } {
-   current_design $design_name
+  current_design $design_name
+#   set_tlu_plus_files
+#   # Then create your milkyway database
+#   define_design_lib WORK -path ./work;
+ 
+# # create milky way database 
+#   set mw_design_library test_milkyway
+ 
+#   create_mw_lib  -mw_reference_library $mw_design_library $mw_design_library 
+#   open_mw_lib $mw_design_library
+ 
+  # check_tlu_plus_files
+  # check_library
   link
   set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
   set_wire_load_mode top
@@ -118,14 +130,16 @@ if {  $dc_shell_status != [list] } {
   uniquify
   ungroup -all -flatten
   redirect $chk_file { check_design }
-  saif_map -start 
-  set_power_prediction
-#   compile -map_effort high
-  compile_ultra -no_autoungroup 
+  # saif_map -start 
+  # set_power_prediction
+  compile -map_effort low
+  # compile_ultra -no_autoungroup 
 #   report_power
 #   write -hier -format verilog -output $netlist_file $design_name
 #   write -hier -format ddc -output $ddc_file $design_name
-  redirect $power_file_file { report_power }
+  # redirect $power_file { report_power }
+  # report_power -verbose -hierarchy -levels 2 -analysis_effort low > ./power2.out
+  report_power
 #   redirect -append $rep_file { report_area }
 #   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
 #   redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }

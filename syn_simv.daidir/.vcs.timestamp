@@ -41,13 +41,13 @@ testbench/cnter_test.sv
 46
 sysc_uni_pwd=/home/zwtao/Documents/eecs570_final_project
 _LMFILES_=/usr/caen/misc/modules/gcc/6.2.0:/usr/caen/misc/modules/spectre/17.10.307:/usr/caen/misc/modules/cadence-ic/6.1.7.500.2100:/afs/umich.edu/class/coe/modules/eecs312/f18:/usr/caen/misc/modules/vcs/2017.12-SP2-1
-XDG_SESSION_ID=1275
+XDG_SESSION_ID=1970
 XDG_RUNTIME_DIR=/run/user/114151295
 XDG_DATA_DIRS=/home/zwtao/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-VSCODE_IPC_HOOK_CLI=/run/user/114151295/vscode-ipc-69469632-2460-4fcd-9e01-505a69a1206b.sock
+VSCODE_IPC_HOOK_CLI=/run/user/114151295/vscode-ipc-5ead6790-af7e-4e7f-aab1-6132ab55e7f7.sock
 VSCODE_GIT_IPC_HANDLE=/run/user/114151295/vscode-git-2186ea8683.sock
-VSCODE_GIT_ASKPASS_NODE=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/fd6f3bce6709b121a895d042d343d71f317d74e7/node
-VSCODE_GIT_ASKPASS_MAIN=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/fd6f3bce6709b121a895d042d343d71f317d74e7/extensions/git/dist/askpass-main.js
+VSCODE_GIT_ASKPASS_NODE=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/2b9aebd5354a3629c3aba0a5f5df49f43d6689f8/node
+VSCODE_GIT_ASKPASS_MAIN=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/2b9aebd5354a3629c3aba0a5f5df49f43d6689f8/extensions/git/dist/askpass-main.js
 VMR_MODE_FLAG=64
 VCS_MODE_FLAG=64
 VCS_HOME=/usr/caen/vcs-2017.12-SP2-1
@@ -56,10 +56,10 @@ VCS_ARG_ADDED_FOR_TMP=1
 VCS_ARCH=linux64
 UNAME=/bin/uname
 TOOL_HOME=/usr/caen/vcs-2017.12-SP2-1/linux64
-TERM_PROGRAM_VERSION=1.54.2
+TERM_PROGRAM_VERSION=1.54.3
 TERM_PROGRAM=vscode
-SSH_CONNECTION=68.36.55.94 49755 141.213.74.66 22
-SSH_CLIENT=68.36.55.94 49755 22
+SSH_CONNECTION=68.36.55.94 57714 141.213.74.67 22
+SSH_CLIENT=68.36.55.94 57714 22
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
 SNPS_VCS_CLANG_PATH=/fs/src/interfaces/LLVM_Project/QSCM/opt/llvm-3.9.1/linux64
 SCRNAME=vcs
@@ -78,17 +78,17 @@ LESSOPEN=||/usr/bin/lesspipe.sh %s
 LD_RUN_PATH=/usr/um/gcc-6.2.0/lib64
 LC_ALL=C
 LAMMPS_POTENTIALS=/usr/share/lammps/potentials
-KRB5CCNAME=FILE:/tmp/krb5cc_114151295_WrxkBf
+KRB5CCNAME=FILE:/tmp/krb5cc_114151295_rgs9hg
 KDEDIRS=/usr
 HISTCONTROL=ignoredups
-GIT_ASKPASS=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/fd6f3bce6709b121a895d042d343d71f317d74e7/extensions/git/dist/askpass.sh
+GIT_ASKPASS=/afs/umich.edu/user/z/w/zwtao/.vscode-server/bin/2b9aebd5354a3629c3aba0a5f5df49f43d6689f8/extensions/git/dist/askpass.sh
 COLORTERM=truecolor
 CINNAMON_2D=1
 BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 0
 4
 1062689876 /afs/umich.edu/class/eecs470/lib/verilog/lec25dscc25.v
-1615924465 Cnter.vg
+1616164196 Cnter.vg
 1615923523 testbench/cnter_test.sv
 1531624678 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/vcsdp.tab
 5
@@ -97,4 +97,4 @@ BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`_}
 1531624898 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/liberrorinf.so
 1531624871 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/libsnpsmalloc.so
 1531625298 /usr/caen/vcs-2017.12-SP2-1/linux64/lib/libvfs.so
-1615924478 syn_simv.daidir
+1616164212 syn_simv.daidir

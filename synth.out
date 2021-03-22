@@ -29,58 +29,66 @@ Initializing...
 #/* The following five lines must be updated for every      */
 #/* new design                                              */
 #/***********************************************************/
-read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
+read_file -f sverilog [list "design/common.sv" "design/pipeline/Pipe.sv"]
 Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
 Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
   Loading link library 'gtech'
-Loading sverilog files: '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/common.sv' '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv' 
+Loading sverilog files: '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/common.sv' '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv' 
 Detecting input file type automatically (-rtl or -netlist).
 Reading with Presto HDL Compiler (equivalent to -rtl option).
 Running PRESTO HDLC
 Warning: Can't read link_library file 'your_library.db'. (UID-3)
 Compiling source file /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/common.sv
-Compiling source file /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv
-Warning:  /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv:74: signed to unsigned conversion occurs. (VER-318)
-Warning:  /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv:75: signed to unsigned conversion occurs. (VER-318)
+Compiling source file /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv
+Warning:  /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv:28: The construct 'declaration initial assignment' is not supported in synthesis; it is ignored. (VER-708)
 
-Statistics for case statements in always block at line 53 in file
-	'/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv'
+Statistics for case statements in always block at line 57 in file
+	'/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv'
 ===============================================
 |           Line           |  full/ parallel  |
 ===============================================
-|            4             |    auto/auto     |
+|            58            |     no/auto      |
 ===============================================
 
 Inferred memory devices in process
-	in routine Cnter line 80 in file
-		'/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/top.sv'.
+	in routine Pipe line 40 in file
+		'/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv'.
 ===============================================================================
 |    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
 ===============================================================================
+|        L_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
+|     counter_reg     | Flip-flop |   9   |  Y  | N  | N  | N  | N  | N  | N  |
+|      state_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | N  | N  | N  |
 |     result_reg      | Flip-flop |  256  |  Y  | N  | N  | N  | N  | N  | N  |
-|     counter_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | N  | N  | N  |
+|        M_reg        | Flip-flop |  32   |  Y  | N  | N  | N  | N  | N  | N  |
 ===============================================================================
+
+Inferred memory devices in process
+	in routine Pipe line 57 in file
+		'/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv'.
+===========================================================================
+|    Register Name    | Type  | Width | Bus | MB | AR | AS | SR | SS | ST |
+===========================================================================
+|    update_M_reg     | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|    update_L_reg     | Latch |   1   |  N  | N  | N  | N  | -  | -  | -  |
+|   new_result_reg    | Latch |  256  |  Y  | N  | N  | N  | -  | -  | -  |
+|      H_out_reg      | Latch |  256  |  Y  | N  | N  | N  | -  | -  | -  |
+|   next_state_reg    | Latch |   4   |  Y  | N  | N  | N  | -  | -  | -  |
+===========================================================================
 Statistics for MUX_OPs
 ======================================================
 | block name/line  | Inputs | Outputs | # sel inputs |
 ======================================================
-|     Cnter/63     |   8    |   32    |      3       |
-|     Cnter/63     |   8    |   32    |      3       |
-|     Cnter/63     |   8    |   32    |      3       |
-|     Cnter/63     |   8    |   32    |      3       |
-|     Cnter/63     |   64   |   64    |      6       |
-|     Cnter/64     |   8    |   32    |      3       |
-|     Cnter/64     |   8    |   32    |      3       |
-|     Cnter/64     |   8    |   32    |      3       |
-|     Cnter/66     |   8    |   32    |      3       |
+|     Pipe/123     |   64   |   33    |      6       |
 ======================================================
+Warning:  /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.sv:57: Netlist for always_comb block contains a latch. (ELAB-974)
 Presto compilation completed successfully.
-Current design is now '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/Cnter.db:Cnter'
+Current design is now '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.db:Pipe'
 Loaded 1 design.
-Current design is 'Cnter'.
-Cnter
-set design_name Cnter
-Cnter
+Current design is 'Pipe'.
+Pipe
+set design_name Pipe
+Pipe
 set clock_name clk
 clk
 set reset_name reset
@@ -102,10 +110,8 @@ set link_library [concat  "*" $target_library]
 * lec25dscc25_TT.db
 #/***********************************************************/
 #/* Set some flags for optimisation */
-set compile_top_all_paths "true"
-true
-set auto_wire_load_selection "false"
-false
+# set compile_top_all_paths "true"
+# set auto_wire_load_selection "false"
 #/***********************************************************/
 #/*  Clk Periods/uncertainty/transition                     */
 set CLK_TRANSITION 0.1
@@ -115,10 +121,10 @@ set CLK_UNCERTAINTY 0.1
 set CLK_LATENCY 0.1
 0.1
 #/* Input/output Delay values */
-set AVG_INPUT_DELAY 0
-0
-set AVG_OUTPUT_DELAY 0
-0
+set AVG_INPUT_DELAY 0.1
+0.1
+set AVG_OUTPUT_DELAY 0.1
+0.1
 #/* Critical Range (ns) */
 set CRIT_RANGE 1.0
 1.0
@@ -160,16 +166,30 @@ lec25dscc25_TT
 set sys_clk $clock_name
 clk
 set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
-./Cnter.vg
+./Pipe.vg
 set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
-./Cnter.ddc
+./Pipe.ddc
 set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
-./Cnter.rep
+./Pipe.rep
+set power_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".power"]
+./Pipe.power
 set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
-./Cnter.chk
+./Pipe.chk
 #/* if we didnt find errors at this point, run */
 if {  $dc_shell_status != [list] } {
-   current_design $design_name
+  current_design $design_name
+#   set_tlu_plus_files
+#   # Then create your milkyway database
+#   define_design_lib WORK -path ./work;
+ 
+# # create milky way database 
+#   set mw_design_library test_milkyway
+ 
+#   create_mw_lib  -mw_reference_library $mw_design_library $mw_design_library 
+#   open_mw_lib $mw_design_library
+ 
+  # check_tlu_plus_files
+  # check_library
   link
   set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
   set_wire_load_mode top
@@ -196,27 +216,34 @@ if {  $dc_shell_status != [list] } {
   uniquify
   ungroup -all -flatten
   redirect $chk_file { check_design }
-  compile -map_effort high
-  write -hier -format verilog -output $netlist_file $design_name
-  write -hier -format ddc -output $ddc_file $design_name
-  redirect $rep_file { report_design -nosplit }
-  redirect -append $rep_file { report_area }
-  redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
-  redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
-  remove_design -all
-  read_file -format verilog $netlist_file
-  current_design $design_name
-  redirect -append $rep_file { report_reference -nosplit }
+  # saif_map -start 
+  # set_power_prediction
+  compile -map_effort low
+  # compile_ultra -no_autoungroup 
+#   report_power
+#   write -hier -format verilog -output $netlist_file $design_name
+#   write -hier -format ddc -output $ddc_file $design_name
+  # redirect $power_file { report_power }
+  # report_power -verbose -hierarchy -levels 2 -analysis_effort low > ./power2.out
+  report_power
+#   redirect -append $rep_file { report_area }
+#   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+#   redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+#   remove_design -all
+#   read_file -format verilog $netlist_file
+#   current_design $design_name
+#   redirect -append $rep_file { report_reference -nosplit }
   quit
 } else {
    quit
-}Current design is 'Cnter'.
+}
+Current design is 'Pipe'.
 Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
 
-  Linking design 'Cnter'
+  Linking design 'Pipe'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
-  Cnter                       /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/cnter/Cnter.db
+  Pipe                        /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/design/pipeline/Pipe.db
   lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
 
 Warning: Design rule attributes from the driving cell will be
@@ -4831,8 +4858,9 @@ Warning: Design rule attributes from the driving cell will be
 	set on the port. (UID-401)
 Warning: Design rule attributes from the driving cell will be
 	set on the port. (UID-401)
-Current design is 'Cnter'.
+Current design is 'Pipe'.
 Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
+Warning: The compile -map_effort low is obsolete. Setting this variable now defaults to compile -map_effort medium. Please update your script accordingly. (OPT-1303)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
 ============================================================================
@@ -4849,70 +4877,35 @@ Information: There are 1 potential problems in your design. Please run 'check_de
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 'Cnter'
+  Processing 'Pipe'
+Information: The register 'next_state_reg[3]' is a constant and will be removed. (OPT-1206)
+Information: The register 'state_reg[3]' is a constant and will be removed. (OPT-1206)
 
   Updating timing information
 Information: Updating design information... (UID-85)
 
   Beginning Implementation Selection
   ----------------------------------
-  Processing 'Cnter_DW01_inc_0'
-  Processing 'Cnter_DW01_add_0'
-  Processing 'Cnter_DW01_add_1'
-  Processing 'Cnter_DW01_add_2'
-  Processing 'Cnter_DW01_add_3'
-  Processing 'Cnter_DW01_add_4'
-  Processing 'Cnter_DW01_add_5'
-  Processing 'Cnter_DW01_add_6'
+  Processing 'Pipe_DW01_add_0'
+  Processing 'Pipe_DW01_inc_0'
+  Processing 'Pipe_DW01_add_1'
+  Processing 'Pipe_DW01_add_2'
+  Processing 'Pipe_DW01_add_3'
+  Processing 'Pipe_DW01_add_4'
+  Processing 'Pipe_DW01_add_5'
+  Processing 'Pipe_DW01_add_6'
 
-                                  TOTAL                                                  
-   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
-  --------- --------- --------- --------- --------- ------------------------- -----------
-    0:00:06  359778.1     14.74    4407.0    3077.7                                0.00  
-    0:00:06  359778.1     14.74    4407.0    3077.7                                0.00  
-
-  Beginning Mapping Optimizations  (High effort)
+  Beginning Mapping Optimizations  (Medium effort)
   -------------------------------
   Mapping Optimization (Phase 1)
   Mapping Optimization (Phase 2)
-  Mapping Optimization (Phase 3)
 
                                   TOTAL                                                  
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:00:52  631077.1      6.34    2306.5       9.6                                0.00  
-    0:00:53  621829.0      6.47    4121.9      33.4                                0.00  
-    0:00:53  621829.0      6.47    4121.9      33.4                                0.00  
-    0:00:53  621829.0      6.46    4114.7      33.4                                0.00  
-    0:00:53  621829.0      6.46    4114.7      33.4                                0.00  
-    0:00:55  442609.8      7.15    4634.9      27.8                                0.00  
-    0:00:56  440240.4      7.05    4548.0      27.8                                0.00  
-    0:00:57  440154.7      6.67    4398.6      27.8                                0.00  
-    0:00:57  440104.9      6.59    4358.8      27.8                                0.00  
-    0:00:58  440013.7      6.45    4307.7      27.8                                0.00  
-    0:00:58  440262.5      6.37    4273.8      27.8                                0.00  
-    0:00:58  440204.4      6.35    4269.5      27.8                                0.00  
-    0:00:59  440237.6      6.35    4265.7      27.8                                0.00  
-    0:00:59  440204.4      6.35    4269.5      27.8                                0.00  
-    0:00:59  440237.6      6.35    4265.7      27.8                                0.00  
-    0:01:00  440237.6      6.35    4265.7      27.8                                0.00  
-    0:01:00  440237.6      6.35    4265.7      27.8                                0.00  
-    0:01:00  440237.6      6.35    4265.7      27.8                                0.00  
-    0:01:00  443721.1      6.36    2415.3       0.0                                0.00  
-    0:01:00  443721.1      6.36    2415.3       0.0                                0.00  
-    0:01:00  443721.1      6.36    2415.3       0.0                                0.00  
-    0:01:00  443721.1      6.36    2415.3       0.0                                0.00  
-    0:01:01  444724.7      6.30    2381.6       0.0 result_reg[4][27]/DIN          0.00  
-    0:01:01  445380.0      6.24    2371.0       0.0 result_reg[2][28]/DIN          0.00  
-    0:01:02  445819.6      6.24    2358.9       0.0 result_reg[4][31]/DIN          0.00  
-    0:01:02  446201.2      6.14    2341.4       0.0 result_reg[0][25]/DIN          0.00  
-    0:01:02  446615.9      6.14    2334.1       0.0 result_reg[2][22]/DIN          0.00  
-    0:01:03  446897.9      6.14    2329.8       0.0 result_reg[5][25]/DIN          0.00  
-    0:01:03  447052.7      6.14    2328.9       0.0                                0.00  
-
-
+    0:00:21  416860.9      2.18     189.0       2.2                                0.00  
+    0:00:21  416860.9      2.18     189.0       2.2                                0.00  
 
   Beginning Delay Optimization Phase
   ----------------------------------
@@ -4921,192 +4914,184 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:01:03  447052.7      6.14    2328.9       0.0                                0.00  
-    0:01:04  448139.2      5.94    2297.4       0.1 result_reg[0][30]/DIN          0.00  
-    0:01:05  448072.9      5.91    2290.4       7.1 result_reg[0][30]/DIN          0.00  
-    0:01:05  448719.8      5.84    2265.2       7.0 result_reg[0][30]/DIN          0.00  
-    0:01:06  449259.0      5.81    2263.3       7.0 result_reg[0][30]/DIN          0.00  
-    0:01:06  449516.1      5.80    2261.1       7.0 result_reg[0][30]/DIN          0.00  
-    0:01:06  449723.5      5.78    2258.5       7.2 result_reg[2][28]/DIN          0.00  
-    0:01:06  449905.9      5.78    2243.1       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:07  450320.7      5.78    2231.4       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:07  450436.8      5.78    2227.6       7.5 result_reg[2][22]/DIN          0.00  
-    0:01:07  450611.0      5.78    2225.1       7.5 result_reg[6][25]/DIN          0.00  
-    0:01:07  450622.1      5.77    2222.4       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:08  450630.4      5.75    2219.6       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:08  450721.6      5.74    2217.8       7.5 result_reg[2][30]/DIN          0.00  
-    0:01:08  451285.6      5.72    2215.5       7.5 result_reg[1][31]/DIN          0.00  
-    0:01:09  451493.0      5.70    2214.0       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:09  451434.9      5.69    2221.5       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:09  451501.3      5.69    2221.4       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:09  451874.5      5.68    2218.7       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:09  451857.9      5.67    2218.3       7.5 result_reg[0][30]/DIN          0.00  
-    0:01:10  451874.5      5.66    2216.5       7.5 result_reg[6][25]/DIN          0.00  
-    0:01:10  451857.9      5.66    2216.7       7.7 result_reg[3][25]/DIN          0.00  
-    0:01:10  451857.9      5.66    2216.6       7.7 result_reg[0][30]/DIN          0.00  
-    0:01:10  451857.9      5.66    2215.1       7.7 result_reg[2][22]/DIN          0.00  
-    0:01:10  451982.4      5.66    2200.7       7.7 result_reg[0][30]/DIN          0.00  
-    0:01:11  452305.8      5.66    2200.2       7.7 result_reg[1][30]/DIN          0.00  
-    0:01:11  452339.0      5.66    2200.1       7.7 result_reg[1][30]/DIN          0.00  
-    0:01:11  452513.2      5.65    2201.2       7.7 result_reg[1][30]/DIN          0.00  
-    0:01:11  452563.0      5.65    2201.1       7.9 result_reg[3][31]/DIN          0.00  
-    0:01:11  452604.4      5.65    2201.8       8.0 result_reg[2][30]/DIN          0.00  
-    0:01:12  452836.7      5.65    2199.4       8.0 result_reg[2][30]/DIN          0.00  
-    0:01:12  452836.7      5.65    2199.3       8.0 result_reg[1][31]/DIN          0.00  
-    0:01:12  453010.9      5.64    2198.3       8.0 result_reg[1][31]/DIN          0.00  
-    0:01:12  453052.3      5.64    2197.7       8.0 result_reg[2][30]/DIN          0.00  
-    0:01:13  453143.6      5.62    2194.5       8.0 result_reg[1][31]/DIN          0.00  
-    0:01:13  453475.4      5.62    2193.5       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:13  453375.8      5.61    2192.3       8.2 result_reg[3][28]/DIN          0.00  
-    0:01:14  453102.1      5.61    2191.8       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:14  453292.9      5.61    2191.2       8.2 result_reg[1][27]/DIN          0.00  
-    0:01:14  453865.2      5.61    2189.0       8.2 result_reg[2][22]/DIN          0.00  
-    0:01:14  453948.1      5.61    2189.6       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:14  454313.1      5.60    2189.5       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:15  454716.7      5.59    2187.6       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:15  454841.1      5.57    2185.0       8.2 result_reg[2][30]/DIN          0.00  
-    0:01:16  454924.1      5.57    2178.0       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:16  454965.5      5.57    2178.4       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:16  454965.5      5.55    2175.4       8.2 result_reg[0][28]/DIN          0.00  
-    0:01:17  454940.7      5.55    2174.7       8.2 result_reg[2][30]/DIN          0.00  
-    0:01:17  454940.7      5.55    2174.5       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:17  454915.8      5.55    2174.4       8.2 result_reg[1][27]/DIN          0.00  
-    0:01:17  455015.3      5.55    2172.0       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:17  455056.8      5.55    2173.4       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:17  455081.7      5.55    2171.2       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:18  455338.8      5.55    2170.4       8.2 result_reg[1][31]/DIN          0.00  
-    0:01:18  455330.5      5.54    2170.3       8.2 result_reg[2][30]/DIN          0.00  
-    0:01:18  455607.0      5.54    2169.7       8.4 result_reg[0][30]/DIN          0.00  
-    0:01:18  455648.5      5.54    2168.6       8.4 result_reg[1][31]/DIN          0.00  
-    0:01:18  455640.2      5.54    2166.6       8.4 result_reg[5][27]/DIN          0.00  
-    0:01:19  455582.1      5.54    2163.1       8.5 result_reg[2][30]/DIN          0.00  
-    0:01:19  455673.4      5.52    2162.1       8.5 result_reg[1][31]/DIN          0.00  
-    0:01:19  455723.1      5.52    2161.7       8.5 result_reg[2][30]/DIN          0.00  
-    0:01:19  455864.1      5.52    2161.1       8.5 result_reg[6][25]/DIN          0.00  
-    0:01:20  455922.2      5.52    2155.2       9.4 result_reg[1][31]/DIN          0.00  
-    0:01:20  456237.4      5.51    2154.1       9.6 result_reg[1][31]/DIN          0.00  
-    0:01:20  456419.9      5.51    2153.8       9.6 result_reg[2][30]/DIN          0.00  
-    0:01:20  456411.6      5.50    2153.5       9.6 result_reg[1][31]/DIN          0.00  
-    0:01:21  456925.8      5.50    2152.5       9.6 result_reg[1][31]/DIN          0.00  
-    0:01:21  456934.1      5.49    2150.6       9.6 result_reg[1][31]/DIN          0.00  
-    0:01:21  457083.4      5.48    2149.5       9.6 result_reg[1][31]/DIN          0.00  
-    0:01:21  457050.2      5.48    2149.2       9.6 result_reg[6][25]/DIN          0.00  
-    0:01:21  457066.8      5.48    2148.9       9.7 result_reg[1][31]/DIN          0.00  
-    0:01:22  457124.9      5.48    2148.6       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:22  457191.3      5.48    2146.9       9.8 result_reg[2][30]/DIN          0.00  
-    0:01:22  457216.1      5.47    2146.0       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:22  457398.6      5.47    2145.5       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:22  457481.6      5.46    2144.8       9.8 result_reg[2][30]/DIN          0.00  
-    0:01:23  457539.6      5.46    2144.5       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:23  457556.2      5.45    2141.6       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:23  457838.2      5.45    2137.3       9.8 result_reg[5][27]/DIN          0.00  
-    0:01:23  457846.5      5.45    2137.1       9.8 result_reg[6][22]/DIN          0.00  
-    0:01:23  458062.2      5.45    2134.4       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:24  458128.5      5.45    2131.4       9.8 result_reg[2][22]/DIN          0.00  
-    0:01:24  458153.4      5.44    2131.0       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:24  458153.4      5.44    2130.9       9.8 result_reg[4][31]/DIN          0.00  
-    0:01:24  458219.8      5.44    2130.3       9.8 result_reg[0][22]/DIN          0.00  
-    0:01:24  458261.2      5.44    2130.5       9.8 result_reg[4][31]/DIN          0.00  
-    0:01:24  458319.3      5.43    2130.6       9.8 result_reg[1][29]/DIN          0.00  
-    0:01:25  458319.3      5.43    2130.2       9.8 result_reg[5][27]/DIN          0.00  
-    0:01:25  458410.5      5.43    2128.7       9.8 result_reg[6][25]/DIN          0.00  
-    0:01:25  458568.1      5.43    2128.2       9.8 result_reg[2][22]/DIN          0.00  
-    0:01:25  458601.3      5.43    2128.5       9.8 result_reg[2][30]/DIN          0.00  
-    0:01:25  458676.0      5.43    2127.5       9.8 result_reg[5][27]/DIN          0.00  
-    0:01:25  458651.1      5.43    2127.5       9.8 result_reg[1][29]/DIN          0.00  
-    0:01:26  458468.6      5.43    2127.3       9.8 result_reg[1][31]/DIN          0.00  
-    0:01:26  458792.1      5.43    2125.1       9.8 result_reg[3][30]/DIN          0.00  
-    0:01:26  459123.8      5.43    2124.8      10.0 result_reg[1][29]/DIN          0.00  
-    0:01:26  459422.4      5.42    2123.7      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:26  459704.5      5.42    2122.6      10.0 result_reg[1][29]/DIN          0.00  
-    0:01:26  459538.6      5.42    2122.6      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:26  459754.2      5.42    2122.6      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:27  459820.6      5.42    2122.4      10.0 result_reg[1][29]/DIN          0.00  
-    0:01:27  459936.7      5.41    2122.2      10.0 result_reg[6][31]/DIN          0.00  
-    0:01:27  459969.9      5.41    2122.1      10.0 result_reg[0][28]/DIN          0.00  
-    0:01:27  459986.5      5.41    2122.0      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:27  459969.9      5.41    2122.0      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:27  459961.6      5.41    2121.7      10.0 result_reg[1][31]/DIN          0.00  
-    0:01:28  459853.8      5.40    2120.6      10.7 result_reg[5][27]/DIN          0.00  
-    0:01:28  460044.5      5.40    2129.1      10.7 result_reg[7][30]/DIN          0.00  
-    0:01:28  459961.6      5.40    2128.3      10.8 result_reg[7][30]/DIN          0.00  
-    0:01:28  459945.0      5.40    2128.3      11.0 result_reg[4][22]/DIN          0.00  
-    0:01:28  460127.5      5.40    2128.2      11.0 result_reg[5][29]/DIN          0.00  
-    0:01:29  460127.5      5.40    2127.9      11.0 result_reg[5][29]/DIN          0.00  
-    0:01:29  460127.5      5.40    2127.7      11.0 result_reg[0][29]/DIN          0.00  
-    0:01:29  460135.8      5.39    2127.5      11.0 result_reg[7][30]/DIN          0.00  
-    0:01:29  460193.8      5.39    2125.7      11.0 result_reg[5][29]/DIN          0.00  
-    0:01:30  460218.7      5.39    2125.9      11.0 result_reg[5][27]/DIN          0.00  
-    0:01:30  460384.6      5.39    2125.5      11.0 result_reg[7][30]/DIN          0.00  
-    0:01:30  460434.4      5.39    2124.6      11.0 result_reg[5][25]/DIN          0.00  
-    0:01:30  460417.8      5.39    2124.5      11.0 result_reg[5][27]/DIN          0.00  
-    0:01:31  460401.2      5.39    2124.0      11.0 result_reg[2][31]/DIN          0.00  
-    0:02:01  460376.3      5.39    2124.8      11.0                                0.00  
-    0:02:03  453799.0      5.39    4201.3      45.0                                0.00  
+    0:00:21  416860.9      2.18     189.0       2.2                                0.00  
+    0:00:22  417059.9      2.17     188.3       2.1 L_reg[30]/DIN                  0.00  
+    0:00:22  416636.9      2.15     187.3       2.1 M_reg[28]/DIN                  0.00  
+    0:00:22  416968.7      2.14     186.4       2.1 L_reg[30]/DIN                  0.00  
+    0:00:23  416429.6      2.13     186.1       2.0 L_reg[30]/DIN                  0.00  
+    0:00:23  416628.6      2.13     186.1       2.0 M_reg[26]/DIN                  0.00  
+    0:00:23  417001.9      2.12     185.7       2.0 L_reg[15]/DIN                  0.00  
+    0:00:23  416968.7      2.12     185.7       2.0 M_reg[26]/DIN                  0.00  
+    0:00:23  417474.7      2.12     185.4       2.0 M_reg[25]/DIN                  0.00  
+    0:00:23  417565.9      2.12     185.3       2.0 M_reg[25]/DIN                  0.00  
+    0:00:23  417740.1      2.12     185.1       2.0 M_reg[25]/DIN                  0.00  
+    0:00:23  417881.1      2.12     185.0       2.0 M_reg[26]/DIN                  0.00  
+    0:00:23  418295.8      2.12     184.9       2.0 M_reg[26]/DIN                  0.00  
+    0:00:24  418312.4      2.12     184.7       2.0 M_reg[26]/DIN                  0.00  
+    0:00:24  418304.1      2.12     184.7       2.0 M_reg[25]/DIN                  0.00  
+    0:00:24  417939.1      2.12     184.1       2.0 L_reg[15]/DIN                  0.00  
+    0:00:24  417922.6      2.11     183.5       2.0 M_reg[31]/DIN                  0.00  
+    0:00:24  418552.9      2.10     183.3       2.1 L_reg[15]/DIN                  0.00  
+    0:00:24  418428.5      2.09     183.1       2.1 M_reg[11]/DIN                  0.00  
+    0:00:24  418793.5      2.09     182.8       2.1 M_reg[25]/DIN                  0.00  
+    0:00:24  418826.6      2.08     182.4       2.1 L_reg[31]/DIN                  0.00  
+    0:00:25  418926.2      2.08     182.2       2.1 L_reg[15]/DIN                  0.00  
+    0:00:25  418926.2      2.07     181.9       2.1 L_reg[27]/DIN                  0.00  
+    0:00:25  419233.1      2.07     181.8       2.1 L_reg[27]/DIN                  0.00  
+    0:00:25  419282.8      2.07     181.4       2.1 M_reg[28]/DIN                  0.00  
+    0:00:25  419299.4      2.07     181.4       2.1 M_reg[26]/DIN                  0.00  
+    0:00:25  419365.8      2.07     181.3       2.1 M_reg[28]/DIN                  0.00  
+    0:00:25  419473.6      2.07     181.4       2.1 M_reg[28]/DIN                  0.00  
+    0:00:25  419822.0      2.07     181.3       2.1 M_reg[28]/DIN                  0.00  
+    0:00:26  420502.1      2.07     180.6       2.1 L_reg[15]/DIN                  0.00  
+    0:00:26  420709.5      2.06     180.6       2.1 M_reg[26]/DIN                  0.00  
+    0:00:26  420477.2      2.06     180.4       2.0 L_reg[31]/DIN                  0.00  
+    0:00:26  420452.3      2.06     180.4       2.0 M_reg[26]/DIN                  0.00  
+    0:00:26  420427.5      2.05     179.5       2.0 M_reg[26]/DIN                  0.00  
+    0:00:26  420485.5      2.04     179.4       2.1 M_reg[26]/DIN                  0.00  
+    0:00:26  420518.7      2.04     178.8       2.1 M_reg[26]/DIN                  0.00  
+    0:00:27  420518.7      2.04     178.5       2.0 L_reg[27]/DIN                  0.00  
+    0:00:27  420460.6      2.03     178.4       2.0 L_reg[27]/DIN                  0.00  
+    0:00:27  420311.3      2.03     178.3       2.0 L_reg[31]/DIN                  0.00  
+    0:00:27  420228.4      2.03     178.3       2.0 M_reg[26]/DIN                  0.00  
+    0:00:27  420120.6      2.02     178.0       2.0 M_reg[26]/DIN                  0.00  
+    0:00:27  418760.3      2.02     177.9      98.2 L_reg[15]/DIN                  0.00  
+    0:00:27  418992.5      2.02     177.9      98.2 M_reg[26]/DIN                  0.00  
+    0:00:27  418951.1      2.02     177.8      98.2 M_reg[26]/DIN                  0.00  
+    0:00:28  419075.5      2.02     177.5      98.2 M_reg[26]/DIN                  0.00  
+    0:00:28  419291.1      2.02     177.4      98.2 M_reg[18]/DIN                  0.00  
+    0:00:28  419282.8      2.02     177.1      98.2 M_reg[28]/DIN                  0.00  
+    0:00:28  419224.8      2.01     176.9      98.2 M_reg[28]/DIN                  0.00  
+    0:00:28  419374.1      2.01     176.6      98.1 M_reg[26]/DIN                  0.00  
+    0:00:28  419266.2      2.00     175.7      98.0 M_reg[27]/DIN                  0.00  
+    0:00:28  419332.6      2.00     175.5      98.0 M_reg[10]/DIN                  0.00  
+    0:00:28  419299.4      2.00     175.4      98.0 M_reg[21]/DIN                  0.00  
+    0:00:29  419656.1      1.99     175.0      98.0 L_reg[30]/DIN                  0.00  
+    0:00:29  419863.4      1.98     176.2      98.0 M_reg[25]/DIN                  0.00  
+    0:00:29  419987.9      1.98     176.0      98.0 M_reg[22]/DIN                  0.00  
+    0:00:29  419929.8      1.98     176.0      98.0 M_reg[25]/DIN                  0.00  
+    0:00:29  420128.9      1.97     175.8      98.0 L_reg[27]/DIN                  0.00  
+    0:00:29  420153.8      1.97     175.5      98.0 M_reg[9]/DIN                   0.00  
+    0:00:29  420195.2      1.97     175.2      98.0 M_reg[22]/DIN                  0.00  
+    0:00:29  420303.0      1.97     175.1      98.0 M_reg[30]/DIN                  0.00  
+    0:00:29  420394.3      1.97     175.1      98.0 M_reg[14]/DIN                  0.00  
+    0:00:29  420344.5      1.97     174.9      98.0 M_reg[15]/DIN                  0.00  
+    0:00:30  420369.4      1.97     174.8      98.0 M_reg[31]/DIN                  0.00  
+    0:00:30  420361.1      1.97     174.8      98.0 L_reg[27]/DIN                  0.00  
+    0:00:30  420419.2      1.97     174.7      98.0 L_reg[30]/DIN                  0.00  
+    0:00:30  420468.9      1.97     174.8      98.0 L_reg[31]/DIN                  0.00  
+    0:00:30  420701.2      1.96     174.5      98.1 M_reg[22]/DIN                  0.00  
+    0:00:30  420883.7      1.96     174.2      98.1 L_reg[31]/DIN                  0.00  
+    0:00:30  420858.8      1.96     174.1      98.1 L_reg[27]/DIN                  0.00  
+    0:00:30  420817.3      1.96     173.6      98.1 M_reg[25]/DIN                  0.00  
+    0:00:30  420850.5      1.96     173.8      98.1 M_reg[25]/DIN                  0.00  
+    0:00:31  420850.5      1.96     173.7      98.1 M_reg[30]/DIN                  0.00  
+    0:00:31  420925.1      1.95     173.7      98.1 L_reg[30]/DIN                  0.00  
+    0:00:31  420767.5      1.95     173.7      98.1 M_reg[17]/DIN                  0.00  
+    0:00:31  420726.1      1.95     173.6      98.1 M_reg[25]/DIN                  0.00  
+    0:00:31  420717.8      1.95     173.5      98.0 L_reg[26]/DIN                  0.00  
+    0:00:31  420668.0      1.94     173.4      98.0 L_reg[23]/DIN                  0.00  
+    0:00:31  420701.2      1.94     173.3      98.0 M_reg[25]/DIN                  0.00  
+    0:00:31  420659.7      1.94     173.2      98.0 M_reg[14]/DIN                  0.00  
+    0:00:31  420634.8      1.94     173.2      98.0 M_reg[25]/DIN                  0.00  
+    0:00:31  420966.6      1.94     173.0      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  420817.3      1.94     173.0      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  420867.1      1.94     172.8      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  420908.5      1.94     174.6      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  420999.8      1.94     174.5      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  421033.0      1.94     174.4      98.0 M_reg[10]/DIN                  0.00  
+    0:00:32  421945.3      1.94     174.2      98.0 M_reg[25]/DIN                  0.00  
+    0:00:32  422111.2      1.94     174.1      98.0 M_reg[29]/DIN                  0.00  
+    0:00:32  422061.5      1.94     174.1      98.0 M_reg[29]/DIN                  0.00  
+    0:00:32  422053.2      1.94     173.9      98.0 M_reg[21]/DIN                  0.00  
+    0:00:33  421132.5      1.94     173.5      98.0 M_reg[11]/DIN                  0.00  
+    0:00:33  421290.1      1.94     173.5      98.0 M_reg[21]/DIN                  0.00  
+    0:00:33  421397.9      1.94     173.5      98.0 M_reg[21]/DIN                  0.00  
+    0:00:33  421464.3      1.94     173.4      98.0 M_reg[21]/DIN                  0.00  
+    0:00:33  421514.0      1.94     173.3      98.0 L_reg[27]/DIN                  0.00  
+    0:00:33  421489.2      1.94     173.3      98.0 L_reg[23]/DIN                  0.00  
+    0:00:33  421538.9      1.93     173.3      98.0 L_reg[27]/DIN                  0.00  
+    0:00:33  421820.9      1.93     173.2      98.0 L_reg[27]/DIN                  0.00  
+    0:00:33  421754.6      1.93     173.2      98.0 M_reg[25]/DIN                  0.00  
+    0:00:33  421696.5      1.93     173.1      98.0 M_reg[23]/DIN                  0.00  
+    0:00:33  421820.9      1.93     173.1      98.0 M_reg[18]/DIN                  0.00  
+    0:00:34  421920.5      1.93     173.1      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  421879.0      1.93     173.1      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  421945.3      1.93     173.1      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  422061.5      1.93     173.0      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  422293.7      1.92     172.9      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  422326.9      1.91     172.7      98.0 L_reg[25]/DIN                  0.00  
+    0:00:34  422368.4      1.91     172.4      98.0 L_reg[27]/DIN                  0.00  
+    0:00:34  422376.7      1.91     172.4      98.0 L_reg[27]/DIN                  0.00  
+    0:00:35  422799.7      1.91     172.2      98.0 M_reg[17]/DIN                  0.00  
+    0:00:35  423114.9      1.91     172.2      98.0 L_reg[27]/DIN                  0.00  
+    0:00:35  422915.8      1.91     172.2      98.0 L_reg[27]/DIN                  0.00  
+    0:00:35  422915.8      1.90     172.2      98.0 L_reg[30]/DIN                  0.00  
+    0:00:35  423197.8      1.90     172.2      98.0 M_reg[17]/DIN                  0.00  
+    0:00:35  423231.0      1.90     172.3      98.0 M_reg[25]/DIN                  0.00  
+    0:00:35  423313.9      1.90     171.9      98.0 M_reg[29]/DIN                  0.00  
+    0:00:35  423355.4      1.90     171.9      98.0 L_reg[27]/DIN                  0.00  
+    0:00:35  423604.2      1.90     171.8      98.0 L_reg[30]/DIN                  0.00  
+    0:00:35  423853.1      1.89     171.8      98.0 L_reg[27]/DIN                  0.00  
+    0:00:35  424027.2      1.89     171.7      98.0 M_reg[17]/DIN                  0.00  
+    0:00:36  424077.0      1.89     171.6      98.0 M_reg[17]/DIN                  0.00  
+    0:00:36  423886.2      1.89     171.5      98.0 M_reg[17]/DIN                  0.00  
+    0:00:36  422633.8      1.89     171.5     194.1 M_reg[31]/DIN                  0.00  
+    0:00:36  422534.2      1.89     171.5     194.1 M_reg[26]/DIN                  0.00  
+    0:00:36  423056.8      1.89     171.4     194.1 M_reg[27]/DIN                  0.00  
+    0:00:36  422973.9      1.89     171.4     194.1 L_reg[27]/DIN                  0.00  
+    0:00:36  423040.2      1.89     171.3     194.1 L_reg[27]/DIN                  0.00  
+    0:00:36  423040.2      1.88     171.1     194.1 L_reg[27]/DIN                  0.00  
+    0:00:36  423073.4      1.88     171.1     194.1 M_reg[28]/DIN                  0.00  
+    0:00:36  423065.1      1.88     171.0     194.1 M_reg[31]/DIN                  0.00  
+    0:00:37  423081.7      1.88     171.0     194.1 L_reg[27]/DIN                  0.00  
+    0:00:37  422351.8      1.88     170.9     194.1 L_reg[19]/DIN                  0.00  
+    0:00:37  422343.5      1.88     170.9     194.1 M_reg[27]/DIN                  0.00  
+    0:00:37  422351.8      1.88     170.9     194.1 M_reg[25]/DIN                  0.00  
+    0:00:37  422492.8      1.88     170.8     194.1 L_reg[30]/DIN                  0.00  
+    0:00:37  422426.4      1.88     170.8     194.1 M_reg[19]/DIN                  0.00  
+    0:00:37  422467.9      1.88     170.7     194.1 L_reg[27]/DIN                  0.00  
+    0:00:37  422675.3      1.88     170.6     194.1 M_reg[26]/DIN                  0.00  
+    0:00:38  422683.6      1.87     170.5     194.1 L_reg[27]/DIN                  0.00  
+    0:00:38  422791.4      1.87     170.6     194.1 L_reg[22]/DIN                  0.00  
+    0:00:38  422899.2      1.87     170.5     194.1 L_reg[30]/DIN                  0.00  
+    0:00:38  421373.0      1.87     170.3     290.2 M_reg[27]/DIN                  0.00  
+    0:00:38  421456.0      1.87     170.3     290.2 L_reg[27]/DIN                  0.00  
+    0:00:38  421787.8      1.87     170.3     282.1 M_reg[27]/DIN                  0.00  
+    0:00:38  421787.8      1.87     170.3     282.1 L_reg[27]/DIN                  0.00  
+    0:00:39  421721.4      1.87     170.3     282.1 L_reg[27]/DIN                  0.00  
+    0:00:39  421721.4      1.87     170.2     282.1 L_reg[27]/DIN                  0.00  
+    0:00:39  421738.0      1.86     170.2     282.1 L_reg[30]/DIN                  0.00  
+    0:00:39  421754.6      1.86     170.2     282.1 L_reg[30]/DIN                  0.00  
+    0:00:41  421588.7      1.86     170.2     282.1 M_reg[27]/DIN                  0.00  
+    0:00:42  421480.9      1.86     170.2     282.1                                0.00  
+    0:00:43  409296.6      2.09     183.0     308.0                                0.00  
 
 
-  Beginning Design Rule Fixing  (min_path)  (max_transition)  (max_fanout)
+  Beginning Design Rule Fixing  (min_path)  (max_transition)  (max_fanout)  (max_capacitance)
   ----------------------------
 
                                   TOTAL                                                  
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:02:03  453799.0      5.39    4201.3      45.0                               -6.81  
-    0:02:03  460177.4      5.39    4182.7      39.8 H_out[31]                     -6.83  
-    0:02:03  468438.7      5.39    4159.0      32.7 H_out[16]                     -6.80  
-    0:02:04  479785.4      5.39    4159.0      23.7 H_out[114]                    -6.80  
-    0:02:04  490692.5      5.39    4144.0      14.7 H_out[32]                     -6.77  
-    0:02:04  502138.8      5.39    3828.1       0.3 net91720                      -6.30  
-    0:02:04  502478.8      5.39    3828.2       6.3 result_reg[0][28]/DIN         -6.30  
-    0:02:05  502478.8      5.38    3827.7       6.3 result_reg[3][31]/DIN         -6.30  
-    0:02:05  502619.9      5.38    3825.9       6.3 result_reg[3][31]/DIN         -6.30  
-    0:02:05  502711.1      5.38    3830.1       6.3 result_reg[3][31]/DIN         -6.30  
-    0:02:05  502926.7      5.38    3830.1       6.3 result_reg[0][28]/DIN         -6.37  
-    0:02:06  503034.6      5.37    3829.2       6.3 result_reg[3][27]/DIN         -6.37  
-    0:02:06  503026.3      5.37    3828.8       6.3 result_reg[1][31]/DIN         -6.37  
-    0:02:06  502901.9      5.36    3827.0       6.3 result_reg[0][30]/DIN         -6.35  
-    0:02:06  502901.9      5.36    3827.0       6.3 result_reg[1][31]/DIN         -6.35  
-    0:02:06  502926.7      5.36    3825.9       6.3 result_reg[0][25]/DIN         -6.35  
-    0:02:07  503100.9      5.36    3825.6       6.3 result_reg[0][30]/DIN         -6.35  
-    0:02:07  503258.5      5.36    3824.6       6.3 result_reg[6][28]/DIN         -6.43  
-    0:02:07  503200.5      5.36    3824.3       6.3 result_reg[7][31]/DIN         -6.43  
-    0:02:07  503200.5      5.36    3824.2       6.3 result_reg[1][28]/DIN         -6.43  
-    0:02:08  503250.2      5.35    3824.0       6.3 result_reg[7][31]/DIN         -6.43  
-    0:02:08  503391.2      5.35    3823.7       6.3 result_reg[7][30]/DIN         -6.46  
-    0:02:08  503424.4      5.35    3825.3       6.3 result_reg[3][27]/DIN         -6.46  
-    0:02:08  503482.5      5.35    3823.8       6.3 result_reg[2][30]/DIN         -6.46  
-    0:02:08  503366.3      5.35    3824.8       6.3 result_reg[7][31]/DIN         -6.46  
-    0:02:08  503615.2      5.35    3824.6       6.3 result_reg[1][28]/DIN         -6.46  
-    0:02:08  503864.0      5.35    3824.3       6.3 result_reg[0][28]/DIN         -6.52  
-    0:02:09  503864.0      5.35    3824.0       6.3 result_reg[3][27]/DIN         -6.52  
-    0:02:09  503772.8      5.35    3823.9       6.3 result_reg[1][31]/DIN         -6.52  
-    0:02:09  503756.2      5.35    3822.9       6.3 result_reg[5][29]/DIN         -6.52  
-    0:02:09  503872.3      5.34    3822.4       6.3 result_reg[5][29]/DIN         -6.53  
-    0:02:10  503922.1      5.34    3822.0       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:10  503955.3      5.34    3821.9       6.3 result_reg[0][28]/DIN         -6.54  
-    0:02:10  503830.8      5.34    3820.4       6.3 result_reg[3][27]/DIN         -6.54  
-    0:02:10  504063.1      5.33    3819.9       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:10  504079.7      5.33    3818.4       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:11  504104.5      5.33    3818.4       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:11  504245.6      5.33    3818.3       6.3 result_reg[3][27]/DIN         -6.54  
-    0:02:11  504071.4      5.33    3817.4       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:11  504179.2      5.33    3817.3       6.3 result_reg[3][27]/DIN         -6.54  
-    0:02:11  504253.8      5.33    3815.4       6.3 result_reg[4][30]/DIN         -6.54  
-    0:02:12  504361.7      5.32    3814.4       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:12  504370.0      5.32    3814.5       6.3 result_reg[1][31]/DIN         -6.54  
-    0:02:12  504419.7      5.32    3814.5       6.3 result_reg[7][31]/DIN         -6.54  
-    0:02:12  504403.1      5.32    3814.5       6.3 result_reg[1][31]/DIN         -6.55  
-    0:02:12  504444.6      5.32    3814.4       6.3 result_reg[7][31]/DIN         -6.55  
-    0:02:13  504461.2      5.32    3814.4       6.3 result_reg[3][27]/DIN         -6.55  
-    0:02:13  504469.5      5.32    3814.2       6.3 result_reg[7][31]/DIN         -6.55  
-    0:02:13  504502.7      5.32    3813.6       6.3 result_reg[1][28]/DIN         -6.55  
-    0:02:13  504502.7      5.32    3813.6       6.3 result_reg[0][30]/DIN         -6.56  
-    0:02:13  504386.6      5.32    3810.8       6.3 result_reg[3][27]/DIN         -6.45  
-    0:02:13  504394.9      5.32    3808.9       6.3 result_reg[2][31]/DIN         -6.45  
-    0:02:14  504386.6      5.32    3808.9       6.3 result_reg[2][31]/DIN         -6.45  
-    0:02:15  504851.0      5.32    3808.9       6.1 H_out[140]                    -6.45  
-    0:02:16  504842.8      5.32    3797.6       0.0                               -6.42  
+    0:00:43  409296.6      2.09     183.0     308.0                              -14.97  
+    0:00:44  411262.4      2.09     183.0     203.4 result[0][26]                -14.86  
+    0:00:44  411245.8      2.09     183.0     197.3 result[0][24]                -14.14  
+    0:00:44  412465.0      2.09     182.8     193.1 result[1][31]                -13.47  
+    0:00:44  412324.0      2.09     182.8     190.4 result[1][7]                 -13.47  
+    0:00:44  412672.4      2.09     182.8     188.1 result[2][19]                -12.33  
+    0:00:44  415127.5      2.09     182.8     186.0 L[12]                        -11.33  
+    0:00:45  418868.3      2.04     182.2     184.0 alt197/net31625              -10.89  
+    0:00:45  418884.8      2.02     181.9     184.0 L_reg[30]/DIN                -10.88  
+    0:00:45  419316.1      2.00     181.2     184.0 L_reg[30]/DIN                -10.83  
+    0:00:45  419390.8      1.97     180.1     184.0 L_reg[27]/DIN                -10.79  
+    0:00:45  419490.3      1.96     180.0     184.0 L_reg[30]/DIN                -10.78  
+    0:00:46  419556.7      1.96     179.8     184.0 L_reg[28]/DIN                -10.73  
+    0:00:46  419722.6      1.94     179.5     184.0 L_reg[15]/DIN                -10.64  
+    0:00:46  419822.1      1.94     179.5     184.0 result[4][23]                -10.64  
+    0:00:47  420253.4      1.94     179.5     120.0 alt197/net31625              -10.64  
+    0:00:47  421116.0      1.94     179.9       0.0                              -10.64  
 
 
   Beginning Critical Range Optimization
@@ -5116,34 +5101,24 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:02:16  504842.8      5.32    3797.6       0.0                               -6.42  
-    0:02:16  504842.8      5.32    3797.6       0.0                               -6.42  
-    0:02:16  504992.1      5.32    3797.3       0.0                               -6.42  
-    0:02:16  504992.1      5.32    3797.1       0.0                               -6.42  
-    0:02:17  505008.6      5.32    3796.8       0.0                               -6.42  
-    0:02:17  505116.5      5.32    3796.6       0.0                               -6.41  
-    0:02:17  505182.8      5.32    3796.5       0.0                               -6.41  
-    0:02:17  505182.8      5.32    3796.3       0.0                               -6.42  
-    0:02:17  505207.7      5.32    3795.9       0.0                               -6.42  
-    0:02:17  505232.6      5.32    3795.5       0.0                               -6.42  
-    0:02:18  505257.5      5.32    3784.9       0.0                               -6.36  
-    0:02:18  505448.2      5.32    3674.2       0.0                               -6.03  
-    0:02:18  505506.3      5.32    3655.8       0.0                               -6.01  
-    0:02:18  505572.6      5.32    3626.0       0.0                               -5.97  
-    0:02:18  505970.8      5.32    3441.9       0.0                               -5.60  
-    0:02:19  506128.3      5.32    3344.8       0.0                               -5.32  
-    0:02:19  506128.3      5.32    3344.7       0.0                               -5.32  
-    0:02:19  506335.7      5.32    3273.5       0.0                               -5.03  
-    0:02:19  506518.2      5.32    3260.9       0.0                               -5.00  
-    0:02:20  507024.1      5.32    3049.8       0.0                               -4.34  
-    0:02:20  507107.1      5.32    3014.7       0.0                               -4.20  
-    0:02:20  507488.6      5.32    2926.3       0.0                               -3.99  
-    0:02:21  507895.0      5.32    2827.4       0.0                               -3.77  
-    0:02:21  508168.7      5.32    2756.8       0.0                               -3.56  
-    0:02:21  508600.0      5.32    2676.4       0.0                               -3.52  
-    0:02:22  508956.7      5.32    2674.7       0.0                               -3.52  
-    0:02:22  509247.0      5.32    2672.7       0.0                               -3.52  
-    0:02:22  509388.0      5.32    2672.4       0.0                               -3.52  
+    0:00:47  421116.0      1.94     179.9       0.0                              -10.64  
+    0:00:47  421132.6      1.94     179.9       0.0                              -10.63  
+    0:00:47  421174.1      1.94     179.8       0.0                              -10.61  
+    0:00:47  421124.3      1.94     179.8       0.0                              -10.61  
+    0:00:47  421058.0      1.94     179.7       0.0                              -10.60  
+    0:00:48  421049.7      1.94     179.6       0.0                              -10.60  
+    0:00:48  421033.1      1.94     179.5       0.0                              -10.60  
+    0:00:48  421041.4      1.94     179.4       0.0                              -10.60  
+    0:00:48  421124.3      1.94     179.4       0.0                              -10.60  
+    0:00:48  421132.6      1.94     179.2       0.0                              -10.61  
+    0:00:48  421174.1      1.94     176.9       0.0                              -10.62  
+    0:00:48  421364.8      1.94     174.7       0.0                              -10.63  
+    0:00:49  421223.8      1.94     174.6       0.0                              -10.63  
+    0:00:49  421514.1      1.94     172.1       0.0                              -10.64  
+    0:00:49  419515.2      1.94     158.9       0.0                              -10.64  
+    0:00:49  419457.1      1.94     157.9       0.0                              -10.65  
+    0:00:49  419531.8      1.94     157.7       0.0                              -10.65  
+    0:00:49  419631.3      1.94     157.5       0.0                              -10.65  
 
 
   Beginning Area-Recovery Phase  (cleanup)
@@ -5153,100 +5128,34 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:02:22  509388.0      5.32    2672.4       0.0                               -3.52  
-    0:02:22  509388.0      5.32    2672.4       0.0                               -3.52  
-    0:02:23  501209.7      5.32    2670.5       0.0                               -3.53  
-    0:02:23  500239.3      5.32    2669.9       0.0                               -3.53  
-    0:02:24  499882.6      5.32    2669.6       0.0                               -3.53  
-    0:02:24  499633.8      5.32    2677.6       0.0                               -3.53  
-    0:02:24  499600.6      5.32    2677.2       0.0                               -3.53  
-    0:02:24  499600.6      5.32    2677.2       0.0                               -3.53  
-    0:02:24  499600.6      5.32    2677.0       0.0 result_reg[3][27]/DIN         -3.53  
-    0:02:25  500048.5      5.31    2676.7       0.0 result_reg[7][31]/DIN         -3.53  
-    0:02:25  499957.3      5.31    2676.2       0.0                               -3.53  
-    0:02:26  473448.3      5.32    2681.4       0.0                               -3.53  
-    0:02:26  472842.8      5.34    2694.8       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:26  472768.2      5.34    2694.9       0.0                               -3.53  
-    0:02:27  472784.8      5.34    2687.4       0.0 result_reg[7][31]/DIN         -3.53  
-    0:02:27  472884.3      5.32    2683.9       0.0 result_reg[7][31]/DIN         -3.53  
-    0:02:27  472851.1      5.31    2682.5       0.0 result_reg[0][28]/DIN         -3.53  
-    0:02:28  472909.2      5.31    2681.4       0.0 result_reg[7][31]/DIN         -3.53  
-    0:02:28  472970.0      5.31    2680.1       0.0 result_reg[2][25]/DIN         -3.53  
-    0:02:28  473077.8      5.30    2679.8       0.0 result_reg[2][31]/DIN         -3.53  
-    0:02:29  473185.7      5.30    2678.0       0.0 result_reg[7][31]/DIN         -3.53  
-    0:02:29  473152.5      5.30    2678.2       0.0 result_reg[3][27]/DIN         -3.53  
-    0:02:29  473235.4      5.30    2678.5       0.0 result_reg[3][27]/DIN         -3.53  
-    0:02:29  473641.9      5.30    2677.3       0.0 result_reg[7][31]/DIN         -3.56  
-    0:02:29  473597.6      5.30    2676.8       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:30  473846.4      5.29    2676.6       0.0 result_reg[3][27]/DIN         -3.63  
-    0:02:30  473896.2      5.29    2676.4       0.0 result_reg[3][27]/DIN         -3.63  
-    0:02:30  473954.2      5.29    2676.3       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:30  473987.4      5.29    2675.5       0.0 result_reg[3][27]/DIN         -3.63  
-    0:02:31  474020.6      5.29    2675.1       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:31  474103.5      5.29    2674.8       0.0 result_reg[2][31]/DIN         -3.63  
-    0:02:31  474087.0      5.29    2674.1       0.0 result_reg[2][24]/DIN         -3.63  
-    0:02:31  474228.0      5.29    2681.6       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:31  474534.8      5.29    2678.1       0.0 result_reg[2][28]/DIN         -3.63  
-    0:02:32  474568.0      5.28    2678.1       0.0 result_reg[2][28]/DIN         -3.63  
-    0:02:32  474501.7      5.28    2678.0       0.0 result_reg[3][27]/DIN         -3.63  
-    0:02:32  474518.3      5.28    2677.6       0.0 result_reg[2][28]/DIN         -3.63  
-    0:02:32  474557.0      5.28    2676.7       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:33  474623.3      5.28    2676.6       0.0 result_reg[5][26]/DIN         -3.63  
-    0:02:33  474648.2      5.28    2676.2       0.0 result_reg[2][25]/DIN         -3.63  
-    0:02:33  474706.3      5.28    2674.9       0.0 result_reg[2][31]/DIN         -3.63  
-    0:02:33  474689.7      5.28    2674.6       0.0 result_reg[5][25]/DIN         -3.63  
-    0:02:33  474797.5      5.27    2673.7       0.0 result_reg[2][28]/DIN         -3.63  
-    0:02:34  475029.8      5.27    2673.2       0.0 result_reg[2][25]/DIN         -3.63  
-    0:02:34  475154.2      5.27    2675.4       0.0 result_reg[7][31]/DIN         -3.63  
-    0:02:34  474996.6      5.27    2674.9       0.0 result_reg[3][29]/DIN         -3.65  
-    0:02:34  475129.3      5.27    2670.7       0.0 result_reg[4][30]/DIN         -3.65  
-    0:02:35  475295.2      5.27    2670.5       0.0 result_reg[2][19]/DIN         -3.65  
-    0:02:35  475411.3      5.27    2672.2       0.0 result_reg[2][19]/DIN         -3.72  
-    0:02:35  475486.0      5.27    2671.7       0.0 result_reg[7][31]/DIN         -3.72  
-    0:02:35  475486.0      5.27    2671.6       0.0 result_reg[2][31]/DIN         -3.72  
-    0:02:35  475768.0      5.27    2670.7       0.0 result_reg[2][30]/DIN         -3.72  
-    0:02:36  475726.5      5.27    2671.9       0.0 result_reg[4][30]/DIN         -3.72  
-    0:02:36  475842.6      5.27    2674.6       0.0 result_reg[2][31]/DIN         -3.72  
-    0:02:36  475768.0      5.27    2675.1       0.0 result_reg[4][30]/DIN         -3.72  
-    0:02:36  475809.4      5.26    2674.8       0.0 result_reg[4][30]/DIN         -3.72  
-    0:02:37  475792.8      5.26    2674.2       0.0 result_reg[4][30]/DIN         -3.72  
-    0:02:37  475792.8      5.26    2673.1       0.0 result_reg[3][25]/DIN         -3.72  
-    0:02:37  475751.4      5.25    2672.9       0.0 result_reg[2][31]/DIN         -3.72  
-    0:02:38  475751.4      5.25    2672.7       0.0 result_reg[2][31]/DIN         -3.72  
-    0:02:38  475743.1      5.25    2672.7       0.0 result_reg[3][25]/DIN         -3.72  
-    0:02:39  475668.4      5.25    2672.6       0.0 result_reg[3][25]/DIN         -3.72  
-    0:02:39  475685.0      5.25    2672.0       0.0 result_reg[7][31]/DIN         -3.72  
-    0:02:39  475842.6      5.25    2672.0       0.0 result_reg[2][31]/DIN         -3.72  
-    0:02:39  476091.4      5.25    2671.8       0.0 result_reg[2][30]/DIN         -3.79  
-    0:02:39  476050.0      5.25    2671.3       0.0 result_reg[4][30]/DIN         -3.79  
-    0:02:40  476132.9      5.25    2670.2       0.0 result_reg[7][31]/DIN         -3.79  
-    0:02:40  476332.0      5.25    2669.1       0.0 result_reg[3][25]/DIN         -3.79  
-    0:02:40  476390.0      5.25    2669.4       0.0 result_reg[3][27]/DIN         -3.79  
-    0:02:40  476390.0      5.25    2669.4       0.0 result_reg[7][31]/DIN         -3.79  
-    0:02:40  476381.7      5.25    2669.2       0.0 result_reg[3][25]/DIN         -3.79  
-    0:02:40  476381.7      5.25    2669.1       0.0 result_reg[3][27]/DIN         -3.79  
-    0:02:41  476398.3      5.25    2668.9       0.0 result_reg[3][25]/DIN         -3.79  
-    0:02:42  476398.3      5.25    2668.8       0.0 result_reg[4][30]/DIN         -3.79  
-    0:02:42  476373.5      5.25    2668.8       0.0                               -3.79  
-    0:02:42  476166.1      5.25    2668.7       0.0                               -3.79  
-    0:02:42  475900.7      5.25    2668.0       0.0                               -3.79  
-    0:02:42  475643.5      5.25    2667.4       0.0                               -3.79  
-    0:02:42  475411.3      5.25    2667.4       0.0                               -3.79  
-    0:02:43  475170.8      5.25    2667.4       0.0                               -3.79  
-    0:02:43  475062.9      5.25    2667.4       0.0                               -3.79  
-    0:02:43  474872.2      5.25    2667.3       0.0                               -3.79  
-    0:02:44  475087.8      5.25    2666.7       0.0                               -3.79  
-    0:02:44  474830.7      5.25    2666.2       0.0                               -3.82  
-    0:02:45  474698.0      5.25    2666.1       0.0                               -3.82  
-    0:02:45  474341.3      5.25    2666.0       0.0                               -3.81  
-    0:02:52  475469.4      5.25    2666.3       0.0 result_reg[5][27]/DIN         -2.09  
-    0:03:00  476796.5      5.25    2669.1       0.0 result_reg[0][30]/DIN         -0.42  
-    0:03:04  477377.1      5.25    2669.7       0.0                                0.00  
+    0:00:49  419631.3      1.94     157.5       0.0                              -10.65  
+    0:00:49  419631.3      1.94     157.5       0.0                              -10.65  
+    0:00:50  405464.5      1.95     155.5       0.0                              -10.65  
+    0:00:50  398447.4      1.95     154.6       0.0                              -10.65  
+    0:00:50  393487.4      1.95     154.0       0.0                              -10.65  
+    0:00:50  389522.7      1.95     154.5       0.0                              -10.65  
+    0:00:50  387050.9      1.95     154.5       0.0                              -10.65  
+    0:00:50  387050.9      1.95     154.5       0.0                              -10.65  
+    0:00:50  387050.9      1.95     154.5       0.0                              -10.65  
+    0:00:51  359411.2      1.95     155.3       0.0                               -8.37  
+    0:00:51  355123.0      1.95     155.4       0.0                               -2.50  
+    0:00:51  354451.2      1.95     155.1       0.0                               -2.50  
+    0:00:51  354418.0      1.95     155.1       0.0                               -2.50  
+    0:00:51  354418.0      1.95     155.1       0.0                               -2.50  
+    0:00:51  354418.0      1.95     155.1       0.0                               -2.50  
+    0:00:51  354418.0      1.95     155.1       0.0                               -2.50  
+    0:00:51  354418.0      1.95     155.1       0.0                               -2.50  
+    0:00:52  354525.8      1.94     155.0       0.0 L_reg[30]/DIN                 -2.50  
+    0:00:52  354641.9      1.93     154.9       0.0 L_reg[30]/DIN                 -2.50  
+    0:00:52  354940.5      1.92     154.7       0.0 L_reg[30]/DIN                 -2.50  
+    0:00:52  355048.4      1.92     154.6       0.0 L_reg[15]/DIN                 -2.50  
+    0:00:52  355040.1      1.92     154.5       0.0 M_reg[27]/DIN                 -2.49  
+    0:00:52  355239.1      1.92     154.5       0.0 M_reg[26]/DIN                 -2.49  
+    0:00:52  355239.1      1.92     154.5       0.0                               -2.49  
+    0:00:53  355040.1      1.92     154.5       0.0 result_reg[0][31]/DIN         -2.47  
+    0:00:54  355355.3      1.92     154.7       0.0 result_reg[3][31]/DIN         -1.21  
+    0:00:56  355770.0      1.92     155.1       0.0 result_reg[1][29]/DIN         -0.25  
+    0:00:57  355985.6      1.92     155.3       0.0                                0.00  
 
 
   Beginning Critical Range Optimization
@@ -5256,56 +5165,29 @@ Information: Updating design information... (UID-85)
    ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
   --------- --------- --------- --------- --------- ------------------------- -----------
-    0:03:04  477377.1      5.25    2669.7       0.0                                0.00  
-    0:03:04  477277.5      5.25    2669.4       0.0                               -0.05  
-    0:03:04  477261.0      5.24    2669.4       0.0                               -0.05  
-    0:03:04  477261.0      5.24    2669.3       0.0                               -0.05  
-    0:03:04  477194.6      5.24    2669.1       0.0                               -0.05  
-    0:03:04  477178.0      5.24    2668.0       0.0                               -0.05  
-    0:03:05  477186.3      5.24    2667.6       0.0                               -0.05  
-    0:03:05  477045.3      5.24    2667.2       0.0                               -0.05  
-    0:03:05  477061.9      5.24    2667.1       0.0                               -0.05  
-    0:03:05  477095.1      5.24    2666.8       0.0                               -0.05  
-    0:03:05  477095.1      5.24    2666.8       0.0                               -0.05  
-    0:03:06  477103.4      5.24    2666.6       0.0                               -0.05  
-    0:03:06  477078.5      5.24    2666.5       0.0                               -0.05  
-    0:03:06  477078.5      5.24    2666.5       0.0                               -0.05  
-    0:03:06  477136.5      5.24    2666.4       0.0                               -0.05  
-    0:03:06  477178.0      5.24    2665.9       0.0                               -0.05  
-    0:03:06  477103.4      5.24    2665.9       0.0                               -0.07  
-    0:03:07  477460.0      5.24    2664.2       0.0                               -0.07  
-    0:03:07  477426.8      5.24    2664.0       0.0                               -0.10  
-    0:03:07  477377.1      5.24    2655.3       0.0                               -0.10  
-    0:03:07  477393.7      5.24    2646.5       0.0                               -0.10  
-    0:03:07  477402.0      5.24    2626.8       0.0                               -0.10  
-    0:03:07  477410.3      5.24    2618.0       0.0                               -0.10  
-    0:03:08  477443.4      5.24    2554.5       0.0                               -0.13  
-    0:03:08  477252.7      5.24    2553.2       0.0                               -0.13  
-    0:03:08  477360.5      5.24    2527.0       0.0                               -0.13  
-    0:03:08  477335.6      5.24    2525.2       0.0                               -0.13  
-    0:03:08  477360.5      5.24    2524.6       0.0                               -0.13  
-    0:03:09  477285.8      5.24    2507.2       0.0                               -0.13  
-    0:03:09  477343.9      5.24    2504.4       0.0                               -0.13  
-    0:03:09  477343.9      5.24    2504.2       0.0                               -0.13  
-    0:03:10  477319.0      5.24    2494.6       0.0                               -0.13  
-    0:03:10  477451.7      5.24    2475.0       0.0                               -0.13  
-    0:03:10  477775.2      5.24    2465.4       0.0                               -0.13  
-    0:03:10  477858.1      5.24    2440.8       0.0                               -0.13  
-    0:03:11  477783.5      5.24    2440.7       0.0                               -0.13  
-    0:03:11  478521.7      5.24    2424.2       0.0                               -0.13  
-    0:03:11  478521.7      5.24    2424.3       0.0 result_reg[5][23]/DIN         -0.13  
-    0:03:11  478729.0      5.23    2423.7       0.0 result_reg[7][22]/DIN         -0.16  
-    0:03:12  478812.0      5.23    2423.5       0.0 result_reg[5][25]/DIN         -0.16  
-    0:03:12  478894.9      5.23    2422.8       0.0 result_reg[2][31]/DIN         -0.16  
-    0:03:12  479085.7      5.23    2423.9       0.0 result_reg[7][26]/DIN         -0.16  
-    0:03:13  479127.2      5.22    2422.9       0.0 result_reg[5][25]/DIN         -0.16  
-    0:03:13  479152.1      5.22    2422.8       0.0 result_reg[2][29]/DIN         -0.16  
-    0:03:13  479259.9      5.22    2422.1       0.0 result_reg[5][23]/DIN         -0.16  
-    0:03:14  479218.4      5.22    2422.2       0.0 result_reg[2][29]/DIN         -0.16  
-    0:03:14  479160.4      5.22    2422.0       0.0 result_reg[2][29]/DIN         -0.16  
-    0:03:15  479110.6      5.22    2422.0       0.0 result_reg[2][29]/DIN         -0.16  
-    0:03:15  479069.1      5.22    2422.6       0.0 result_reg[1][25]/DIN         -0.16  
-    0:03:16  479035.9      5.22    2422.6       0.0                               -0.16  
+    0:00:57  355985.6      1.92     155.3       0.0                                0.00  
+    0:00:57  356018.8      1.91     155.2       0.0                                0.00  
+    0:00:57  356068.6      1.91     155.1       0.0                                0.00  
+    0:00:57  355993.9      1.91     155.1       0.0                                0.00  
+    0:00:57  355985.6      1.91     154.9       0.0                                0.00  
+    0:00:57  355952.5      1.91     154.9       0.0                                0.00  
+    0:00:57  356052.0      1.91     154.9       0.0                                0.00  
+    0:00:58  355952.5      1.91     154.9       0.0                                0.00  
+    0:00:58  355786.6      1.91     154.9       0.0                                0.00  
+    0:00:58  355537.7      1.91     154.9       0.0                                0.00  
+    0:00:58  355413.3      1.91     154.8       0.0                                0.00  
+    0:00:59  355388.4      1.91     154.6       0.0                               -0.01  
+    0:00:59  355355.3      1.91     154.6       0.0                               -0.01  
+    0:00:59  355322.1      1.91     154.6       0.0                               -0.01  
+    0:00:59  355330.4      1.91     154.6       0.0                               -0.01  
+    0:00:59  355313.8      1.91     154.5       0.0                               -0.01  
+    0:00:59  355214.3      1.91     154.5       0.0                               -0.01  
+    0:01:00  355206.0      1.91     154.3       0.0                               -0.01  
+    0:01:00  355255.7      1.91     154.1       0.0 L_reg[30]/DIN                 -0.01  
+    0:01:00  355214.3      1.91     154.1       0.0 L_reg[30]/DIN                 -0.01  
+    0:01:00  355189.4      1.91     154.1       0.0 L_reg[30]/DIN                 -0.01  
+    0:01:00  355197.7      1.91     154.1       0.0 M_reg[27]/DIN                 -0.01  
+    0:01:00  355272.3      1.91     154.1       0.0 M_reg[27]/DIN                 -0.01  
 Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
 
 
@@ -5314,36 +5196,62 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
 
   Optimization Complete
   ---------------------
-Writing verilog file '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/Cnter.vg'.
-Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
-Writing ddc file './Cnter.ddc'.
-Removing design 'Cnter'
-Removing design 'Cnter_DW01_inc_0'
-Removing design 'Cnter_DW01_add_20'
-Removing design 'Cnter_DW01_add_22'
-Removing design 'Cnter_DW01_add_26'
-Removing design 'Cnter_DW01_add_34'
-Removing design 'Cnter_DW01_add_36'
-Removing design 'Cnter_DW01_add_41'
-Removing design 'Cnter_DW01_add_45'
-Removing library 'gtech'
-Removing library 'lec25dscc25_TT'
-Removing library 'standard.sldb'
 Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
-Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/gtech.db'
-Loading db file '/usr/caen/synopsys-synth-2018.06/libraries/syn/standard.sldb'
-  Loading link library 'lec25dscc25_TT'
-  Loading link library 'gtech'
-Loading verilog file '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/Cnter.vg'
-Detecting input file type automatically (-rtl or -netlist).
-Running DC verilog reader
-Performing 'read' command.
-Compiling source file /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/Cnter.vg
-Reading with netlist reader (equivalent to -netlist option).
-Verilog netlist reader completed successfully.
-Current design is now '/afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_project/Cnter_DW01_inc_0.db:Cnter_DW01_inc_0'
-Loaded 9 designs.
-Current design is 'Cnter_DW01_inc_0'.
-Current design is 'Cnter'.
+Information: Updating design information... (UID-85)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : Pipe
+Version: O-2018.06
+Date   : Fri Mar 19 21:33:53 2021
+****************************************
+
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Pipe                   tsmcwire          lec25dscc25_TT
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  = 170.3217 mW   (72%)
+  Net Switching Power  =  67.7271 mW   (28%)
+                         ---------
+Total Dynamic Power    = 238.0488 mW  (100%)
+
+Cell Leakage Power     = 197.7210 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          61.7098           13.3808        2.8782e+04           75.0906  (  31.54%)
+sequential        11.7990            1.0738        2.1361e+04           12.8728  (   5.41%)
+combinational     96.8129           53.2725        1.4758e+05          150.0857  (  63.05%)
+--------------------------------------------------------------------------------------------------
+Total            170.3217 mW        67.7271 mW     1.9772e+05 pW       238.0491 mW
 
 Thank you...

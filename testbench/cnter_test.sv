@@ -3,7 +3,7 @@ module common_test (
 );
 
     logic clk, reset, done;
-    logic [0:63][31:0] W = 0;
+    logic [0:63][31:0] W;
     logic [0:7][31:0]  H_in = 1;
     logic [255:0] H_out;
     logic [31:0] test;
@@ -22,7 +22,7 @@ module common_test (
         clk = ~clk;
     end
 
-    Cnter myCnter(.H_in,
+    Pipe myCnter(.H_in,
                   .W,
                 //   .K,
                   .clk,
@@ -33,43 +33,58 @@ module common_test (
 
     ); 
 
+    task test_power();
+      for(int i = 0; i < 100; i++) begin
+        for(int j = 0; j < 64; j++) W[j] = $urandom();
+        reset = 1;
+        @(posedge clk);
+        @(negedge clk);
+        reset = 0;
+        wait(done == 1'b1);
+        $display("H is %x", H_out);
+      end
+      
+    endtask
+
     initial begin
-        // $set_toggle_region(common_test);
-        // $toggle_start();
+        $set_toggle_region(common_test);
+        $toggle_start();
         clk = 0;
         reset = 1;
         @(negedge clk);
         reset = 0;
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        // $display("test is %x", test);
-        wait(done == 1'b1);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        // $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
-        // @(posedge clk);
-        // $display("H is %x", H_out);
-        //  $display("test is %x", test);
         @(posedge clk);
-        $display("H is %x", H_out); // synthesis has bug
-        $display("done is %x", done);
-        // $toggle_stop();
-        // $toggle_report("power.saif", 1.0e-12, "common_test ");
+        $display("H is %x", H_out);
+        $display("test is %x", test);
+        wait(done == 1'b1);
+
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        // $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        //  $display("test is %x", test);
+        // @(posedge clk);
+        // $display("H is %x", H_out);
+        // $display("done is %x", done);
+        test_power();
+        $toggle_stop();
+        $toggle_report("power.saif", 1.0e-12, "common_test ");
         $finish;
     end
     

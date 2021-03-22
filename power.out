@@ -1,0 +1,59 @@
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Information: Updating design information... (UID-85)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+        -verbose
+Design : Cnter
+Version: O-2018.06
+Date   : Fri Mar 19 16:45:21 2021
+****************************************
+
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Cnter                  tsmcwire          lec25dscc25_TT
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Cnter                                   130.281  259.891 2.71e+05  390.171 100.0
+  add_66 (Cnter_DW01_add_38)             13.050   19.685 1.16e+04   32.735   8.4
+  add_0_root_add_0_root_add_63_4 (Cnter_DW01_add_34)
+                                         12.908   22.000 1.21e+04   34.908   8.9
+  add_1_root_add_0_root_add_63_4 (Cnter_DW01_add_29)
+                                          8.818   17.434 1.14e+04   26.252   6.7
+  add_3_root_add_0_root_add_63_4 (Cnter_DW01_add_27)
+                                          6.156   11.098 1.06e+04   17.255   4.4
+  add_0_root_add_0_root_add_65 (Cnter_DW01_add_15)
+                                         10.563   18.946 1.04e+04   29.509   7.6
+  add_2_root_add_0_root_add_63_4 (Cnter_DW01_add_19)
+                                          6.768   12.186 9.99e+03   18.954   4.9
+  add_1_root_add_0_root_add_65 (Cnter_DW01_add_13)
+                                          5.895   10.215 8.70e+03   16.111   4.1
+  add_85 (Cnter_DW01_inc_0)            1.78e-02    0.108   61.075    0.126   0.0
+1

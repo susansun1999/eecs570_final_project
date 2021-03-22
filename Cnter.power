@@ -1,0 +1,58 @@
+Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
+Information: Updating design information... (UID-85)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : Cnter
+Version: O-2018.06
+Date   : Fri Mar 19 16:41:14 2021
+****************************************
+
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Cnter                  tsmcwire          lec25dscc25_TT
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  = 239.2776 mW   (67%)
+  Net Switching Power  = 118.1096 mW   (33%)
+                         ---------
+Total Dynamic Power    = 357.3872 mW  (100%)
+
+Cell Leakage Power     = 252.1530 nW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
+register          36.7825            6.2612        2.6260e+04           43.0437  (  12.04%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational    202.4951          111.8485        2.2589e+05          314.3438  (  87.96%)
+--------------------------------------------------------------------------------------------------
+Total            239.2776 mW       118.1097 mW     2.5215e+05 pW       357.3875 mW
+1

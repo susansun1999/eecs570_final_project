@@ -23,8 +23,8 @@ all:	simv
 #####
 
 TESTBENCH = testbench/cnter_test.sv
-SIMFILES = design/common.sv design/cnter/top.sv
-SYNFILES = Cnter.vg
+SIMFILES = design/common.sv design/pipeline/Pipe.sv
+SYNFILES = Pipe.vg
 
 #####
 # Should be no need to modify after here
@@ -55,5 +55,8 @@ nuke:	clean
 Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
 
-power:	design/cnter/top.sv synth/Cnter/cnter_power.tcl
-	dc_shell -topo -f synth/Cnter/cnter_power.tcl | tee synth.out
+power:	design/pipeline/Pipe.sv synth/Cnter/cnter_power.tcl
+	dc_shell -f synth/Cnter/cnter_power.tcl | tee synth.out
+
+Pipe.vg:	design/pipeline/Pipe.sv synth/Cnter/cnter_synth.tcl
+	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
