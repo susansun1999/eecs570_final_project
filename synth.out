@@ -64,8 +64,8 @@ Current design is 'naive_design'.
 naive_design
 set design_name naive_design
 naive_design
-set clock_name clock
-clock
+set clock_name clk
+clk
 set reset_name reset
 reset
 set CLK_PERIOD 10
@@ -141,7 +141,7 @@ lec25dscc25_TT
 #/*****************************/
 #/* Sourcing the file that sets the Search path and the libraries(target,link) */
 set sys_clk $clock_name
-clock
+clk
 set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
 ./naive_design.vg
 set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
@@ -203,12 +203,6 @@ Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
   naive_design                /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_final_project/src/naive_design.db
   lec25dscc25_TT (library)    /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db
 
-Warning: Can't find port 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list 'source_objects' must have 1 elements. (CMD-036)
-Warning: Can't find object 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list 'object_list' must have 1 elements. (CMD-036)
-Warning: Can't find clock 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list '<clock_list>' must have 1 elements. (CMD-036)
 Warning: Design rule attributes from the driving cell will be
 	set on the port. (UID-401)
 Warning: Design rule attributes from the driving cell will be
@@ -4821,15 +4815,6 @@ Warning: Design rule attributes from the driving cell will be
 	set on the port. (UID-401)
 Warning: Design rule attributes from the driving cell will be
 	set on the port. (UID-401)
-Warning: Can't find port 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list 'port_list' must have 1 elements. (CMD-036)
-Warning: Can't find clock 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list '-clock' must have 1 elements. (CMD-036)
-Warning: Can't find port 'clock' in design 'naive_design'. (UID-95)
-Warning: Can't find clock 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list 'port_pin_list' must have 1 elements. (CMD-036)
-Warning: Can't find clock 'clock' in design 'naive_design'. (UID-95)
-Error: Value for list '-clock' must have 1 elements. (CMD-036)
 Current design is 'naive_design'.
 Warning: Design has no hierarchy.  No cells can be ungrouped. (UID-228)
 Information: Evaluating DesignWare library utilization. (UISN-27)
@@ -4867,84 +4852,129 @@ Information: Updating design information... (UID-85)
   Beginning Mapping Optimizations  (High effort)
   -------------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:04  305434.1      0.00       0.0       4.1                          
-    0:00:04  305434.1      0.00       0.0       4.1                          
-    0:00:04  305434.1      0.00       0.0       4.1                          
-    0:00:04  305434.1      0.00       0.0       4.1                          
-    0:00:04  305434.1      0.00       0.0       4.1                          
-    0:00:05  210884.9      0.00       0.0       1.4                          
-    0:00:05  209267.4      0.00       0.0       1.4                          
-    0:00:05  209267.4      0.00       0.0       1.4                          
-    0:00:05  209267.4      0.00       0.0       1.4                          
-    0:00:05  209267.4      0.00       0.0       1.4                          
-    0:00:05  209267.4      0.00       0.0       1.4                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:09  257487.0      0.45       1.8      18.2                                0.00  
+    0:00:09  257337.7      0.46       1.8      18.2                                0.00  
+    0:00:09  257337.7      0.46       1.8      18.2                                0.00  
+    0:00:09  257254.8      0.45       1.8      18.2                                0.00  
+    0:00:09  257254.8      0.45       1.8      18.2                                0.00  
+    0:00:10  213696.7      2.32      32.5       6.5                                0.00  
+    0:00:11  214020.2      2.33      33.4       6.5                                0.00  
+    0:00:11  214675.4      2.14      29.1       6.5                                0.00  
+    0:00:11  215562.9      2.06      26.8       6.5                                0.00  
+    0:00:11  215728.8      1.97      24.7       6.5                                0.00  
+    0:00:11  216873.4      1.88      22.4       6.5                                0.00  
+    0:00:12  216939.8      1.75      19.8       6.5                                0.00  
+    0:00:12  217528.7      1.65      17.7       6.5                                0.00  
+    0:00:12  218242.0      1.52      16.2       4.5                                0.00  
+    0:00:12  218573.8      1.44      14.7       4.5                                0.00  
+    0:00:12  219278.8      1.38      12.2       4.5                                0.00  
+    0:00:12  219278.8      1.38      12.2       4.5                                0.00  
+    0:00:12  219278.8      1.38      12.2       4.5                                0.00  
+    0:00:12  219278.8      1.38      12.2       4.5                                0.00  
+    0:00:13  219544.2      1.38      12.2       0.0                                0.00  
+    0:00:13  219544.2      1.38      12.2       0.0                                0.00  
+    0:00:13  219544.2      1.38      12.2       0.0                                0.00  
+    0:00:13  219544.2      1.38      12.2       0.0                                0.00  
+    0:00:13  222944.9      1.07       8.8       0.0 result_reg[4][31]/DIN          0.00  
+    0:00:14  225845.2      0.48       1.9       0.0 result_reg[0][31]/DIN          0.00  
+    0:00:14  226732.7      0.36       1.4       0.6 result_reg[4][31]/DIN          0.00  
+    0:00:15  226110.6      0.32       1.2      52.6 result_reg[4][31]/DIN          0.00  
 
 
 
   Beginning Delay Optimization Phase
   ----------------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:15  226110.6      0.32       1.2      52.6                                0.00  
+    0:00:15  228814.6      0.26       0.7      52.6 result_reg[0][31]/DIN          0.00  
+    0:00:15  229768.4      0.20       0.6      52.6 result_reg[4][31]/DIN          0.00  
+    0:00:15  230423.7      0.15       0.4      52.7 result_reg[4][31]/DIN          0.00  
+    0:00:16  231634.7      0.09       0.1      52.8 result_reg[4][31]/DIN          0.00  
+    0:00:16  232870.5      0.04       0.0      52.9 result_reg[4][31]/DIN          0.00  
+    0:00:16  233633.6      0.00       0.0      53.2                                0.00  
+    0:00:17  231021.0      0.00       0.0      83.0                                0.00  
+
+
+  Beginning Design Rule Fixing  (min_path)  (max_transition)  (max_fanout)
+  ----------------------------
+
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:17  231021.0      0.00       0.0      83.0                               -2.22  
+    0:00:17  231858.7      0.00       0.0      78.5 N25                           -2.22  
+    0:00:17  232837.5      0.00       0.0      75.8 N18                           -2.22  
+    0:00:18  233534.2      0.00       0.0      67.1 add_2_root_add_0_root_add_25_4/A[25]     -2.22  
+    0:00:18  234098.2      0.00       0.0      59.3 H_out[179]                    -2.22  
+    0:00:18  234645.6      0.00       0.0      54.1 H_out[51]                     -2.22  
+    0:00:18  234819.7      0.04       0.1       0.0 alt80/net12919                -2.22  
+    0:00:18  235018.8      0.00       0.0       0.0                               -2.22  
 
 
   Beginning Critical Range Optimization
   -------------------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:05  209715.3      0.00       0.0       0.0                          
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:18  235018.8      0.00       0.0       0.0                               -2.22  
 
 
   Beginning Area-Recovery Phase  (cleanup)
   -----------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  209715.3      0.00       0.0       0.0                          
-    0:00:05  208852.7      0.00       0.0       0.0                          
-    0:00:05  208089.6      0.00       0.0       0.0                          
-    0:00:05  207442.7      0.00       0.0       0.0                          
-    0:00:05  207110.9      0.00       0.0       0.0                          
-    0:00:05  206804.0      0.00       0.0       0.0                          
-    0:00:06  206231.7      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:18  235018.8      0.00       0.0       0.0                               -2.22  
+    0:00:18  235018.8      0.00       0.0       0.0                               -2.22  
+    0:00:18  232804.2      0.15       0.2       0.0                               -2.22  
+    0:00:19  231427.3      0.13       0.2       0.0                               -2.22  
+    0:00:19  230879.9      0.13       0.2       0.0                               -2.22  
+    0:00:19  230481.8      0.13       0.2       0.0                               -2.22  
+    0:00:19  230183.2      0.13       0.2       0.0                               -2.22  
+    0:00:19  230183.2      0.13       0.2       0.0                               -2.22  
+    0:00:19  230821.8      0.08       0.2       0.0 result_reg[4][31]/DIN         -2.22  
+    0:00:20  230921.4      0.08       0.2       0.0 result_reg[4][31]/DIN         -2.22  
+    0:00:20  230946.2      0.07       0.1       0.0 result_reg[0][31]/DIN         -2.22  
+    0:00:20  230921.4      0.07       0.1       0.0 result_reg[0][31]/DIN         -2.22  
+    0:00:20  230946.2      0.07       0.1       0.0 result_reg[0][31]/DIN         -2.22  
+    0:00:20  230979.4      0.07       0.1       0.0 result_reg[0][31]/DIN         -2.22  
+    0:00:21  231070.7      0.07       0.1       0.0 result_reg[4][31]/DIN         -2.22  
+    0:00:21  232671.5      0.00       0.0       0.0                               -2.22  
+    0:00:21  228217.4      0.20       0.9       0.0                               -2.07  
+    0:00:22  227777.8      0.20       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  227653.4      0.19       0.9       0.0                               -2.07  
+    0:00:22  229295.7      0.02       0.0       0.0 result_reg[0][31]/DIN         -2.15  
+    0:00:25  229453.3      0.00       0.0       0.0 result_reg[0][5]/DIN          -1.22  
+    0:00:27  229453.3      0.00       0.0       0.0 result_reg[0][23]/DIN          0.00  
 
 
   Beginning Critical Range Optimization
   -------------------------------------
 
-                                  TOTAL                                      
-   ELAPSED            WORST NEG   SETUP    DESIGN                            
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT         
-  --------- --------- --------- --------- --------- -------------------------
-    0:00:06  205700.9      0.00       0.0       0.0                          
-    0:00:06  205700.9      0.00       0.0       0.0                          
+                                  TOTAL                                                  
+   ELAPSED            WORST NEG   SETUP    DESIGN                              MIN DELAY 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT             COST    
+  --------- --------- --------- --------- --------- ------------------------- -----------
+    0:00:27  229453.3      0.00       0.0       0.0                                0.00  
+    0:00:28  229453.3      0.00       0.0       0.0                                0.00  
 Loading db file '/afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db'
 
 

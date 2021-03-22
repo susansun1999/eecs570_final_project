@@ -12,7 +12,7 @@
 
 read_file -f sverilog [list "src/common.sv" "src/naive_design.sv"]
 set design_name naive_design
-set clock_name clock
+set clock_name clk
 set reset_name reset
 set CLK_PERIOD 10
 
