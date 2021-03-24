@@ -73,9 +73,10 @@ module sha_hash_gb
         f = H_in[5];
         g = H_in[6];
         h = H_in[7];
-
+        // $display("%x", Sigma1(32'h9205dc11));
         // loop
         for (idx = 0; idx < 64; idx = idx + 1) begin
+            // $display("%x%x%x%x%x%x%x%x", a,b,c,d,e,f,g,h);
             T1 = h + Sigma1(e) + Ch(e, f, g) + K[idx] + W[idx];
             T2 = Sigma0(a) + Maj(a, b, c);
             h = g;
@@ -86,6 +87,8 @@ module sha_hash_gb
             c = b;
             b = a;
             a = T1 + T2;
+            // $display("new_e %x", e);
+            $display("idx: %d, %x", idx, W[idx]);
         end
 
         H_out[0] = H_in[0] + a;

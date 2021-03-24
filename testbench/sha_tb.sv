@@ -33,6 +33,8 @@ module sha_tb;
     logic done_in, done_out_gb, done_out_test;
     logic [0:255] result, result_test, result_gb;
 
+    logic[31:0] new_a;
+
     sha_hash_gb sha_hash_gb_0 (
         .clk(clk),
         .reset(reset),
@@ -48,7 +50,8 @@ module sha_tb;
         .H_in(H_in),
         .W(W_in),
         .H_out(result_test),
-        .done(done_out_test)
+        .done(done_out_test),
+        .test(new_a)
     );
 
     genvar gi;
@@ -74,9 +77,10 @@ module sha_tb;
     initial begin
         clk = 0;
         reset = 1;
-        W_in = 0;
+        W_in = '0;
         H_in = 0;
         done_in = 0;
+        $monitor("%x", new_a);
         @(posedge clk);
         @(negedge clk);
         reset = 0;

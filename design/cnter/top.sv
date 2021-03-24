@@ -22,8 +22,8 @@ module Cnter (
     input clk,
     input reset,
     output logic done,
-    output logic [255:0] H_out
-    // output  logic [31:0] test
+    output logic [255:0] H_out,
+    output  logic [32:0] test
 );
     // enum {A, B, C, D, E, F, G, H} Place;
 
@@ -72,7 +72,7 @@ module Cnter (
         new_result = result;
         for(int i = 0; i < 8; i++)begin
             if(i == h) new_result[i] = new_a;
-            else if(i == e) new_result[i] = new_e;
+            else if(i == d) new_result[i] = new_e;
         end
     end
 
@@ -88,7 +88,7 @@ module Cnter (
     end
 
     assign done = counter == 7'd64;
-    assign H_out = result;
-    // assign test = K[counter]; //get_index has issue
-    
+    assign H_out = result+H_in;
+    // assign test = {result[a], result[b], result[c], result[d], result[e], result[f], result[g], result[h]}; //get_index has issue
+    assign test = W[counter];
 endmodule

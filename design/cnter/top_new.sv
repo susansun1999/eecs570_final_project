@@ -98,7 +98,7 @@ module Cnter (
     end
 
     assign done = counter == 7'd65;
-    assign H_out = result;
+    assign H_out = result+H_in;
     // assign test = K[counter]; //get_index has issue
     
 endmodule
