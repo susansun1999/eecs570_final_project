@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06 for linux64 -- May 21, 2018
-#@ # Date:   Mon Mar 22 19:06:53 2021
-#@ # Run by: zwtao@caen-vnc-vm05.engin.umich.edu
+#@ # Date:   Wed Mar 24 21:15:08 2021
+#@ # Run by: zwtao@caen-vnc-vm07.engin.umich.edu
 #@ 
 
 source /usr/caen/synopsys-synth-2018.06/admin/setup/.synopsys_dc.setup
@@ -6639,8 +6639,8 @@ source -echo -verbose /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_proj
 #@ #/* new design                                              */
 #@ #/***********************************************************/
 #@ 
-#@ read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
-#@ set design_name Cnter
+#@ read_file -f sverilog [list "design/common.sv" "design/pipeline/Pipe.sv"]
+#@ set design_name Pipe
 #@ set clock_name clk
 #@ set reset_name reset
 #@ set CLK_PERIOD 1.18
@@ -6749,7 +6749,7 @@ source -echo -verbose /afs/umich.edu/user/z/w/zwtao/Documents/eecs570_final_proj
 #@   compile -map_effort high
 #@   write -hier -format verilog -output $netlist_file $design_name
 #@   write -hier -format ddc -output $ddc_file $design_name
-#@   redirect $power_file { report_power  -verbose -hierarchy -levels 2 -analysis_effort low}
+#@   redirect $power_file { report_power -analysis_effort low}
 #@   redirect $rep_file { report_design -nosplit }
 #@   redirect -append $rep_file { report_area }
 #@   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }

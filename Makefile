@@ -23,7 +23,7 @@ all:	simv
 #####
 
 TESTBENCH = testbench/globals.vh testbench/sha_hash_gb.sv testbench/sha_tb.sv 
-SIMFILES = design/common.sv design/cnter/top.sv
+SIMFILES = design/common.sv design/pipeline/Pipe.sv
 SYNFILES = Cnter.vg
 
 #####
@@ -52,7 +52,7 @@ clean:
 nuke:	clean
 	rm -rvf *.vg *.rep *.db *.chk *.log *.out DVEfiles/
 
-Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
+Cnter.vg:	design/cnter/top_new.sv synth/Cnter/cnter_synth.tcl
 	dc_shell-t -f synth/Cnter/cnter_synth.tcl | tee synth.out
 
 # power:	design/pipeline/Pipe.sv synth/Cnter/cnter_power.tcl

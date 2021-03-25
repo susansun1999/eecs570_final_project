@@ -22,38 +22,38 @@ module sha_tb;
         return ROTR(x, 17) ^ ROTR(x, 19) ^ {10'h0, x[31:10]};
     endfunction
 
-    function PrepairW64(logic [0:15] [31:0] W_in);
-        logic [0:63] [31:0] W;
-        int idx;
-        W[0:15] = W_in;
-        for (idx = 16; idx < 64; idx = idx + 1) begin
-            W[idx] = sigma1(W[idx-2]) + W[idx-7] + sigma0(W[idx-15]) + W[idx-16];
-        end
-        return W;
-    endfunction
+    // function PrepairW64(logic [0:15] [31:0] W_in);
+    //     logic [0:63] [31:0] W;
+    //     int idx;
+    //     W[0:15] = W_in;
+    //     for (idx = 16; idx < 64; idx = idx + 1) begin
+    //         W[idx] = sigma1(W[idx-2]) + W[idx-7] + sigma0(W[idx-15]) + W[idx-16];
+    //     end
+    //     return W;
+    // endfunction
 
     task GetNextBlock;
-        output logic done;
+        // output logic done;
         output logic [0:15] [31:0] msg_out;
 
         int idx;
-        done = 1'b1;
+        // done = 1'b1;
         msg_out[0] = 32'h87027980;
         for (idx = 1; idx < 15; idx = idx + 1) msg_out[idx] = 32'h0;
         msg_out[15] = 32'd24;
     endtask
 
-    task WaitUntilHigh;
-        input signal;
-        input clk;
-        while (~signal) begin 
-            @(negedge clk);
-            if (signal) break;
-            @(posedge clk);
-        end
-        $display("GB: %h; TEST: %h", result_gb, result_test);
-        $finish;
-    endtask
+    // task WaitUntilHigh;
+    //     input signal;
+    //     input clk;
+    //     while (~signal) begin 
+    //         @(negedge clk);
+    //         if (signal) break;
+    //         @(posedge clk);
+    //     end
+    //     $display("GB: %h; TEST: %h", result_gb, result_test);
+    //     $finish;
+    // endtask
 
     logic clk, reset;
     logic [0:7] [31:0] H_in, H_out;
@@ -62,64 +62,70 @@ module sha_tb;
     logic [0:255] result, result_test, result_gb;
     logic [0:63] [31:0] W_in_64;
 
-    logic[31:0] new_a;
+    logic[255:0] new_a;
 
-    sha_hash_gb sha_hash_gb_0 (
-        .clk(clk),
-        .reset(reset),
-        .H_in(H_in),
-        .W_in(W_in),
-        .H_out(H_out),
-        .done_out(done_out_gb)
-    );
+    // sha_hash_gb sha_hash_gb_0 (
+    //     .clk(clk),
+    //     .reset(reset),
+    //     .H_in(H_in),
+    //     .W_in(W_in),
+    //     .H_out(H_out),
+    //     .done_out(done_out_gb)
+    // );
 
-    Cnter tested_module (
+    Pipe tested_module (
         .clk(clk),
         .reset(reset),
         .H_in(H_in),
         .W(W_in_64),
         .H_out(result_test),
-        .done(done_out_test),
-        .test(new_a)
+        .done(done_out_test)
+        // ,.test(new_a)
     );
 
-    genvar gi;
-    generate
-        for (gi = 0; gi < 8; gi = gi + 1) begin
-            assign result[gi*32:gi*32+31] = H_out[gi];
-        end
-    endgenerate
+    // genvar gi;
+    // generate
+    //     for (gi = 0; gi < 8; gi = gi + 1) begin
+    //         assign result[gi*32:gi*32+31] = H_out[gi];
+    //     end
+    // endgenerate
 
 
     always begin
         #100 clk = ~clk;
     end
 
-    always @(posedge clk) begin
-        GetNextBlock(done_in, W_in);
-    end
-
-    int idx;
-    always_comb begin
-        W_in_64[0:15] = W_in;
-        for (idx = 16; idx < 64; idx = idx + 1) begin
-            W_in_64[idx] = sigma1(W_in_64[idx-2]) + W_in_64[idx-7] + sigma0(W_in_64[idx-15]) + W_in_64[idx-16];
-        end
-    end
+    // always @(posedge clk) begin
+    //     GetNextBlock(done_in, W_in);
+    // end
+    task get_W_IN_64;
+        input [0:15] [31:0] W_in;
+        output logic [0:63] [31:0] W_in_64;
+        int idx;
+        // always_comb begin
+            W_in_64[0:15] = W_in;
+            for (idx = 16; idx < 64; idx = idx + 1) begin
+                W_in_64[idx] = sigma1(W_in_64[idx-2]) + W_in_64[idx-7] + sigma0(W_in_64[idx-15]) + W_in_64[idx-16];
+            end
+        // end
+    endtask
 
     initial begin
         clk = 0;
         reset = 1;
         W_in = 0;
         H_in = H0;
-        done_in = 0;
+        // done_in = 0;
+        GetNextBlock(W_in);
+        get_W_IN_64(W_in, W_in_64);
+        sha_hash_gb(H_in, W_in, result_gb);
         $monitor("%x", new_a);
         @(posedge clk);
         @(negedge clk);
         reset = 0;
         @(posedge clk);
-        wait(done_out_gb)
-        result_gb = result;
+        // wait(done_out_gb)
+        // result_gb = result;
         wait(done_out_test);
         $display("Golden Brick: %h\n        TEST: %h", result_gb, result_test);
         $finish;

@@ -15,6 +15,13 @@ function automatic [3:0]get_index;
     
 endfunction
 
+function automatic [0:7][31:0] retrive;
+    input [0:7][31:0]  H_in;
+    input [0:7][31:0] result;
+    for(int i = 0; i < 8; i++) retrive[i] = H_in[i] + result[i];
+
+endfunction
+
 module Cnter (
     input [0:7][31:0]  H_in,
     input [0:63][31:0] W,
@@ -22,8 +29,8 @@ module Cnter (
     input clk,
     input reset,
     output logic done,
-    output logic [255:0] H_out,
-    output  logic [32:0] test
+    output logic [255:0] H_out
+    ,output  logic [255:0] test
 );
     // enum {A, B, C, D, E, F, G, H} Place;
 
@@ -88,7 +95,9 @@ module Cnter (
     end
 
     assign done = counter == 7'd64;
-    assign H_out = result+H_in;
+        
+    // assign H_out = retrive(H_in, result);
+    assign H_out = result;
     // assign test = {result[a], result[b], result[c], result[d], result[e], result[f], result[g], result[h]}; //get_index has issue
-    assign test = W[counter];
+    // assign test = W[counter];
 endmodule

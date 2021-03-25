@@ -37,7 +37,7 @@ module Pipe (
     wire [31:0] new_a, new_e, new_M, new_L;
     wire [31:0] mux_1, mux_2;
 
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk or negedge reset) begin
         if (reset) begin
             counter <= 9'd0;
             state <= INIT;

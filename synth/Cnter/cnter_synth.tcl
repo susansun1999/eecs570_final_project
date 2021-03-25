@@ -10,8 +10,8 @@
 #/* new design                                              */
 #/***********************************************************/
 
-read_file -f sverilog [list "design/common.sv" "design/cnter/top.sv"]
-set design_name Cnter
+read_file -f sverilog [list "design/common.sv" "design/pipeline/Pipe.sv"]
+set design_name Pipe
 set clock_name clk
 set reset_name reset
 set CLK_PERIOD 1.18

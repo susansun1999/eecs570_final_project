@@ -7,9 +7,9 @@ Warning: Design has unannotated sequential cell outputs. (PWR-415)
 ****************************************
 Report : power
         -analysis_effort low
-Design : Cnter
+Design : Pipe
 Version: O-2018.06
-Date   : Wed Mar 24 20:57:47 2021
+Date   : Wed Mar 24 21:17:28 2021
 ****************************************
 
 
@@ -23,7 +23,7 @@ Wire Load Model Mode: top
 
 Design        Wire Load Model            Library
 ------------------------------------------------
-Cnter                  tsmcwire          lec25dscc25_TT
+Pipe                   tsmcwire          lec25dscc25_TT
 
 
 Global Operating Voltage = 2.5  
@@ -35,12 +35,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
 
 
-  Cell Internal Power  = 269.5354 mW   (66%)
-  Net Switching Power  = 138.8972 mW   (34%)
+  Cell Internal Power  = 173.5936 mW   (72%)
+  Net Switching Power  =  65.9719 mW   (28%)
                          ---------
-Total Dynamic Power    = 408.4326 mW  (100%)
+Total Dynamic Power    = 239.5655 mW  (100%)
 
-Cell Leakage Power     = 348.7070 nW
+Cell Leakage Power     = 210.1366 nW
 
 
                  Internal         Switching           Leakage            Total
@@ -50,9 +50,9 @@ io_pad             0.0000            0.0000            0.0000            0.0000 
 memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
 black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
 clock_network      0.0000            0.0000            0.0000            0.0000  (   0.00%)
-register          58.1521           13.4796        3.5586e+04           71.6317  (  17.54%)
-sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
-combinational    211.3831          125.4174        3.1312e+05          336.8015  (  82.46%)
+register          62.0042           15.6525        2.9106e+04           77.6568  (  32.42%)
+sequential        11.3408            0.9626        2.1361e+04           12.3034  (   5.14%)
+combinational    100.2487           49.3569        1.5967e+05          149.6055  (  62.45%)
 --------------------------------------------------------------------------------------------------
-Total            269.5351 mW       138.8971 mW     3.4871e+05 pW       408.4331 mW
+Total            173.5937 mW        65.9720 mW     2.1014e+05 pW       239.5656 mW
 1
