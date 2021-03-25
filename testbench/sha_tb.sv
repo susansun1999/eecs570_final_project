@@ -4,6 +4,34 @@
 // 
 `timescale 1ns/1ps
 module sha_tb;
+
+    function logic [31:0] ROTR;
+        input logic [31:0] x;
+        input int n;
+        n = n % 32;
+        return (x >> n) | (x << (32-n));
+    endfunction
+
+    function logic [31:0] sigma0;
+        input logic [31:0] x;
+        return ROTR(x, 7) ^ ROTR(x, 18) ^ {3'h0, x[31:3]};
+    endfunction
+
+    function logic [31:0] sigma1;
+        input logic [31:0] x;
+        return ROTR(x, 17) ^ ROTR(x, 19) ^ {10'h0, x[31:10]};
+    endfunction
+
+    function PrepairW64(logic [0:15] [31:0] W_in);
+        logic [0:63] [31:0] W;
+        int idx;
+        W[0:15] = W_in;
+        for (idx = 16; idx < 64; idx = idx + 1) begin
+            W[idx] = sigma1(W[idx-2]) + W[idx-7] + sigma0(W[idx-15]) + W[idx-16];
+        end
+        return W;
+    endfunction
+
     task GetNextBlock;
         output logic done;
         output logic [0:15] [31:0] msg_out;
@@ -32,6 +60,7 @@ module sha_tb;
     logic [0:15] [31:0] W_in;
     logic done_in, done_out_gb, done_out_test;
     logic [0:255] result, result_test, result_gb;
+    logic [0:63] [31:0] W_in_64;
 
     sha_hash_gb sha_hash_gb_0 (
         .clk(clk),
@@ -46,7 +75,7 @@ module sha_tb;
         .clk(clk),
         .reset(reset),
         .H_in(H_in),
-        .W(W_in),
+        .W(W_in_64),
         .H_out(result_test),
         .done(done_out_test)
     );
@@ -67,20 +96,23 @@ module sha_tb;
         GetNextBlock(done_in, W_in);
     end
 
+    int idx;
     always_comb begin
-
+        W_in_64[0:15] = W_in;
+        for (idx = 16; idx < 64; idx = idx + 1) begin
+            W_in_64[idx] = sigma1(W_in_64[idx-2]) + W_in_64[idx-7] + sigma0(W_in_64[idx-15]) + W_in_64[idx-16];
+        end
     end
 
     initial begin
         clk = 0;
         reset = 1;
         W_in = 0;
-        H_in = 0;
+        H_in = H0;
         done_in = 0;
         @(posedge clk);
         @(negedge clk);
         reset = 0;
-        H_in = H0;
         @(posedge clk);
         wait(done_out_gb)
         result_gb = result;
