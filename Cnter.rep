@@ -1,0 +1,1225 @@
+ 
+****************************************
+Report : design
+Design : Cnter
+Version: O-2018.06
+Date   : Mon Mar 22 19:10:31 2021
+****************************************
+
+Design allows ideal nets on clock nets.
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Local Link Library:
+
+    {lec25dscc25_TT.db}
+
+Flip-Flop Types:
+
+    No flip-flop types specified.
+
+Latch Types:
+
+    No latch types specified.
+
+Operating Conditions:
+
+
+    Operating Condition Name : nom_pvt
+    Library : lec25dscc25_TT
+    Process :   1.00
+    Temperature :  25.00
+    Voltage :   2.50
+    Interconnect Model : balanced_tree
+
+Wire Loading Model:
+
+    Selected manually by the user.
+
+Name           :   tsmcwire
+Location       :   lec25dscc25_TT
+Resistance     :   0.2642
+Capacitance    :   0.000132782
+Area           :   0.27
+Slope          :   0.74
+Fanout   Length   Points Average Cap Std Deviation
+--------------------------------------------------------------
+     1     0.89
+     2     1.48
+     3     2.44
+     4     3.18
+     5     3.92
+
+
+
+Wire Loading Model Mode: top.
+
+Timing Ranges:
+
+    No timing ranges specified.
+
+Pin Input Delays:
+
+    None specified.
+
+Pin Output Delays:
+
+    None specified.
+
+Disabled Timing Arcs:
+
+    No arcs disabled.
+
+Required Licenses:
+
+    None Required
+
+Design Parameters:
+
+    None specified.
+1
+ 
+****************************************
+Report : area
+Design : Cnter
+Version: O-2018.06
+Date   : Mon Mar 22 19:10:31 2021
+****************************************
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+Number of ports:                         3265
+Number of nets:                         10363
+Number of cells:                         7232
+Number of combinational cells:           6953
+Number of sequential cells:               271
+Number of macros/black boxes:               0
+Number of buf/inv:                       1518
+Number of references:                     101
+
+Combinational area:             433897.874519
+Buf/Inv area:                    71257.210781
+Noncombinational area:           45138.067108
+Macro/Black Box area:                0.000000
+Net Interconnect area:            4655.490029
+
+Total cell area:                479035.941628
+Total area:                     483691.431657
+1
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -input_pins
+        -nets
+        -max_paths 2
+        -transition_time
+Design : Cnter
+Version: O-2018.06
+Date   : Mon Mar 22 19:10:31 2021
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+  Startpoint: counter_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result_reg[2][29]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                       Fanout     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock clk (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  counter_reg[0]/CLK (dffcs2)                             0.00      0.00       0.00 r
+  counter_reg[0]/QN (dffcs2)                              0.23      0.21       0.21 f
+  N97 (net)                                     2                   0.00       0.21 f
+  U2325/DIN (ib1s6)                                       0.23      0.01       0.22 f
+  U2325/Q (ib1s6)                                         0.07      0.06       0.28 r
+  net91706 (net)                                2                   0.00       0.28 r
+  U5528/DIN2 (xor2s3)                                     0.07      0.01       0.28 r
+  U5528/Q (xor2s3)                                        0.22      0.18       0.47 f
+  net48393 (net)                                8                   0.00       0.47 f
+  U2331/DIN (ib1s6)                                       0.22      0.01       0.48 f
+  U2331/Q (ib1s6)                                         0.09      0.06       0.54 r
+  alt304/net82007 (net)                         8                   0.00       0.54 r
+  U3558/DIN1 (nnd2s3)                                     0.09      0.00       0.55 r
+  U3558/Q (nnd2s3)                                        0.22      0.09       0.64 f
+  alt304/net81988 (net)                         4                   0.00       0.64 f
+  U2299/DIN (ib1s6)                                       0.22      0.01       0.65 f
+  U2299/Q (ib1s6)                                         0.09      0.07       0.72 r
+  alt304/net91522 (net)                         8                   0.00       0.72 r
+  U2310/DIN1 (nnd2s3)                                     0.09      0.00       0.72 r
+  U2310/Q (nnd2s3)                                        0.15      0.07       0.79 f
+  alt304/net91253 (net)                        10                   0.00       0.79 f
+  U3538/DIN8 (oai2222s3)                                  0.15      0.00       0.79 f
+  U3538/Q (oai2222s3)                                     0.15      0.39       1.18 r
+  n1511 (net)                                   2                   0.00       1.18 r
+  U2530/DIN1 (nor2s2)                                     0.15      0.00       1.18 r
+  U2530/Q (nor2s2)                                        0.18      0.10       1.28 f
+  n1395 (net)                                   1                   0.00       1.28 f
+  U2529/SIN (mxi21s3)                                     0.18      0.00       1.28 f
+  U2529/Q (mxi21s3)                                       0.18      0.18       1.46 f
+  N462 (net)                                    3                   0.00       1.46 f
+  add_3_root_add_0_root_add_63_4/B[7] (Cnter_DW01_add_34)           0.00       1.46 f
+  add_3_root_add_0_root_add_63_4/B[7] (net)                         0.00       1.46 f
+  add_3_root_add_0_root_add_63_4/U335/DIN2 (or2s2)        0.18      0.00       1.46 f
+  add_3_root_add_0_root_add_63_4/U335/Q (or2s2)           0.12      0.17       1.63 f
+  add_3_root_add_0_root_add_63_4/net65580 (net)     3               0.00       1.63 f
+  add_3_root_add_0_root_add_63_4/U116/DIN2 (nnd2s1)       0.12      0.00       1.63 f
+  add_3_root_add_0_root_add_63_4/U116/Q (nnd2s1)          0.26      0.12       1.75 r
+  add_3_root_add_0_root_add_63_4/n20 (net)      1                   0.00       1.75 r
+  add_3_root_add_0_root_add_63_4/U32/DIN (i1s3)           0.26      0.00       1.76 r
+  add_3_root_add_0_root_add_63_4/U32/Q (i1s3)             0.12      0.05       1.81 f
+  add_3_root_add_0_root_add_63_4/n21 (net)      1                   0.00       1.81 f
+  add_3_root_add_0_root_add_63_4/U113/DIN2 (nnd3s3)       0.12      0.01       1.82 f
+  add_3_root_add_0_root_add_63_4/U113/Q (nnd3s3)          0.26      0.11       1.92 r
+  add_3_root_add_0_root_add_63_4/net65571 (net)     4               0.00       1.92 r
+  add_3_root_add_0_root_add_63_4/U110/DIN (i1s3)          0.26      0.00       1.93 r
+  add_3_root_add_0_root_add_63_4/U110/Q (i1s3)            0.14      0.07       1.99 f
+  add_3_root_add_0_root_add_63_4/net65791 (net)     3               0.00       1.99 f
+  add_3_root_add_0_root_add_63_4/U92/DIN2 (and2s2)        0.14      0.00       2.00 f
+  add_3_root_add_0_root_add_63_4/U92/Q (and2s2)           0.08      0.14       2.14 f
+  add_3_root_add_0_root_add_63_4/net94485 (net)     1               0.00       2.14 f
+  add_3_root_add_0_root_add_63_4/U109/DIN1 (nnd2s1)       0.08      0.00       2.14 f
+  add_3_root_add_0_root_add_63_4/U109/Q (nnd2s1)          0.28      0.09       2.23 r
+  add_3_root_add_0_root_add_63_4/net65867 (net)     2               0.00       2.23 r
+  add_3_root_add_0_root_add_63_4/U3/DIN (i1s2)            0.28      0.00       2.23 r
+  add_3_root_add_0_root_add_63_4/U3/Q (i1s2)              0.12      0.05       2.29 f
+  add_3_root_add_0_root_add_63_4/net65865 (net)     1               0.00       2.29 f
+  add_3_root_add_0_root_add_63_4/U136/DIN2 (oai21s2)      0.12      0.00       2.29 f
+  add_3_root_add_0_root_add_63_4/U136/Q (oai21s2)         0.30      0.12       2.41 r
+  add_3_root_add_0_root_add_63_4/n23 (net)      1                   0.00       2.41 r
+  add_3_root_add_0_root_add_63_4/U134/DIN2 (nnd2s2)       0.30      0.00       2.41 r
+  add_3_root_add_0_root_add_63_4/U134/Q (nnd2s2)          0.19      0.08       2.49 f
+  add_3_root_add_0_root_add_63_4/net65860 (net)     1               0.00       2.49 f
+  add_3_root_add_0_root_add_63_4/U135/DIN1 (xnr2s3)       0.19      0.01       2.50 f
+  add_3_root_add_0_root_add_63_4/U135/Q (xnr2s3)          0.16      0.18       2.68 r
+  add_3_root_add_0_root_add_63_4/SUM[13] (net)     4                0.00       2.68 r
+  add_3_root_add_0_root_add_63_4/SUM[13] (Cnter_DW01_add_34)        0.00       2.68 r
+  N579 (net)                                                        0.00       2.68 r
+  add_1_root_add_0_root_add_63_4/B[13] (Cnter_DW01_add_36)          0.00       2.68 r
+  add_1_root_add_0_root_add_63_4/B[13] (net)                        0.00       2.68 r
+  add_1_root_add_0_root_add_63_4/U196/DIN2 (nor2s2)       0.16      0.00       2.68 r
+  add_1_root_add_0_root_add_63_4/U196/Q (nor2s2)          0.30      0.07       2.75 f
+  add_1_root_add_0_root_add_63_4/n39 (net)      1                   0.00       2.75 f
+  add_1_root_add_0_root_add_63_4/U193/DIN1 (or4s3)        0.30      0.00       2.75 f
+  add_1_root_add_0_root_add_63_4/U193/Q (or4s3)           0.13      0.18       2.93 f
+  add_1_root_add_0_root_add_63_4/net67013 (net)     2               0.00       2.93 f
+  add_1_root_add_0_root_add_63_4/U186/DIN2 (nor2s2)       0.13      0.00       2.94 f
+  add_1_root_add_0_root_add_63_4/U186/Q (nor2s2)          0.20      0.07       3.01 r
+  add_1_root_add_0_root_add_63_4/net67010 (net)     1               0.00       3.01 r
+  add_1_root_add_0_root_add_63_4/U33/DIN1 (nnd2s3)        0.20      0.01       3.02 r
+  add_1_root_add_0_root_add_63_4/U33/Q (nnd2s3)           0.15      0.06       3.08 f
+  add_1_root_add_0_root_add_63_4/net66939 (net)     3               0.00       3.08 f
+  add_1_root_add_0_root_add_63_4/U173/DIN2 (and2s2)       0.15      0.00       3.08 f
+  add_1_root_add_0_root_add_63_4/U173/Q (and2s2)          0.08      0.14       3.22 f
+  add_1_root_add_0_root_add_63_4/net66984 (net)     1               0.00       3.22 f
+  add_1_root_add_0_root_add_63_4/U66/DIN1 (nnd3s1)        0.08      0.00       3.22 f
+  add_1_root_add_0_root_add_63_4/U66/Q (nnd3s1)           0.27      0.09       3.31 r
+  add_1_root_add_0_root_add_63_4/net66983 (net)     1               0.00       3.31 r
+  add_1_root_add_0_root_add_63_4/U198/DIN2 (nnd2s2)       0.27      0.00       3.32 r
+  add_1_root_add_0_root_add_63_4/U198/Q (nnd2s2)          0.18      0.07       3.39 f
+  add_1_root_add_0_root_add_63_4/net66980 (net)     2               0.00       3.39 f
+  add_1_root_add_0_root_add_63_4/U200/DIN1 (nnd2s2)       0.18      0.00       3.39 f
+  add_1_root_add_0_root_add_63_4/U200/Q (nnd2s2)          0.21      0.07       3.46 r
+  add_1_root_add_0_root_add_63_4/net66976 (net)     1               0.00       3.46 r
+  add_1_root_add_0_root_add_63_4/U209/DIN1 (aoi21s3)      0.21      0.00       3.47 r
+  add_1_root_add_0_root_add_63_4/U209/Q (aoi21s3)         0.31      0.15       3.62 f
+  add_1_root_add_0_root_add_63_4/net66975 (net)     1               0.00       3.62 f
+  add_1_root_add_0_root_add_63_4/U47/DIN2 (xor2s3)        0.31      0.01       3.62 f
+  add_1_root_add_0_root_add_63_4/U47/Q (xor2s3)           0.24      0.24       3.87 r
+  add_1_root_add_0_root_add_63_4/SUM[19] (net)     3                0.00       3.87 r
+  add_1_root_add_0_root_add_63_4/SUM[19] (Cnter_DW01_add_36)        0.00       3.87 r
+  N617 (net)                                                        0.00       3.87 r
+  add_0_root_add_0_root_add_63_4/B[19] (Cnter_DW01_add_41)          0.00       3.87 r
+  add_0_root_add_0_root_add_63_4/B[19] (net)                        0.00       3.87 r
+  add_0_root_add_0_root_add_63_4/U77/DIN2 (nor2s3)        0.24      0.01       3.87 r
+  add_0_root_add_0_root_add_63_4/U77/Q (nor2s3)           0.20      0.08       3.95 f
+  add_0_root_add_0_root_add_63_4/net94273 (net)     2               0.00       3.95 f
+  add_0_root_add_0_root_add_63_4/U72/DIN1 (nor2s2)        0.20      0.00       3.95 f
+  add_0_root_add_0_root_add_63_4/U72/Q (nor2s2)           0.19      0.09       4.04 r
+  add_0_root_add_0_root_add_63_4/n53 (net)      2                   0.00       4.04 r
+  add_0_root_add_0_root_add_63_4/U199/DIN3 (oai21s3)      0.19      0.00       4.04 r
+  add_0_root_add_0_root_add_63_4/U199/Q (oai21s3)         0.26      0.12       4.16 f
+  add_0_root_add_0_root_add_63_4/net86169 (net)     1               0.00       4.16 f
+  add_0_root_add_0_root_add_63_4/U198/DIN (i1s3)          0.26      0.00       4.16 f
+  add_0_root_add_0_root_add_63_4/U198/Q (i1s3)            0.14      0.07       4.23 r
+  add_0_root_add_0_root_add_63_4/net86104 (net)     2               0.00       4.23 r
+  add_0_root_add_0_root_add_63_4/U84/DIN2 (nor2s1)        0.14      0.00       4.23 r
+  add_0_root_add_0_root_add_63_4/U84/Q (nor2s1)           0.24      0.10       4.33 f
+  add_0_root_add_0_root_add_63_4/net86185 (net)     1               0.00       4.33 f
+  add_0_root_add_0_root_add_63_4/U405/DIN1 (nnd2s2)       0.24      0.00       4.33 f
+  add_0_root_add_0_root_add_63_4/U405/Q (nnd2s2)          0.17      0.08       4.41 r
+  add_0_root_add_0_root_add_63_4/net86176 (net)     1               0.00       4.41 r
+  add_0_root_add_0_root_add_63_4/U177/DIN2 (aoi21s3)      0.17      0.00       4.42 r
+  add_0_root_add_0_root_add_63_4/U177/Q (aoi21s3)         0.27      0.13       4.55 f
+  add_0_root_add_0_root_add_63_4/net86172 (net)     1               0.00       4.55 f
+  add_0_root_add_0_root_add_63_4/U70/DIN1 (xnr2s3)        0.27      0.01       4.56 f
+  add_0_root_add_0_root_add_63_4/U70/Q (xnr2s3)           0.28      0.21       4.76 r
+  add_0_root_add_0_root_add_63_4/SUM[25] (net)     8                0.00       4.76 r
+  add_0_root_add_0_root_add_63_4/SUM[25] (Cnter_DW01_add_41)        0.00       4.76 r
+  temp1[25] (net)                                                   0.00       4.76 r
+  add_66/B[25] (Cnter_DW01_add_45)                                  0.00       4.76 r
+  add_66/B[25] (net)                                                0.00       4.76 r
+  add_66/U157/DIN1 (nor2s2)                               0.28      0.00       4.77 r
+  add_66/U157/Q (nor2s2)                                  0.25      0.15       4.91 f
+  add_66/net96371 (net)                         3                   0.00       4.91 f
+  add_66/U146/DIN1 (or4s3)                                0.25      0.00       4.91 f
+  add_66/U146/Q (or4s3)                                   0.13      0.18       5.09 f
+  add_66/net88577 (net)                         1                   0.00       5.09 f
+  add_66/U142/DIN (i1s4)                                  0.13      0.01       5.10 f
+  add_66/U142/Q (i1s4)                                    0.14      0.06       5.16 r
+  add_66/net88572 (net)                         4                   0.00       5.16 r
+  add_66/U144/DIN2 (nnd2s1)                               0.14      0.00       5.16 r
+  add_66/U144/Q (nnd2s1)                                  0.17      0.07       5.24 f
+  add_66/net88569 (net)                         1                   0.00       5.24 f
+  add_66/U131/DIN1 (and2s2)                               0.17      0.00       5.24 f
+  add_66/U131/Q (and2s2)                                  0.08      0.13       5.37 f
+  add_66/n39 (net)                              1                   0.00       5.37 f
+  add_66/U307/DIN1 (nnd3s1)                               0.08      0.00       5.37 f
+  add_66/U307/Q (nnd3s1)                                  0.27      0.08       5.45 r
+  add_66/n94 (net)                              1                   0.00       5.45 r
+  add_66/U127/DIN3 (aoi21s2)                              0.27      0.00       5.46 r
+  add_66/U127/Q (aoi21s2)                                 0.30      0.12       5.58 f
+  add_66/n91 (net)                              1                   0.00       5.58 f
+  add_66/U190/DIN1 (xor2s2)                               0.30      0.00       5.58 f
+  add_66/U190/Q (xor2s2)                                  0.22      0.26       5.84 f
+  add_66/SUM[29] (net)                          8                   0.00       5.84 f
+  add_66/SUM[29] (Cnter_DW01_add_45)                                0.00       5.84 f
+  new_e[29] (net)                                                   0.00       5.84 f
+  U2286/DIN2 (aoi222s1)                                   0.22      0.00       5.84 f
+  U2286/Q (aoi222s1)                                      0.43      0.13       5.97 r
+  net84779 (net)                                1                   0.00       5.97 r
+  U2640/DIN3 (oai21s3)                                    0.43      0.00       5.98 r
+  U2640/Q (oai21s3)                                       0.31      0.15       6.13 f
+  N1084 (net)                                   1                   0.00       6.13 f
+  result_reg[2][29]/DIN (dffs2)                           0.31      0.01       6.14 f
+  data arrival time                                                            6.14
+
+  clock clk (rise edge)                                             1.18       1.18
+  clock network delay (ideal)                                       0.00       1.18
+  clock uncertainty                                                -0.10       1.08
+  result_reg[2][29]/CLK (dffs2)                                     0.00       1.08 r
+  library setup time                                               -0.16       0.92
+  data required time                                                           0.92
+  ------------------------------------------------------------------------------------
+  data required time                                                           0.92
+  data arrival time                                                           -6.14
+  ------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -5.22
+
+
+  Startpoint: counter_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result_reg[2][31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                       Fanout     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock clk (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  counter_reg[0]/CLK (dffcs2)                             0.00      0.00       0.00 r
+  counter_reg[0]/QN (dffcs2)                              0.23      0.21       0.21 f
+  N97 (net)                                     2                   0.00       0.21 f
+  U2325/DIN (ib1s6)                                       0.23      0.01       0.22 f
+  U2325/Q (ib1s6)                                         0.07      0.06       0.28 r
+  net91706 (net)                                2                   0.00       0.28 r
+  U5528/DIN2 (xor2s3)                                     0.07      0.01       0.28 r
+  U5528/Q (xor2s3)                                        0.22      0.18       0.47 f
+  net48393 (net)                                8                   0.00       0.47 f
+  U2331/DIN (ib1s6)                                       0.22      0.01       0.48 f
+  U2331/Q (ib1s6)                                         0.09      0.06       0.54 r
+  alt304/net82007 (net)                         8                   0.00       0.54 r
+  U2327/DIN1 (and2s3)                                     0.09      0.00       0.55 r
+  U2327/Q (and2s3)                                        0.18      0.14       0.68 r
+  net93886 (net)                                6                   0.00       0.68 r
+  U2608/DIN2 (nnd2s1)                                     0.18      0.00       0.69 r
+  U2608/Q (nnd2s1)                                        0.42      0.19       0.88 f
+  n1484 (net)                                  12                   0.00       0.88 f
+  U3563/DIN4 (oai2222s2)                                  0.42      0.00       0.88 f
+  U3563/Q (oai2222s2)                                     0.17      0.46       1.34 r
+  n1524 (net)                                   1                   0.00       1.34 r
+  U3556/DIN1 (or2s3)                                      0.17      0.00       1.35 r
+  U3556/Q (or2s3)                                         0.19      0.18       1.53 r
+  N358 (net)                                    4                   0.00       1.53 r
+  U3370/SIN (mxi21s3)                                     0.19      0.00       1.53 r
+  U3370/Q (mxi21s3)                                       0.17      0.14       1.67 r
+  N454 (net)                                    3                   0.00       1.67 r
+  add_3_root_add_0_root_add_63_4/B[15] (Cnter_DW01_add_34)          0.00       1.67 r
+  add_3_root_add_0_root_add_63_4/B[15] (net)                        0.00       1.67 r
+  add_3_root_add_0_root_add_63_4/U99/DIN1 (nor2s2)        0.17      0.00       1.67 r
+  add_3_root_add_0_root_add_63_4/U99/Q (nor2s2)           0.18      0.10       1.77 f
+  add_3_root_add_0_root_add_63_4/net93741 (net)     1               0.00       1.77 f
+  add_3_root_add_0_root_add_63_4/U149/DIN4 (or4s3)        0.18      0.00       1.78 f
+  add_3_root_add_0_root_add_63_4/U149/Q (or4s3)           0.13      0.17       1.95 f
+  add_3_root_add_0_root_add_63_4/net65787 (net)     2               0.00       1.95 f
+  add_3_root_add_0_root_add_63_4/U278/DIN (i1s3)          0.13      0.00       1.95 f
+  add_3_root_add_0_root_add_63_4/U278/Q (i1s3)            0.12      0.05       2.00 r
+  add_3_root_add_0_root_add_63_4/net65789 (net)     2               0.00       2.00 r
+  add_3_root_add_0_root_add_63_4/U132/DIN2 (nnd3s2)       0.12      0.00       2.00 r
+  add_3_root_add_0_root_add_63_4/U132/Q (nnd3s2)          0.20      0.09       2.09 f
+  add_3_root_add_0_root_add_63_4/net65813 (net)     1               0.00       2.09 f
+  add_3_root_add_0_root_add_63_4/U29/DIN (i1s3)           0.20      0.00       2.10 f
+  add_3_root_add_0_root_add_63_4/U29/Q (i1s3)             0.13      0.06       2.16 r
+  add_3_root_add_0_root_add_63_4/net65779 (net)     2               0.00       2.16 r
+  add_3_root_add_0_root_add_63_4/U268/DIN3 (or4s3)        0.13      0.00       2.16 r
+  add_3_root_add_0_root_add_63_4/U268/Q (or4s3)           0.22      0.18       2.34 r
+  add_3_root_add_0_root_add_63_4/n116 (net)     2                   0.00       2.34 r
+  add_3_root_add_0_root_add_63_4/U83/DIN (i1s3)           0.22      0.00       2.35 r
+  add_3_root_add_0_root_add_63_4/U83/Q (i1s3)             0.14      0.07       2.41 f
+  add_3_root_add_0_root_add_63_4/n149 (net)     3                   0.00       2.41 f
+  add_3_root_add_0_root_add_63_4/U158/DIN1 (oai21s3)      0.14      0.00       2.41 f
+  add_3_root_add_0_root_add_63_4/U158/Q (oai21s3)         0.34      0.14       2.56 r
+  add_3_root_add_0_root_add_63_4/n174 (net)     1                   0.00       2.56 r
+  add_3_root_add_0_root_add_63_4/U85/DIN1 (xor2s3)        0.34      0.01       2.56 r
+  add_3_root_add_0_root_add_63_4/U85/Q (xor2s3)           0.20      0.24       2.80 r
+  add_3_root_add_0_root_add_63_4/SUM[17] (net)     6                0.00       2.80 r
+  add_3_root_add_0_root_add_63_4/SUM[17] (Cnter_DW01_add_34)        0.00       2.80 r
+  N583 (net)                                                        0.00       2.80 r
+  add_1_root_add_0_root_add_63_4/B[17] (Cnter_DW01_add_36)          0.00       2.80 r
+  add_1_root_add_0_root_add_63_4/B[17] (net)                        0.00       2.80 r
+  add_1_root_add_0_root_add_63_4/U57/DIN1 (nor2s3)        0.20      0.01       2.81 r
+  add_1_root_add_0_root_add_63_4/U57/Q (nor2s3)           0.24      0.10       2.91 f
+  add_1_root_add_0_root_add_63_4/n132 (net)     1                   0.00       2.91 f
+  add_1_root_add_0_root_add_63_4/U258/DIN2 (nor2s2)       0.24      0.00       2.91 f
+  add_1_root_add_0_root_add_63_4/U258/Q (nor2s2)          0.20      0.08       2.99 r
+  add_1_root_add_0_root_add_63_4/n130 (net)     2                   0.00       2.99 r
+  add_1_root_add_0_root_add_63_4/U61/DIN1 (oai21s2)       0.20      0.00       2.99 r
+  add_1_root_add_0_root_add_63_4/U61/Q (oai21s2)          0.27      0.14       3.13 f
+  add_1_root_add_0_root_add_63_4/n129 (net)     1                   0.00       3.13 f
+  add_1_root_add_0_root_add_63_4/U239/DIN1 (nnd2s2)       0.27      0.00       3.14 f
+  add_1_root_add_0_root_add_63_4/U239/Q (nnd2s2)          0.29      0.13       3.27 r
+  add_1_root_add_0_root_add_63_4/net96845 (net)     4               0.00       3.27 r
+  add_1_root_add_0_root_add_63_4/U133/DIN1 (aoi21s3)      0.29      0.00       3.27 r
+  add_1_root_add_0_root_add_63_4/U133/Q (aoi21s3)         0.25      0.12       3.39 f
+  add_1_root_add_0_root_add_63_4/n24 (net)      1                   0.00       3.39 f
+  add_1_root_add_0_root_add_63_4/U119/DIN2 (nnd2s2)       0.25      0.00       3.39 f
+  add_1_root_add_0_root_add_63_4/U119/Q (nnd2s2)          0.19      0.10       3.49 r
+  add_1_root_add_0_root_add_63_4/net66919 (net)     1               0.00       3.49 r
+  add_1_root_add_0_root_add_63_4/U137/DIN2 (aoi21s3)      0.19      0.00       3.50 r
+  add_1_root_add_0_root_add_63_4/U137/Q (aoi21s3)         0.26      0.13       3.62 f
+  add_1_root_add_0_root_add_63_4/net66917 (net)     1               0.00       3.62 f
+  add_1_root_add_0_root_add_63_4/U136/DIN2 (xor2s2)       0.26      0.00       3.63 f
+  add_1_root_add_0_root_add_63_4/U136/Q (xor2s2)          0.18      0.24       3.86 r
+  add_1_root_add_0_root_add_63_4/SUM[23] (net)     2                0.00       3.86 r
+  add_1_root_add_0_root_add_63_4/SUM[23] (Cnter_DW01_add_36)        0.00       3.86 r
+  N621 (net)                                                        0.00       3.86 r
+  add_0_root_add_0_root_add_63_4/B[23] (Cnter_DW01_add_41)          0.00       3.86 r
+  add_0_root_add_0_root_add_63_4/B[23] (net)                        0.00       3.86 r
+  add_0_root_add_0_root_add_63_4/U57/DIN (i1s3)           0.18      0.00       3.87 r
+  add_0_root_add_0_root_add_63_4/U57/Q (i1s3)             0.10      0.05       3.91 f
+  add_0_root_add_0_root_add_63_4/n46 (net)      1                   0.00       3.91 f
+  add_0_root_add_0_root_add_63_4/U181/DIN1 (nnd2s3)       0.10      0.01       3.92 f
+  add_0_root_add_0_root_add_63_4/U181/Q (nnd2s3)          0.22      0.08       4.00 r
+  add_0_root_add_0_root_add_63_4/net86103 (net)     5               0.00       4.00 r
+  add_0_root_add_0_root_add_63_4/U173/DIN (i1s3)          0.22      0.00       4.01 r
+  add_0_root_add_0_root_add_63_4/U173/Q (i1s3)            0.09      0.04       4.05 f
+  add_0_root_add_0_root_add_63_4/net86184 (net)     1               0.00       4.05 f
+  add_0_root_add_0_root_add_63_4/U172/DIN2 (or4s3)        0.09      0.00       4.05 f
+  add_0_root_add_0_root_add_63_4/U172/Q (or4s3)           0.16      0.16       4.20 f
+  add_0_root_add_0_root_add_63_4/net86142 (net)     2               0.00       4.20 f
+  add_0_root_add_0_root_add_63_4/U90/DIN (i1s5)           0.16      0.01       4.21 f
+  add_0_root_add_0_root_add_63_4/U90/Q (i1s5)             0.16      0.07       4.28 r
+  add_0_root_add_0_root_add_63_4/net95824 (net)     4               0.00       4.28 r
+  add_0_root_add_0_root_add_63_4/U125/DIN2 (and2s3)       0.16      0.00       4.29 r
+  add_0_root_add_0_root_add_63_4/U125/Q (and2s3)          0.14      0.13       4.42 r
+  add_0_root_add_0_root_add_63_4/n84 (net)      4                   0.00       4.42 r
+  add_0_root_add_0_root_add_63_4/U268/DIN2 (nnd2s1)       0.14      0.00       4.42 r
+  add_0_root_add_0_root_add_63_4/U268/Q (nnd2s1)          0.19      0.08       4.50 f
+  add_0_root_add_0_root_add_63_4/n72 (net)      1                   0.00       4.50 f
+  add_0_root_add_0_root_add_63_4/U108/DIN1 (nnd2s2)       0.19      0.00       4.50 f
+  add_0_root_add_0_root_add_63_4/U108/Q (nnd2s2)          0.18      0.07       4.57 r
+  add_0_root_add_0_root_add_63_4/n159 (net)     1                   0.00       4.57 r
+  add_0_root_add_0_root_add_63_4/U400/DIN3 (aoi21s3)      0.18      0.00       4.57 r
+  add_0_root_add_0_root_add_63_4/U400/Q (aoi21s3)         0.25      0.09       4.66 f
+  add_0_root_add_0_root_add_63_4/n156 (net)     1                   0.00       4.66 f
+  add_0_root_add_0_root_add_63_4/U285/DIN1 (nnd3s2)       0.25      0.00       4.66 f
+  add_0_root_add_0_root_add_63_4/U285/Q (nnd3s2)          0.31      0.13       4.79 r
+  add_0_root_add_0_root_add_63_4/n133 (net)     2                   0.00       4.79 r
+  add_0_root_add_0_root_add_63_4/U313/DIN1 (xnr2s3)       0.31      0.00       4.79 r
+  add_0_root_add_0_root_add_63_4/U313/Q (xnr2s3)          0.21      0.22       5.01 f
+  add_0_root_add_0_root_add_63_4/SUM[29] (net)     4                0.00       5.01 f
+  add_0_root_add_0_root_add_63_4/SUM[29] (Cnter_DW01_add_41)        0.00       5.01 f
+  temp1[29] (net)                                                   0.00       5.01 f
+  add_0_root_add_0_root_add_65/B[29] (Cnter_DW01_add_22)            0.00       5.01 f
+  add_0_root_add_0_root_add_65/B[29] (net)                          0.00       5.01 f
+  add_0_root_add_0_root_add_65/U86/DIN (i1s3)             0.21      0.00       5.02 f
+  add_0_root_add_0_root_add_65/U86/Q (i1s3)               0.12      0.06       5.07 r
+  add_0_root_add_0_root_add_65/n94 (net)        1                   0.00       5.07 r
+  add_0_root_add_0_root_add_65/U306/DIN1 (nnd2s3)         0.12      0.01       5.08 r
+  add_0_root_add_0_root_add_65/U306/Q (nnd2s3)            0.15      0.06       5.14 f
+  add_0_root_add_0_root_add_65/n84 (net)        3                   0.00       5.14 f
+  add_0_root_add_0_root_add_65/U301/DIN1 (nnd2s3)         0.15      0.00       5.15 f
+  add_0_root_add_0_root_add_65/U301/Q (nnd2s3)            0.22      0.08       5.22 r
+  add_0_root_add_0_root_add_65/net58355 (net)     2                 0.00       5.22 r
+  add_0_root_add_0_root_add_65/U23/DIN (i1s4)             0.22      0.01       5.23 r
+  add_0_root_add_0_root_add_65/U23/Q (i1s4)               0.11      0.04       5.27 f
+  add_0_root_add_0_root_add_65/n5 (net)         3                   0.00       5.27 f
+  add_0_root_add_0_root_add_65/U311/DIN1 (nnd2s1)         0.11      0.00       5.27 f
+  add_0_root_add_0_root_add_65/U311/Q (nnd2s1)            0.18      0.07       5.34 r
+  add_0_root_add_0_root_add_65/n79 (net)        1                   0.00       5.34 r
+  add_0_root_add_0_root_add_65/U288/DIN2 (nor2s1)         0.18      0.00       5.34 r
+  add_0_root_add_0_root_add_65/U288/Q (nor2s1)            0.19      0.08       5.42 f
+  add_0_root_add_0_root_add_65/n78 (net)        1                   0.00       5.42 f
+  add_0_root_add_0_root_add_65/U163/DIN1 (nnd2s1)         0.19      0.00       5.42 f
+  add_0_root_add_0_root_add_65/U163/Q (nnd2s1)            0.23      0.09       5.52 r
+  add_0_root_add_0_root_add_65/n69 (net)        1                   0.00       5.52 r
+  add_0_root_add_0_root_add_65/U323/DIN1 (nnd3s2)         0.23      0.00       5.52 r
+  add_0_root_add_0_root_add_65/U323/Q (nnd3s2)            0.19      0.08       5.60 f
+  add_0_root_add_0_root_add_65/n67 (net)        1                   0.00       5.60 f
+  add_0_root_add_0_root_add_65/U61/DIN2 (xor2s2)          0.19      0.00       5.61 f
+  add_0_root_add_0_root_add_65/U61/Q (xor2s2)             0.24      0.25       5.86 r
+  add_0_root_add_0_root_add_65/SUM[31] (net)     1                  0.00       5.86 r
+  add_0_root_add_0_root_add_65/SUM[31] (Cnter_DW01_add_22)          0.00       5.86 r
+  new_a[31] (net)                                                   0.00       5.86 r
+  U2220/DIN (ib1s6)                                       0.24      0.01       5.87 r
+  U2220/Q (ib1s6)                                         0.06      0.03       5.91 f
+  net84640 (net)                                8                   0.00       5.91 f
+  U2213/DIN1 (oai221s2)                                   0.06      0.00       5.91 f
+  U2213/Q (oai221s2)                                      0.63      0.23       6.14 r
+  N1086 (net)                                   1                   0.00       6.14 r
+  result_reg[2][31]/DIN (dffs1)                           0.63      0.01       6.14 r
+  data arrival time                                                            6.14
+
+  clock clk (rise edge)                                             1.18       1.18
+  clock network delay (ideal)                                       0.00       1.18
+  clock uncertainty                                                -0.10       1.08
+  result_reg[2][31]/CLK (dffs1)                                     0.00       1.08 r
+  library setup time                                               -0.15       0.93
+  data required time                                                           0.93
+  ------------------------------------------------------------------------------------
+  data required time                                                           0.93
+  data arrival time                                                           -6.14
+  ------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -5.22
+
+
+  Startpoint: W[27][1] (input port clocked by clk)
+  Endpoint: result_reg[2][26]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                       Fanout     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock clk (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  input external delay                                              0.00       0.00 r
+  W[27][1] (in)                                           0.23      0.02       0.02 r
+  W[27][1] (net)                                1                   0.00       0.02 r
+  U1491/DIN4 (aoi22s2)                                    0.23      0.00       0.02 r
+  U1491/Q (aoi22s2)                                       0.30      0.15       0.17 f
+  n1859 (net)                                   1                   0.00       0.17 f
+  U3705/DIN4 (nnd4s1)                                     0.30      0.00       0.17 f
+  U3705/Q (nnd4s1)                                        0.38      0.20       0.37 r
+  alt292/net82387 (net)                         1                   0.00       0.37 r
+  U2276/DIN1 (oai21s2)                                    0.38      0.00       0.37 r
+  U2276/Q (oai21s2)                                       0.26      0.14       0.51 f
+  alt292/net82385 (net)                         1                   0.00       0.51 f
+  U2235/DIN4 (nnd4s1)                                     0.26      0.00       0.51 f
+  U2235/Q (nnd4s1)                                        0.43      0.21       0.73 r
+  N564 (net)                                    2                   0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/A[1] (Cnter_DW01_add_36)           0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/A[1] (net)                         0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/U114/DIN2 (or2s2)        0.43      0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/U114/Q (or2s2)           0.14      0.18       0.90 r
+  add_1_root_add_0_root_add_63_4/net66831 (net)     3               0.00       0.90 r
+  add_1_root_add_0_root_add_63_4/U25/DIN2 (nnd2s2)        0.14      0.00       0.91 r
+  add_1_root_add_0_root_add_63_4/U25/Q (nnd2s2)           0.14      0.07       0.98 f
+  add_1_root_add_0_root_add_63_4/net67111 (net)     1               0.00       0.98 f
+  add_1_root_add_0_root_add_63_4/U105/DIN2 (aoi13s3)      0.14      0.00       0.98 f
+  add_1_root_add_0_root_add_63_4/U105/Q (aoi13s3)         0.37      0.15       1.13 r
+  add_1_root_add_0_root_add_63_4/net66788 (net)     2               0.00       1.13 r
+  add_1_root_add_0_root_add_63_4/U106/DIN2 (oai21s3)      0.37      0.00       1.13 r
+  add_1_root_add_0_root_add_63_4/U106/Q (oai21s3)         0.24      0.11       1.24 f
+  add_1_root_add_0_root_add_63_4/net66781 (net)     2               0.00       1.24 f
+  add_1_root_add_0_root_add_63_4/U275/DIN1 (nnd2s2)       0.24      0.00       1.25 f
+  add_1_root_add_0_root_add_63_4/U275/Q (nnd2s2)          0.17      0.08       1.33 r
+  add_1_root_add_0_root_add_63_4/n65 (net)      1                   0.00       1.33 r
+  add_1_root_add_0_root_add_63_4/U338/DIN2 (aoi21s3)      0.17      0.00       1.33 r
+  add_1_root_add_0_root_add_63_4/U338/Q (aoi21s3)         0.25      0.12       1.45 f
+  add_1_root_add_0_root_add_63_4/n64 (net)      1                   0.00       1.45 f
+  add_1_root_add_0_root_add_63_4/U303/DIN1 (xor2s2)       0.25      0.00       1.46 f
+  add_1_root_add_0_root_add_63_4/U303/Q (xor2s2)          0.14      0.20       1.66 f
+  add_1_root_add_0_root_add_63_4/SUM[7] (net)     2                 0.00       1.66 f
+  add_1_root_add_0_root_add_63_4/SUM[7] (Cnter_DW01_add_36)         0.00       1.66 f
+  N605 (net)                                                        0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/B[7] (Cnter_DW01_add_41)           0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/B[7] (net)                         0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/U288/DIN (i1s3)          0.14      0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/U288/Q (i1s3)            0.12      0.05       1.71 r
+  add_0_root_add_0_root_add_63_4/n250 (net)     2                   0.00       1.71 r
+  add_0_root_add_0_root_add_63_4/U41/DIN1 (nnd2s2)        0.12      0.00       1.71 r
+  add_0_root_add_0_root_add_63_4/U41/Q (nnd2s2)           0.11      0.05       1.76 f
+  add_0_root_add_0_root_add_63_4/n186 (net)     1                   0.00       1.76 f
+  add_0_root_add_0_root_add_63_4/U257/DIN1 (and2s2)       0.11      0.00       1.77 f
+  add_0_root_add_0_root_add_63_4/U257/Q (and2s2)          0.11      0.14       1.90 f
+  add_0_root_add_0_root_add_63_4/n239 (net)     1                   0.00       1.90 f
+  add_0_root_add_0_root_add_63_4/U254/DIN1 (nnd3s3)       0.11      0.01       1.91 f
+  add_0_root_add_0_root_add_63_4/U254/Q (nnd3s3)          0.24      0.07       1.98 r
+  add_0_root_add_0_root_add_63_4/n237 (net)     2                   0.00       1.98 r
+  add_0_root_add_0_root_add_63_4/U339/DIN (i1s3)          0.24      0.00       1.98 r
+  add_0_root_add_0_root_add_63_4/U339/Q (i1s3)            0.11      0.05       2.03 f
+  add_0_root_add_0_root_add_63_4/n188 (net)     1                   0.00       2.03 f
+  add_0_root_add_0_root_add_63_4/U299/DIN2 (nor2s2)       0.11      0.00       2.03 f
+  add_0_root_add_0_root_add_63_4/U299/Q (nor2s2)          0.23      0.07       2.10 r
+  add_0_root_add_0_root_add_63_4/n236 (net)     1                   0.00       2.10 r
+  add_0_root_add_0_root_add_63_4/U291/DIN1 (nnd2s3)       0.23      0.01       2.11 r
+  add_0_root_add_0_root_add_63_4/U291/Q (nnd2s3)          0.18      0.07       2.18 f
+  add_0_root_add_0_root_add_63_4/n101 (net)     2                   0.00       2.18 f
+  add_0_root_add_0_root_add_63_4/U276/DIN1 (nnd2s3)       0.18      0.00       2.18 f
+  add_0_root_add_0_root_add_63_4/U276/Q (nnd2s3)          0.19      0.08       2.26 r
+  add_0_root_add_0_root_add_63_4/n234 (net)     2                   0.00       2.26 r
+  add_0_root_add_0_root_add_63_4/U5/DIN1 (nnd2s2)         0.19      0.00       2.26 r
+  add_0_root_add_0_root_add_63_4/U5/Q (nnd2s2)            0.13      0.05       2.32 f
+  add_0_root_add_0_root_add_63_4/n1 (net)       1                   0.00       2.32 f
+  add_0_root_add_0_root_add_63_4/U6/DIN1 (and2s2)         0.13      0.00       2.32 f
+  add_0_root_add_0_root_add_63_4/U6/Q (and2s2)            0.09      0.13       2.45 f
+  add_0_root_add_0_root_add_63_4/n73 (net)      1                   0.00       2.45 f
+  add_0_root_add_0_root_add_63_4/U292/DIN2 (aoi21s3)      0.09      0.00       2.45 f
+  add_0_root_add_0_root_add_63_4/U292/Q (aoi21s3)         0.28      0.12       2.57 r
+  add_0_root_add_0_root_add_63_4/n228 (net)     1                   0.00       2.57 r
+  add_0_root_add_0_root_add_63_4/U306/DIN1 (xnr2s3)       0.28      0.01       2.58 r
+  add_0_root_add_0_root_add_63_4/U306/Q (xnr2s3)          0.31      0.22       2.80 f
+  add_0_root_add_0_root_add_63_4/SUM[11] (net)     7                0.00       2.80 f
+  add_0_root_add_0_root_add_63_4/SUM[11] (Cnter_DW01_add_41)        0.00       2.80 f
+  temp1[11] (net)                                                   0.00       2.80 f
+  add_66/B[11] (Cnter_DW01_add_45)                                  0.00       2.80 f
+  add_66/B[11] (net)                                                0.00       2.80 f
+  add_66/U234/DIN1 (or2s2)                                0.31      0.00       2.80 f
+  add_66/U234/Q (or2s2)                                   0.10      0.17       2.98 f
+  add_66/n182 (net)                             2                   0.00       2.98 f
+  add_66/U229/DIN1 (and2s2)                               0.10      0.00       2.98 f
+  add_66/U229/Q (and2s2)                                  0.09      0.12       3.10 f
+  add_66/n42 (net)                              1                   0.00       3.10 f
+  add_66/U210/DIN3 (and4s3)                               0.09      0.00       3.10 f
+  add_66/U210/Q (and4s3)                                  0.11      0.12       3.23 f
+  add_66/n153 (net)                             2                   0.00       3.23 f
+  add_66/U182/DIN2 (aoi21s3)                              0.11      0.00       3.23 f
+  add_66/U182/Q (aoi21s3)                                 0.31      0.13       3.36 r
+  add_66/n35 (net)                              1                   0.00       3.36 r
+  add_66/U179/DIN1 (nnd3s3)                               0.31      0.01       3.36 r
+  add_66/U179/Q (nnd3s3)                                  0.26      0.10       3.46 f
+  add_66/net88609 (net)                         3                   0.00       3.46 f
+  add_66/U50/DIN (i1s5)                                   0.26      0.01       3.47 f
+  add_66/U50/Q (i1s5)                                     0.18      0.09       3.55 r
+  add_66/net88525 (net)                         9                   0.00       3.55 r
+  add_66/U310/DIN1 (oai21s1)                              0.18      0.00       3.55 r
+  add_66/U310/Q (oai21s1)                                 0.33      0.17       3.73 f
+  add_66/n119 (net)                             1                   0.00       3.73 f
+  add_66/U113/DIN2 (aoi21s2)                              0.33      0.00       3.73 f
+  add_66/U113/Q (aoi21s2)                                 0.32      0.16       3.89 r
+  add_66/n116 (net)                             1                   0.00       3.89 r
+  add_66/U110/DIN1 (xnr2s3)                               0.32      0.01       3.89 r
+  add_66/U110/Q (xnr2s3)                                  0.31      0.23       4.12 f
+  add_66/SUM[26] (net)                          8                   0.00       4.12 f
+  add_66/SUM[26] (Cnter_DW01_add_45)                                0.00       4.12 f
+  new_e[26] (net)                                                   0.00       4.12 f
+  U2664/DIN2 (aoi22s1)                                    0.31      0.00       4.12 f
+  U2664/Q (aoi22s1)                                       0.29      0.12       4.25 r
+  n4410 (net)                                   1                   0.00       4.25 r
+  U5707/DIN5 (oai221s2)                                   0.29      0.00       4.25 r
+  U5707/Q (oai221s2)                                      0.54      0.20       4.45 f
+  N1081 (net)                                   1                   0.00       4.45 f
+  result_reg[2][26]/DIN (dffs2)                           0.54      0.01       4.46 f
+  data arrival time                                                            4.46
+
+  clock clk (rise edge)                                             1.18       1.18
+  clock network delay (ideal)                                       0.00       1.18
+  clock uncertainty                                                -0.10       1.08
+  result_reg[2][26]/CLK (dffs2)                                     0.00       1.08 r
+  library setup time                                               -0.19       0.89
+  data required time                                                           0.89
+  ------------------------------------------------------------------------------------
+  data required time                                                           0.89
+  data arrival time                                                           -4.46
+  ------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -3.57
+
+
+  Startpoint: W[27][1] (input port clocked by clk)
+  Endpoint: result_reg[1][25]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                       Fanout     Trans      Incr       Path
+  ------------------------------------------------------------------------------------
+  clock clk (rise edge)                                             0.00       0.00
+  clock network delay (ideal)                                       0.00       0.00
+  input external delay                                              0.00       0.00 r
+  W[27][1] (in)                                           0.23      0.02       0.02 r
+  W[27][1] (net)                                1                   0.00       0.02 r
+  U1491/DIN4 (aoi22s2)                                    0.23      0.00       0.02 r
+  U1491/Q (aoi22s2)                                       0.30      0.15       0.17 f
+  n1859 (net)                                   1                   0.00       0.17 f
+  U3705/DIN4 (nnd4s1)                                     0.30      0.00       0.17 f
+  U3705/Q (nnd4s1)                                        0.38      0.20       0.37 r
+  alt292/net82387 (net)                         1                   0.00       0.37 r
+  U2276/DIN1 (oai21s2)                                    0.38      0.00       0.37 r
+  U2276/Q (oai21s2)                                       0.26      0.14       0.51 f
+  alt292/net82385 (net)                         1                   0.00       0.51 f
+  U2235/DIN4 (nnd4s1)                                     0.26      0.00       0.51 f
+  U2235/Q (nnd4s1)                                        0.43      0.21       0.73 r
+  N564 (net)                                    2                   0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/A[1] (Cnter_DW01_add_36)           0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/A[1] (net)                         0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/U114/DIN2 (or2s2)        0.43      0.00       0.73 r
+  add_1_root_add_0_root_add_63_4/U114/Q (or2s2)           0.14      0.18       0.90 r
+  add_1_root_add_0_root_add_63_4/net66831 (net)     3               0.00       0.90 r
+  add_1_root_add_0_root_add_63_4/U25/DIN2 (nnd2s2)        0.14      0.00       0.91 r
+  add_1_root_add_0_root_add_63_4/U25/Q (nnd2s2)           0.14      0.07       0.98 f
+  add_1_root_add_0_root_add_63_4/net67111 (net)     1               0.00       0.98 f
+  add_1_root_add_0_root_add_63_4/U105/DIN2 (aoi13s3)      0.14      0.00       0.98 f
+  add_1_root_add_0_root_add_63_4/U105/Q (aoi13s3)         0.37      0.15       1.13 r
+  add_1_root_add_0_root_add_63_4/net66788 (net)     2               0.00       1.13 r
+  add_1_root_add_0_root_add_63_4/U106/DIN2 (oai21s3)      0.37      0.00       1.13 r
+  add_1_root_add_0_root_add_63_4/U106/Q (oai21s3)         0.24      0.11       1.24 f
+  add_1_root_add_0_root_add_63_4/net66781 (net)     2               0.00       1.24 f
+  add_1_root_add_0_root_add_63_4/U275/DIN1 (nnd2s2)       0.24      0.00       1.25 f
+  add_1_root_add_0_root_add_63_4/U275/Q (nnd2s2)          0.17      0.08       1.33 r
+  add_1_root_add_0_root_add_63_4/n65 (net)      1                   0.00       1.33 r
+  add_1_root_add_0_root_add_63_4/U338/DIN2 (aoi21s3)      0.17      0.00       1.33 r
+  add_1_root_add_0_root_add_63_4/U338/Q (aoi21s3)         0.25      0.12       1.45 f
+  add_1_root_add_0_root_add_63_4/n64 (net)      1                   0.00       1.45 f
+  add_1_root_add_0_root_add_63_4/U303/DIN1 (xor2s2)       0.25      0.00       1.46 f
+  add_1_root_add_0_root_add_63_4/U303/Q (xor2s2)          0.14      0.20       1.66 f
+  add_1_root_add_0_root_add_63_4/SUM[7] (net)     2                 0.00       1.66 f
+  add_1_root_add_0_root_add_63_4/SUM[7] (Cnter_DW01_add_36)         0.00       1.66 f
+  N605 (net)                                                        0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/B[7] (Cnter_DW01_add_41)           0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/B[7] (net)                         0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/U288/DIN (i1s3)          0.14      0.00       1.66 f
+  add_0_root_add_0_root_add_63_4/U288/Q (i1s3)            0.12      0.05       1.71 r
+  add_0_root_add_0_root_add_63_4/n250 (net)     2                   0.00       1.71 r
+  add_0_root_add_0_root_add_63_4/U41/DIN1 (nnd2s2)        0.12      0.00       1.71 r
+  add_0_root_add_0_root_add_63_4/U41/Q (nnd2s2)           0.11      0.05       1.76 f
+  add_0_root_add_0_root_add_63_4/n186 (net)     1                   0.00       1.76 f
+  add_0_root_add_0_root_add_63_4/U257/DIN1 (and2s2)       0.11      0.00       1.77 f
+  add_0_root_add_0_root_add_63_4/U257/Q (and2s2)          0.11      0.14       1.90 f
+  add_0_root_add_0_root_add_63_4/n239 (net)     1                   0.00       1.90 f
+  add_0_root_add_0_root_add_63_4/U254/DIN1 (nnd3s3)       0.11      0.01       1.91 f
+  add_0_root_add_0_root_add_63_4/U254/Q (nnd3s3)          0.24      0.07       1.98 r
+  add_0_root_add_0_root_add_63_4/n237 (net)     2                   0.00       1.98 r
+  add_0_root_add_0_root_add_63_4/U339/DIN (i1s3)          0.24      0.00       1.98 r
+  add_0_root_add_0_root_add_63_4/U339/Q (i1s3)            0.11      0.05       2.03 f
+  add_0_root_add_0_root_add_63_4/n188 (net)     1                   0.00       2.03 f
+  add_0_root_add_0_root_add_63_4/U299/DIN2 (nor2s2)       0.11      0.00       2.03 f
+  add_0_root_add_0_root_add_63_4/U299/Q (nor2s2)          0.23      0.07       2.10 r
+  add_0_root_add_0_root_add_63_4/n236 (net)     1                   0.00       2.10 r
+  add_0_root_add_0_root_add_63_4/U291/DIN1 (nnd2s3)       0.23      0.01       2.11 r
+  add_0_root_add_0_root_add_63_4/U291/Q (nnd2s3)          0.18      0.07       2.18 f
+  add_0_root_add_0_root_add_63_4/n101 (net)     2                   0.00       2.18 f
+  add_0_root_add_0_root_add_63_4/U276/DIN1 (nnd2s3)       0.18      0.00       2.18 f
+  add_0_root_add_0_root_add_63_4/U276/Q (nnd2s3)          0.19      0.08       2.26 r
+  add_0_root_add_0_root_add_63_4/n234 (net)     2                   0.00       2.26 r
+  add_0_root_add_0_root_add_63_4/U303/DIN1 (nnd2s3)       0.19      0.00       2.26 r
+  add_0_root_add_0_root_add_63_4/U303/Q (nnd2s3)          0.14      0.05       2.32 f
+  add_0_root_add_0_root_add_63_4/n97 (net)      2                   0.00       2.32 f
+  add_0_root_add_0_root_add_63_4/U3/DIN1 (nnd2s2)         0.14      0.00       2.32 f
+  add_0_root_add_0_root_add_63_4/U3/Q (nnd2s2)            0.16      0.06       2.38 r
+  add_0_root_add_0_root_add_63_4/n233 (net)     1                   0.00       2.38 r
+  add_0_root_add_0_root_add_63_4/U246/DIN2 (nnd2s2)       0.16      0.00       2.39 r
+  add_0_root_add_0_root_add_63_4/U246/Q (nnd2s2)          0.19      0.07       2.46 f
+  add_0_root_add_0_root_add_63_4/n230 (net)     1                   0.00       2.46 f
+  add_0_root_add_0_root_add_63_4/U237/DIN1 (xnr2s3)       0.19      0.01       2.47 f
+  add_0_root_add_0_root_add_63_4/U237/Q (xnr2s3)          0.18      0.19       2.65 r
+  add_0_root_add_0_root_add_63_4/SUM[10] (net)     6                0.00       2.65 r
+  add_0_root_add_0_root_add_63_4/SUM[10] (Cnter_DW01_add_41)        0.00       2.65 r
+  temp1[10] (net)                                                   0.00       2.65 r
+  add_0_root_add_0_root_add_65/B[10] (Cnter_DW01_add_22)            0.00       2.65 r
+  add_0_root_add_0_root_add_65/B[10] (net)                          0.00       2.65 r
+  add_0_root_add_0_root_add_65/U200/DIN2 (nor2s2)         0.18      0.00       2.66 r
+  add_0_root_add_0_root_add_65/U200/Q (nor2s2)            0.23      0.08       2.73 f
+  add_0_root_add_0_root_add_65/n196 (net)       1                   0.00       2.73 f
+  add_0_root_add_0_root_add_65/U203/DIN2 (nor2s2)         0.23      0.00       2.73 f
+  add_0_root_add_0_root_add_65/U203/Q (nor2s2)            0.21      0.08       2.82 r
+  add_0_root_add_0_root_add_65/n167 (net)       2                   0.00       2.82 r
+  add_0_root_add_0_root_add_65/U94/DIN3 (aoi21s3)         0.21      0.00       2.82 r
+  add_0_root_add_0_root_add_65/U94/Q (aoi21s3)            0.25      0.09       2.91 f
+  add_0_root_add_0_root_add_65/n166 (net)       1                   0.00       2.91 f
+  add_0_root_add_0_root_add_65/U173/DIN1 (nnd3s2)         0.25      0.00       2.91 f
+  add_0_root_add_0_root_add_65/U173/Q (nnd3s2)            0.25      0.10       3.01 r
+  add_0_root_add_0_root_add_65/n163 (net)       2                   0.00       3.01 r
+  add_0_root_add_0_root_add_65/U171/DIN1 (and2s2)         0.25      0.00       3.02 r
+  add_0_root_add_0_root_add_65/U171/Q (and2s2)            0.10      0.11       3.13 r
+  add_0_root_add_0_root_add_65/n162 (net)       1                   0.00       3.13 r
+  add_0_root_add_0_root_add_65/U208/DIN3 (aoi21s3)        0.10      0.00       3.13 r
+  add_0_root_add_0_root_add_65/U208/Q (aoi21s3)           0.25      0.09       3.22 f
+  add_0_root_add_0_root_add_65/n149 (net)       1                   0.00       3.22 f
+  add_0_root_add_0_root_add_65/U207/DIN2 (oai21s3)        0.25      0.00       3.22 f
+  add_0_root_add_0_root_add_65/U207/Q (oai21s3)           0.37      0.16       3.38 r
+  add_0_root_add_0_root_add_65/net58507 (net)     2                 0.00       3.38 r
+  add_0_root_add_0_root_add_65/U37/DIN (i1s4)             0.37      0.01       3.39 r
+  add_0_root_add_0_root_add_65/U37/Q (i1s4)               0.15      0.05       3.44 f
+  add_0_root_add_0_root_add_65/net58480 (net)     3                 0.00       3.44 f
+  add_0_root_add_0_root_add_65/U197/DIN2 (oai21s3)        0.15      0.00       3.44 f
+  add_0_root_add_0_root_add_65/U197/Q (oai21s3)           0.29      0.12       3.56 r
+  add_0_root_add_0_root_add_65/net58479 (net)     1                 0.00       3.56 r
+  add_0_root_add_0_root_add_65/U195/DIN (i1s3)            0.29      0.00       3.57 r
+  add_0_root_add_0_root_add_65/U195/Q (i1s3)              0.16      0.07       3.64 f
+  add_0_root_add_0_root_add_65/net58451 (net)     3                 0.00       3.64 f
+  add_0_root_add_0_root_add_65/U129/DIN2 (oai21s3)        0.16      0.00       3.65 f
+  add_0_root_add_0_root_add_65/U129/Q (oai21s3)           0.29      0.12       3.77 r
+  add_0_root_add_0_root_add_65/net58469 (net)     1                 0.00       3.77 r
+  add_0_root_add_0_root_add_65/U95/DIN (i1s3)             0.29      0.00       3.77 r
+  add_0_root_add_0_root_add_65/U95/Q (i1s3)               0.14      0.06       3.83 f
+  add_0_root_add_0_root_add_65/net95816 (net)     2                 0.00       3.83 f
+  add_0_root_add_0_root_add_65/U105/DIN2 (oai21s3)        0.14      0.00       3.83 f
+  add_0_root_add_0_root_add_65/U105/Q (oai21s3)           0.32      0.12       3.96 r
+  add_0_root_add_0_root_add_65/net58464 (net)     1                 0.00       3.96 r
+  add_0_root_add_0_root_add_65/U206/DIN1 (xnr2s3)         0.32      0.01       3.96 r
+  add_0_root_add_0_root_add_65/U206/Q (xnr2s3)            0.22      0.24       4.20 f
+  add_0_root_add_0_root_add_65/SUM[25] (net)     8                  0.00       4.20 f
+  add_0_root_add_0_root_add_65/SUM[25] (Cnter_DW01_add_22)          0.00       4.20 f
+  new_a[25] (net)                                                   0.00       4.20 f
+  U2689/DIN2 (aoi222s1)                                   0.22      0.00       4.20 f
+  U2689/Q (aoi222s1)                                      0.43      0.13       4.33 r
+  n4468 (net)                                   1                   0.00       4.33 r
+  U2680/DIN3 (oai21s3)                                    0.43      0.00       4.33 r
+  U2680/Q (oai21s3)                                       0.30      0.15       4.48 f
+  N1112 (net)                                   1                   0.00       4.48 f
+  result_reg[1][25]/DIN (dffs1)                           0.30      0.01       4.49 f
+  data arrival time                                                            4.49
+
+  clock clk (rise edge)                                             1.18       1.18
+  clock network delay (ideal)                                       0.00       1.18
+  clock uncertainty                                                -0.10       1.08
+  result_reg[1][25]/CLK (dffs1)                                     0.00       1.08 r
+  library setup time                                               -0.16       0.92
+  data required time                                                           0.92
+  ------------------------------------------------------------------------------------
+  data required time                                                           0.92
+  data arrival time                                                           -4.49
+  ------------------------------------------------------------------------------------
+  slack (VIOLATED)                                                            -3.57
+
+
+  Startpoint: counter_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: done (output port clocked by clk)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  counter_reg[0]/CLK (dffcs2)              0.00      0.00       0.00 r
+  counter_reg[0]/QN (dffcs2)               0.23      0.21       0.21 f
+  N97 (net)                      2                   0.00       0.21 f
+  U2323/DIN2 (nnd2s2)                      0.23      0.00       0.21 f
+  U2323/Q (nnd2s2)                         0.25      0.13       0.34 r
+  net85133 (net)                 2                   0.00       0.34 r
+  U2125/DIN (i1s3)                         0.25      0.00       0.34 r
+  U2125/Q (i1s3)                           0.13      0.06       0.40 f
+  net91654 (net)                 2                   0.00       0.40 f
+  U1457/DIN (i1s8)                         0.13      0.00       0.40 f
+  U1457/Q (i1s8)                           0.06      0.15       0.55 r
+  net96424 (net)                 2                   0.00       0.55 r
+  U3521/DIN1 (nor2s1)                      0.06      0.00       0.55 r
+  U3521/Q (nor2s1)                         0.32      0.15       0.70 f
+  net91652 (net)                 2                   0.00       0.70 f
+  U5511/DIN1 (nnd3s2)                      0.32      0.00       0.70 f
+  U5511/Q (nnd3s2)                         0.22      0.11       0.81 r
+  n4601 (net)                    1                   0.00       0.81 r
+  U2713/DIN2 (nor4s3)                      0.22      0.00       0.82 r
+  U2713/Q (nor4s3)                         0.19      0.24       1.06 f
+  N1159 (net)                    1                   0.00       1.06 f
+  done (out)                               0.19      0.02       1.08 f
+  data arrival time                                             1.08
+
+  max_delay                                          1.18       1.18
+  clock uncertainty                                 -0.10       1.08
+  output external delay                              0.00       1.08
+  data required time                                            1.08
+  ---------------------------------------------------------------------
+  data required time                                            1.08
+  data arrival time                                            -1.08
+  ---------------------------------------------------------------------
+  slack (MET)                                                   0.00
+
+
+  Startpoint: result_reg[1][3]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: H_out[195] (output port clocked by clk)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                        Fanout     Trans      Incr       Path
+  ---------------------------------------------------------------------
+  result_reg[1][3]/CLK (dffs2)             0.00      0.00       0.00 r
+  result_reg[1][3]/Q (dffs2)               0.00      0.15       0.15 f
+  result_reg[1][3]/QN (dffs2)              0.21      0.10       0.25 r
+  n4511 (net)                   10                   0.00       0.25 r
+  U1818/DIN (hi1s1)                        0.21      0.00       0.25 r
+  U1818/Q (hi1s1)                          1.85      0.77       1.02 f
+  H_out[195] (net)               1                   0.00       1.02 f
+  H_out[195] (out)                         1.85      0.02       1.05 f
+  data arrival time                                             1.05
+
+  max_delay                                          1.18       1.18
+  clock uncertainty                                 -0.10       1.08
+  output external delay                              0.00       1.08
+  data required time                                            1.08
+  ---------------------------------------------------------------------
+  data required time                                            1.08
+  data arrival time                                            -1.05
+  ---------------------------------------------------------------------
+  slack (MET)                                                   0.03
+
+
+1
+ 
+****************************************
+Report : constraint
+        -verbose
+        -max_delay
+Design : Cnter
+Version: O-2018.06
+Date   : Mon Mar 22 19:10:32 2021
+****************************************
+
+
+  Startpoint: counter_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: result_reg[2][29]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  counter_reg[0]/CLK (dffcs2)                             0.00       0.00 r
+  counter_reg[0]/QN (dffcs2)                              0.21       0.21 f
+  U2325/Q (ib1s6)                                         0.07       0.28 r
+  U5528/Q (xor2s3)                                        0.19       0.47 f
+  U2331/Q (ib1s6)                                         0.08       0.54 r
+  U3558/Q (nnd2s3)                                        0.09       0.64 f
+  U2299/Q (ib1s6)                                         0.08       0.72 r
+  U2310/Q (nnd2s3)                                        0.07       0.79 f
+  U3538/Q (oai2222s3)                                     0.39       1.18 r
+  U2530/Q (nor2s2)                                        0.11       1.28 f
+  U2529/Q (mxi21s3)                                       0.18       1.46 f
+  add_3_root_add_0_root_add_63_4/U335/Q (or2s2)           0.17       1.63 f
+  add_3_root_add_0_root_add_63_4/U116/Q (nnd2s1)          0.12       1.75 r
+  add_3_root_add_0_root_add_63_4/U32/Q (i1s3)             0.06       1.81 f
+  add_3_root_add_0_root_add_63_4/U113/Q (nnd3s3)          0.11       1.92 r
+  add_3_root_add_0_root_add_63_4/U110/Q (i1s3)            0.07       1.99 f
+  add_3_root_add_0_root_add_63_4/U92/Q (and2s2)           0.14       2.14 f
+  add_3_root_add_0_root_add_63_4/U109/Q (nnd2s1)          0.10       2.23 r
+  add_3_root_add_0_root_add_63_4/U3/Q (i1s2)              0.06       2.29 f
+  add_3_root_add_0_root_add_63_4/U136/Q (oai21s2)         0.12       2.41 r
+  add_3_root_add_0_root_add_63_4/U134/Q (nnd2s2)          0.08       2.49 f
+  add_3_root_add_0_root_add_63_4/U135/Q (xnr2s3)          0.18       2.68 r
+  add_1_root_add_0_root_add_63_4/U196/Q (nor2s2)          0.07       2.75 f
+  add_1_root_add_0_root_add_63_4/U193/Q (or4s3)           0.19       2.93 f
+  add_1_root_add_0_root_add_63_4/U186/Q (nor2s2)          0.08       3.01 r
+  add_1_root_add_0_root_add_63_4/U33/Q (nnd2s3)           0.07       3.08 f
+  add_1_root_add_0_root_add_63_4/U173/Q (and2s2)          0.14       3.22 f
+  add_1_root_add_0_root_add_63_4/U66/Q (nnd3s1)           0.09       3.31 r
+  add_1_root_add_0_root_add_63_4/U198/Q (nnd2s2)          0.08       3.39 f
+  add_1_root_add_0_root_add_63_4/U200/Q (nnd2s2)          0.07       3.46 r
+  add_1_root_add_0_root_add_63_4/U209/Q (aoi21s3)         0.15       3.62 f
+  add_1_root_add_0_root_add_63_4/U47/Q (xor2s3)           0.25       3.87 r
+  add_0_root_add_0_root_add_63_4/U77/Q (nor2s3)           0.08       3.95 f
+  add_0_root_add_0_root_add_63_4/U72/Q (nor2s2)           0.09       4.04 r
+  add_0_root_add_0_root_add_63_4/U199/Q (oai21s3)         0.12       4.16 f
+  add_0_root_add_0_root_add_63_4/U198/Q (i1s3)            0.07       4.23 r
+  add_0_root_add_0_root_add_63_4/U84/Q (nor2s1)           0.10       4.33 f
+  add_0_root_add_0_root_add_63_4/U405/Q (nnd2s2)          0.08       4.41 r
+  add_0_root_add_0_root_add_63_4/U177/Q (aoi21s3)         0.14       4.55 f
+  add_0_root_add_0_root_add_63_4/U70/Q (xnr2s3)           0.21       4.76 r
+  add_66/U157/Q (nor2s2)                                  0.15       4.91 f
+  add_66/U146/Q (or4s3)                                   0.18       5.09 f
+  add_66/U142/Q (i1s4)                                    0.07       5.16 r
+  add_66/U144/Q (nnd2s1)                                  0.08       5.24 f
+  add_66/U131/Q (and2s2)                                  0.13       5.37 f
+  add_66/U307/Q (nnd3s1)                                  0.08       5.45 r
+  add_66/U127/Q (aoi21s2)                                 0.12       5.58 f
+  add_66/U190/Q (xor2s2)                                  0.27       5.84 f
+  U2286/Q (aoi222s1)                                      0.13       5.97 r
+  U2640/Q (oai21s3)                                       0.16       6.13 f
+  result_reg[2][29]/DIN (dffs2)                           0.01       6.14 f
+  data arrival time                                                  6.14
+
+  clock clk (rise edge)                                   1.18       1.18
+  clock network delay (ideal)                             0.00       1.18
+  clock uncertainty                                      -0.10       1.08
+  result_reg[2][29]/CLK (dffs2)                           0.00       1.08 r
+  library setup time                                     -0.16       0.92
+  data required time                                                 0.92
+  --------------------------------------------------------------------------
+  data required time                                                 0.92
+  data arrival time                                                 -6.14
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -5.22
+
+
+  Startpoint: W[27][1] (input port clocked by clk)
+  Endpoint: result_reg[2][26]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: input_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.00       0.00 r
+  W[27][1] (in)                                           0.02       0.02 r
+  U1491/Q (aoi22s2)                                       0.15       0.17 f
+  U3705/Q (nnd4s1)                                        0.20       0.37 r
+  U2276/Q (oai21s2)                                       0.14       0.51 f
+  U2235/Q (nnd4s1)                                        0.21       0.73 r
+  add_1_root_add_0_root_add_63_4/U114/Q (or2s2)           0.18       0.90 r
+  add_1_root_add_0_root_add_63_4/U25/Q (nnd2s2)           0.07       0.98 f
+  add_1_root_add_0_root_add_63_4/U105/Q (aoi13s3)         0.15       1.13 r
+  add_1_root_add_0_root_add_63_4/U106/Q (oai21s3)         0.12       1.24 f
+  add_1_root_add_0_root_add_63_4/U275/Q (nnd2s2)          0.08       1.33 r
+  add_1_root_add_0_root_add_63_4/U338/Q (aoi21s3)         0.13       1.45 f
+  add_1_root_add_0_root_add_63_4/U303/Q (xor2s2)          0.20       1.66 f
+  add_0_root_add_0_root_add_63_4/U288/Q (i1s3)            0.05       1.71 r
+  add_0_root_add_0_root_add_63_4/U41/Q (nnd2s2)           0.05       1.76 f
+  add_0_root_add_0_root_add_63_4/U257/Q (and2s2)          0.14       1.90 f
+  add_0_root_add_0_root_add_63_4/U254/Q (nnd3s3)          0.07       1.98 r
+  add_0_root_add_0_root_add_63_4/U339/Q (i1s3)            0.05       2.03 f
+  add_0_root_add_0_root_add_63_4/U299/Q (nor2s2)          0.08       2.10 r
+  add_0_root_add_0_root_add_63_4/U291/Q (nnd2s3)          0.07       2.18 f
+  add_0_root_add_0_root_add_63_4/U276/Q (nnd2s3)          0.08       2.26 r
+  add_0_root_add_0_root_add_63_4/U5/Q (nnd2s2)            0.06       2.32 f
+  add_0_root_add_0_root_add_63_4/U6/Q (and2s2)            0.13       2.45 f
+  add_0_root_add_0_root_add_63_4/U292/Q (aoi21s3)         0.12       2.57 r
+  add_0_root_add_0_root_add_63_4/U306/Q (xnr2s3)          0.23       2.80 f
+  add_66/U234/Q (or2s2)                                   0.18       2.98 f
+  add_66/U229/Q (and2s2)                                  0.12       3.10 f
+  add_66/U210/Q (and4s3)                                  0.13       3.23 f
+  add_66/U182/Q (aoi21s3)                                 0.13       3.36 r
+  add_66/U179/Q (nnd3s3)                                  0.10       3.46 f
+  add_66/U50/Q (i1s5)                                     0.09       3.55 r
+  add_66/U310/Q (oai21s1)                                 0.18       3.73 f
+  add_66/U113/Q (aoi21s2)                                 0.16       3.89 r
+  add_66/U110/Q (xnr2s3)                                  0.24       4.12 f
+  U2664/Q (aoi22s1)                                       0.13       4.25 r
+  U5707/Q (oai221s2)                                      0.20       4.45 f
+  result_reg[2][26]/DIN (dffs2)                           0.01       4.46 f
+  data arrival time                                                  4.46
+
+  clock clk (rise edge)                                   1.18       1.18
+  clock network delay (ideal)                             0.00       1.18
+  clock uncertainty                                      -0.10       1.08
+  result_reg[2][26]/CLK (dffs2)                           0.00       1.08 r
+  library setup time                                     -0.19       0.89
+  data required time                                                 0.89
+  --------------------------------------------------------------------------
+  data required time                                                 0.89
+  data arrival time                                                 -4.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -3.57
+
+
+  Startpoint: counter_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: done (output port clocked by clk)
+  Path Group: output_grp
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Cnter              tsmcwire              lec25dscc25_TT
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  counter_reg[0]/CLK (dffcs2)              0.00       0.00 r
+  counter_reg[0]/QN (dffcs2)               0.21       0.21 f
+  U2323/Q (nnd2s2)                         0.13       0.34 r
+  U2125/Q (i1s3)                           0.06       0.40 f
+  U1457/Q (i1s8)                           0.15       0.55 r
+  U3521/Q (nor2s1)                         0.15       0.70 f
+  U5511/Q (nnd3s2)                         0.11       0.81 r
+  U2713/Q (nor4s3)                         0.24       1.06 f
+  done (out)                               0.02       1.08 f
+  data arrival time                                   1.08
+
+  max_delay                                1.18       1.18
+  clock uncertainty                       -0.10       1.08
+  output external delay                    0.00       1.08
+  data required time                                  1.08
+  -----------------------------------------------------------
+  data required time                                  1.08
+  data arrival time                                  -1.08
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1
+Information: Updating graph... (UID-83)
+ 
+****************************************
+Report : reference
+Design : Cnter
+Version: O-2018.06
+Date   : Mon Mar 22 19:10:33 2021
+****************************************
+
+Attributes:
+    b - black box (unknown)
+   bo - allows boundary optimization
+    d - dont_touch
+   mo - map_only
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    s - synthetic operator
+    u - contains unmapped logic
+
+Reference          Library       Unit Area   Count    Total Area   Attributes
+-----------------------------------------------------------------------------
+Cnter_DW01_add_20             12308.889599       1  12308.889599  h
+Cnter_DW01_add_22             18513.100353       1  18513.100353  h
+Cnter_DW01_add_26             16812.746998       1  16812.746998  h
+Cnter_DW01_add_34             18360.995590       1  18360.995590  h
+Cnter_DW01_add_36             20711.114773       1  20711.114773  h
+Cnter_DW01_add_41             24617.784325       1  24617.784325  h
+Cnter_DW01_add_45             20094.528961       1  20094.528961  h
+Cnter_DW01_inc_0                489.207600       1    489.207600  h
+and2s1             lec25dscc25_TT    49.766399      17   846.028790
+and2s2             lec25dscc25_TT    58.060799      32  1857.945557
+and2s3             lec25dscc25_TT    99.532799       2   199.065598
+and3s1             lec25dscc25_TT    66.355202       8   530.841614
+and4s1             lec25dscc25_TT    74.649597       2   149.299194
+and4s3             lec25dscc25_TT   124.416000       7   870.912003
+aoai1112s1         lec25dscc25_TT    66.355202       1    66.355202
+aoi13s2            lec25dscc25_TT    58.060799       4   232.243195
+aoi21s1            lec25dscc25_TT    49.766399       8   398.131195
+aoi21s2            lec25dscc25_TT    49.766399      18   895.795189
+aoi21s3            lec25dscc25_TT    74.649597       2   149.299194
+aoi22s1            lec25dscc25_TT    58.060799     329 19102.002754
+aoi22s2            lec25dscc25_TT    58.060799     943 54751.333122
+aoi22s3            lec25dscc25_TT    82.944000       4   331.776001
+aoi23s1            lec25dscc25_TT    66.355202       2   132.710403
+aoi42s1            lec25dscc25_TT    74.649597       1    74.649597
+aoi123s1           lec25dscc25_TT    82.944000       4   331.776001
+aoi211s1           lec25dscc25_TT    58.060799       8   464.486389
+aoi221s1           lec25dscc25_TT    74.649597       7   522.547180
+aoi222s1           lec25dscc25_TT    82.944000      24  1990.656006
+aoi222s2           lec25dscc25_TT    99.532799       4   398.131195
+aoi2221s1          lec25dscc25_TT   132.710007       1   132.710007
+dffcs1             lec25dscc25_TT   165.888000       2   331.776001 n
+dffcs2             lec25dscc25_TT   182.477005       6  1094.862030 n
+dffs1              lec25dscc25_TT   157.593994      53  8352.481689 n
+dffs2              lec25dscc25_TT   174.182007     203 35358.947388 n
+dsmxc31s1          lec25dscc25_TT    66.355202       8   530.841614
+dsmxc31s2          lec25dscc25_TT    66.355202       3   199.065605
+hi1s1              lec25dscc25_TT    33.177601     146  4843.929726
+hnb1s1             lec25dscc25_TT    58.060799       3   174.182396
+i1s1               lec25dscc25_TT    33.177601      80  2654.208069
+i1s2               lec25dscc25_TT    41.472000      16   663.552002
+i1s3               lec25dscc25_TT    41.472000      48  1990.656006
+i1s4               lec25dscc25_TT    49.766399      12   597.196793
+i1s5               lec25dscc25_TT    49.766399      16   796.262390
+i1s6               lec25dscc25_TT    58.060799       1    58.060799
+i1s8               lec25dscc25_TT   199.065994      65 12939.289627
+i1s9               lec25dscc25_TT   215.654007       2   431.308014
+ib1s1              lec25dscc25_TT    33.177601     466 15460.762001
+ib1s2              lec25dscc25_TT    41.472000      23   953.856003
+ib1s3              lec25dscc25_TT    49.766399       7   348.364796
+ib1s6              lec25dscc25_TT   107.827003      45  4852.215157
+mx21s1             lec25dscc25_TT    82.944000       1    82.944000
+mx21s2             lec25dscc25_TT    82.944000       1    82.944000
+mxi21s1            lec25dscc25_TT    66.355202       8   530.841614
+mxi21s2            lec25dscc25_TT    66.355202      30  1990.656052
+mxi21s3            lec25dscc25_TT    74.649597      22  1642.291138
+nb1s1              lec25dscc25_TT    41.472000      74  3068.928009
+nb1s2              lec25dscc25_TT    49.766399      13   646.963192
+nb1s5              lec25dscc25_TT    82.944000       1    82.944000
+nb1s6              lec25dscc25_TT    91.238403       1    91.238403
+nnd2s1             lec25dscc25_TT    41.472000      55  2280.960007
+nnd2s2             lec25dscc25_TT    41.472000     157  6511.104019
+nnd2s3             lec25dscc25_TT    58.060799      19  1103.155174
+nnd3s1             lec25dscc25_TT    49.766399      27  1343.692783
+nnd3s2             lec25dscc25_TT    49.766399      35  1741.823978
+nnd3s3             lec25dscc25_TT    82.944000       7   580.608002
+nnd4s1             lec25dscc25_TT    58.060799     281 16315.084419
+nnd4s2             lec25dscc25_TT    91.238403       4   364.953613
+nor2s1             lec25dscc25_TT    41.472000      23   953.856003
+nor2s2             lec25dscc25_TT    58.060799      37  2148.249550
+nor2s3             lec25dscc25_TT    74.649597       3   223.948792
+nor3s1             lec25dscc25_TT    82.944000       3   248.832001
+nor4s3             lec25dscc25_TT   157.593994       1   157.593994
+oai13s2            lec25dscc25_TT    58.060799       1    58.060799
+oai13s3            lec25dscc25_TT    91.238403       1    91.238403
+oai21s1            lec25dscc25_TT    49.766399      12   597.196793
+oai21s2            lec25dscc25_TT    49.766399     212 10550.476669
+oai21s3            lec25dscc25_TT    82.944000      26  2156.544006
+oai22s1            lec25dscc25_TT    58.060799      13   754.790382
+oai33s1            lec25dscc25_TT    55.271999      22  1215.983986
+oai211s1           lec25dscc25_TT    58.060799       6   348.364792
+oai211s2           lec25dscc25_TT    58.060799      16   928.972778
+oai221s1           lec25dscc25_TT    74.649597      62  4628.275024
+oai221s2           lec25dscc25_TT    74.649597     143 10674.892395
+oai221s3           lec25dscc25_TT   107.827003      22  2372.194077
+oai222s1           lec25dscc25_TT    82.944000       5   414.720001
+oai322s1           lec25dscc25_TT    93.398399       1    93.398399
+oai1112s2          lec25dscc25_TT    66.355202       8   530.841614
+oai2222s1          lec25dscc25_TT   132.710007      96 12740.160645
+oai2222s2          lec25dscc25_TT   132.710007     175 23224.251175
+oai2222s3          lec25dscc25_TT   132.710007     223 29594.331497
+or2s1              lec25dscc25_TT    49.766399     118  5872.435127
+or2s2              lec25dscc25_TT    58.060799     112  6502.809448
+or2s3              lec25dscc25_TT    91.238403      16  1459.814453
+or3s2              lec25dscc25_TT   107.827003       1   107.827003
+or3s3              lec25dscc25_TT   116.122002       2   232.244003
+or5s1              lec25dscc25_TT    91.238403       4   364.953613
+xor2s1             lec25dscc25_TT    82.944000       4   331.776001
+xor2s2             lec25dscc25_TT    99.532799       1    99.532799
+xor2s3             lec25dscc25_TT   116.122002       2   232.244003
+xor3s1             lec25dscc25_TT   182.477005      63 11496.051315
+xor3s2             lec25dscc25_TT   199.065994       1   199.065994
+-----------------------------------------------------------------------------
+Total 101 references                                479035.941628
+1

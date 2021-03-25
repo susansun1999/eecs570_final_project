@@ -6,3 +6,5 @@ simv
 dve
 syn_simv
 *.saif *.ddc *.svf
+lab1/
+.__*

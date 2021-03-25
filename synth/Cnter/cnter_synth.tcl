@@ -85,6 +85,7 @@ set sys_clk $clock_name
 set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
 set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
 set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+set power_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".power"]
 set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
 
 #/* if we didnt find errors at this point, run */
@@ -119,6 +120,7 @@ if {  $dc_shell_status != [list] } {
   compile -map_effort high
   write -hier -format verilog -output $netlist_file $design_name
   write -hier -format ddc -output $ddc_file $design_name
+  redirect $power_file { report_power -analysis_effort low}
   redirect $rep_file { report_design -nosplit }
   redirect -append $rep_file { report_area }
   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }

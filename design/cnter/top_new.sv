@@ -22,8 +22,8 @@ module Cnter (
     input clk,
     input reset,
     output logic done,
-    output logic [255:0] H_out,
-    output  logic [32:0] test
+    output logic [255:0] H_out
+    // output  logic [31:0] test
 );
     // enum {A, B, C, D, E, F, G, H} Place;
 
@@ -40,12 +40,13 @@ module Cnter (
 
  
 
-    logic [7:0] counter;
+    logic [7:0] counter, counter2;
     logic [0:7][31:0] result;
     logic [0:7][31:0] new_result;
     logic [31:0] new_a;
     logic [31:0] new_e;
     logic [31:0] temp1, temp2;
+    logic [31:0] W_reg;
     logic [3:0] counter_mod;
     logic [3:0] a,b,c,d,e,f,g,h;
     // logic [3:0] new_a_idx, new_e_idx;
@@ -60,19 +61,20 @@ module Cnter (
     assign h = get_index(counter_mod, 7, 6, 5, 4, 3, 2, 1, 0);
     assign counter_mod = counter & 4'b111;
  
-    assign temp1 = result[h] + S1(result[e]) + ch(result[e], result[f], result[g]) + K[counter] + W[counter];
-    assign temp2 = S0(result[a]) + maj(result[a], result[b], result[c]);
-    assign new_a = temp1 + temp2;
-    assign new_e = result[d] + temp1;
-    // assign new_a_idx = 3'd7 - counter & 3'b111;
-    // assign new_e_idx = (counter & 3'b111) >= 3'd4 ? 4'd11 -  (counter & 3'b111) : 3'd4 - (counter & 3'b111);
+    // assign temp1 = result[h] + S1(result[e]) + ch(result[e], result[f], result[g]) + K[counter2] + W_reg;
+    // assign temp2 = S0(result[a]) + maj(result[a], result[b], result[c]);
+    // assign new_a = temp1 + temp2;
+    // assign new_e = result[d] + temp1;
+    assign temp1 = result[h] + S1(new_e) + ch(new_e, result[f], result[g]) + K[counter2] + W_reg;
+    assign temp2 = S0(new_a) + maj(new_a, result[b], result[c]);
+
 
 
     always_comb begin
         new_result = result;
         for(int i = 0; i < 8; i++)begin
-            if(i == h) new_result[i] = new_a;
-            else if(i == d) new_result[i] = new_e;
+            if(i == a) new_result[i] = new_a;
+            else if(i == e) new_result[i] = new_e;
         end
     end
 
@@ -80,15 +82,23 @@ module Cnter (
     always_ff @(posedge clk) begin
         if (reset) begin
             counter <=  8'b0;
+            counter2 <=  8'b0;
             result  <=  H_in;
+            W_reg   <=  W[0];
+            new_a   <=  H_in[0];
+            new_e   <=  H_in[4];
         end else begin
             counter <= counter + 1'b1;
+            counter2 <= counter2 + 1'b1;
             result  <= new_result;
+            W_reg   <= W[counter2];
+            new_a   <= temp1 + temp2;
+            new_e   <= result[d] + temp1;
         end
     end
 
-    assign done = counter == 7'd64;
+    assign done = counter == 7'd65;
     assign H_out = result+H_in;
-    // assign test = {result[a], result[b], result[c], result[d], result[e], result[f], result[g], result[h]}; //get_index has issue
-    assign test = W[counter];
+    // assign test = K[counter]; //get_index has issue
+    
 endmodule
