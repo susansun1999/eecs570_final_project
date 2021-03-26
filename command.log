@@ -1,7 +1,7 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06 for linux64 -- May 21, 2018
-#@ # Date:   Sun Mar 21 21:47:30 2021
-#@ # Run by: sunsusan@caen-vnc-vm12.engin.umich.edu
+#@ # Date:   Thu Mar 25 20:20:50 2021
+#@ # Run by: sunsusan@caen-vnc-vm08.engin.umich.edu
 #@ 
 
 source /usr/caen/synopsys-synth-2018.06/admin/setup/.synopsys_dc.setup
@@ -6624,8 +6624,8 @@ source /usr/caen/synopsys-synth-2018.06/admin/setup/.synopsys_dc.setup
 
 #@ # -- End source /usr/caen/synopsys-synth-2018.06/admin/setup/.synopsys_dc.setup
 
-source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_final_project/synth/naive/naive_synth.tcl
-#@ # -- Starting source /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_final_project/synth/naive/naive_synth.tcl
+source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_final_project/synth/naive/naive_power.tcl
+#@ # -- Starting source /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_final_project/synth/naive/naive_power.tcl
 
 #@ #/***********************************************************/
 #@ #/*   FILE        : tut_synth.tcl                          */
@@ -6640,10 +6640,11 @@ source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_
 #@ #/***********************************************************/
 #@ 
 #@ read_file -f sverilog [list "src/common.sv" "src/naive_design.sv"]
+#@ 
 #@ set design_name naive_design
 #@ set clock_name clk
 #@ set reset_name reset
-#@ set CLK_PERIOD 10
+#@ set CLK_PERIOD 9.76
 #@ 
 #@ 
 #@ 
@@ -6662,8 +6663,8 @@ source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_
 #@ #/***********************************************************/
 #@ #/* Set some flags for optimisation */
 #@ 
-#@ set compile_top_all_paths "true"
-#@ set auto_wire_load_selection "false"
+#@ # set compile_top_all_paths "true"
+#@ # set auto_wire_load_selection "false"
 #@ 
 #@ 
 #@ #/***********************************************************/
@@ -6714,11 +6715,24 @@ source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_
 #@ set netlist_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".vg"]
 #@ set ddc_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".ddc"]
 #@ set rep_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".rep"]
+#@ set power_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".power"]
 #@ set dc_shell_status [ set chk_file [format "%s%s"  [format "%s%s"  $SYN_DIR $design_name] ".chk"] ]
 #@ 
 #@ #/* if we didnt find errors at this point, run */
 #@ if {  $dc_shell_status != [list] } {
-#@    current_design $design_name
+#@   current_design $design_name
+#@ #   set_tlu_plus_files
+#@ #   # Then create your milkyway database
+#@ #   define_design_lib WORK -path ./work;
+#@  
+#@ # # create milky way database 
+#@ #   set mw_design_library test_milkyway
+#@  
+#@ #   create_mw_lib  -mw_reference_library $mw_design_library $mw_design_library 
+#@ #   open_mw_lib $mw_design_library
+#@  
+#@   # check_tlu_plus_files
+#@   # check_library
 #@   link
 #@   set_wire_load_model -name $WIRE_LOAD -lib $LOGICLIB $design_name
 #@   set_wire_load_mode top
@@ -6745,17 +6759,23 @@ source -echo -verbose /afs/umich.edu/user/s/u/sunsusan/Desktop/570final/eecs570_
 #@   uniquify
 #@   ungroup -all -flatten
 #@   redirect $chk_file { check_design }
-#@   compile -map_effort high
-#@   write -hier -format verilog -output $netlist_file $design_name
-#@   write -hier -format ddc -output $ddc_file $design_name
-#@   redirect $rep_file { report_design -nosplit }
-#@   redirect -append $rep_file { report_area }
-#@   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
-#@   redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
-#@   remove_design -all
-#@   read_file -format verilog $netlist_file
-#@   current_design $design_name
-#@   redirect -append $rep_file { report_reference -nosplit }
+#@   # saif_map -start 
+#@   # set_power_prediction
+#@   compile -map_effort low
+#@   # compile_ultra -no_autoungroup 
+#@ #   report_power
+#@ #   write -hier -format verilog -output $netlist_file $design_name
+#@ #   write -hier -format ddc -output $ddc_file $design_name
+#@   redirect $power_file { report_power }
+#@   report_power -verbose -hierarchy -levels 2 -analysis_effort low > ./power2.out
+#@   # report_power
+#@   # redirect -append $rep_file { report_area }
+#@ #   redirect -append $rep_file { report_timing -max_paths 2 -input_pins -nets -transition_time -nosplit }
+#@ #   redirect -append $rep_file { report_constraint -max_delay -verbose -nosplit }
+#@ #   remove_design -all
+#@ #   read_file -format verilog $netlist_file
+#@ #   current_design $design_name
+#@ #   redirect -append $rep_file { report_reference -nosplit }
 #@   quit
 #@ } else {
 #@    quit

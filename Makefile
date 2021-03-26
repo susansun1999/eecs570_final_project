@@ -59,3 +59,6 @@ Cnter.vg:	design/cnter/top.sv synth/Cnter/cnter_synth.tcl
 
 naive_design.vg:	src/naive_design.sv synth/naive/naive_synth.tcl
 	dc_shell-t -f synth/naive/naive_synth.tcl | tee synth.out
+
+power:	src/naive_design.sv synth/naive/naive_power.tcl
+	dc_shell -f synth/naive/naive_power.tcl | tee synth.out

@@ -1,0 +1,52 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+        -verbose
+Design : naive_design
+Version: O-2018.06
+Date   : Thu Mar 25 20:21:16 2021
+****************************************
+
+
+Library(s) Used:
+
+    lec25dscc25_TT (File: /afs/umich.edu/class/eecs470/lib/synopsys/lec25dscc25_TT.db)
+
+
+Operating Conditions: nom_pvt   Library: lec25dscc25_TT
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+naive_design           tsmcwire          lec25dscc25_TT
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+naive_design                              8.390   16.945 1.43e+05   25.336 100.0
+  add_0_root_add_0_root_add_25_4 (naive_design_DW01_add_1)
+                                          0.767    1.330 5.84e+03    2.097   8.3
+  add_2_root_add_0_root_add_25_4 (naive_design_DW01_add_2)
+                                          0.252    0.662 3.64e+03    0.914   3.6
+  add_1_root_add_0_root_add_25_4 (naive_design_DW01_add_3)
+                                          0.462    1.007 5.08e+03    1.468   5.8
+  add_0_root_add_0_root_add_35 (naive_design_DW01_add_5)
+                                          0.390    1.222 4.85e+03    1.612   6.4
+  add_1_root_add_0_root_add_35 (naive_design_DW01_add_6)
+                                          0.239    0.742 3.52e+03    0.981   3.9
+  add_31 (naive_design_DW01_add_0)        0.400    1.152 4.93e+03    1.552   6.1
+  add_42 (naive_design_DW01_inc_0)     2.11e-03 1.27e-02   55.858 1.48e-02   0.1
+1
