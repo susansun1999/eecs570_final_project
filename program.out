@@ -1,13 +1,13 @@
 Chronologic VCS simulator copyright 1991-2017
 Contains Synopsys proprietary information.
-Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Mar 25 12:07 2021
+Compiler version N-2017.12-SP2-1_Full64; Runtime version N-2017.12-SP2-1_Full64;  Apr 15 06:02 2021
 VCD+ Writer N-2017.12-SP2-1_Full64 Copyright (c) 1991-2017 by Synopsys Inc.
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Golden Brick: e30df714edde6b51a1b76629e71468d95dc933dab4a68522c75f739bf5c45792
-        TEST: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-$finish called from file "testbench/sha_tb.sv", line 131.
-$finish at simulation time             13100000
+        TEST: e30df714edde6b51edde6b51a1b766295dc933dab4a68522c75f739bf5c45792
+       NAIVE: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+$finish called from file "testbench/sha_tb.sv", line 132.
+$finish at simulation time             13700000
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 13100000 ps
-CPU Time:      0.300 seconds;       Data structure size:   0.0Mb
-Thu Mar 25 12:07:01 2021
+Time: 13700000 ps
+CPU Time:      0.390 seconds;       Data structure size:   0.0Mb
+Thu Apr 15 06:02:01 2021

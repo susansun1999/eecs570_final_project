@@ -1,5 +1,12 @@
-*.vg *.rep *.db *.chk *.log *.out *.vpd *.svf *.key *.old
-csrc/ 
+*.vg
+*.rep
+*.db
+*.chk
+*.log
+*.out
+*.vpd
+*.svf *.key *.old
+csrc/
 *.daidir/
 DVEfiles/
 simv
@@ -8,3 +15,6 @@ syn_simv
 *.saif *.ddc *.svf
 lab1/
 .__*
+# simv.daidir/
+session.inter.vpd.tcl
+# program.out

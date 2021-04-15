@@ -33,11 +33,12 @@ module Pipe (
     reg [0:7][31:0] result, new_result;
     reg [31:0] M, L;
     reg update_M, update_L;
+    reg update_a, update_b, update_c, update_d, update_e, update_f, update_g, update_h;
     wire [31:0] w, k;
-    wire [31:0] new_a, new_e, new_M, new_L;
+    logic [31:0] new_a, new_e, new_M, new_L;
     wire [31:0] mux_1, mux_2;
 
-    always_ff @(posedge clk or negedge reset) begin
+    always_ff @(posedge clk) begin
         if (reset) begin
             counter <= 9'd0;
             state <= INIT;
@@ -58,58 +59,39 @@ module Pipe (
         case (state)
             INIT:begin
                 next_state = PIPE_BEG_1_STAGE;
-                update_M = 1;
+                new_result = result;
+                update_M = 0;
                 update_L = 0;
             end
             PIPE_BEG_1_STAGE: begin
                 next_state = PIPE_BEG_2_STAGE;
                 update_M = 1;
-                update_L = 1;
+                update_L = 0;
             end
             PIPE_BEG_2_STAGE: begin
                 next_state = FULL_PIP_3_STAGE;
-                new_result[4] = new_e;
-                new_result[5] = result[4];
-                new_result[6] = result[5];
-                new_result[7] = result[6];
+                new_result[4:7] = {new_e, result[4:6]};
                 update_M = 1;
                 update_L = 1;
             end
             FULL_PIP_3_STAGE: begin
                 if (counter < 9'd64) next_state = FULL_PIP_3_STAGE;
                 else next_state = PIPE_END_2_STAGE;
-                new_result[0] = new_a;
-                new_result[1] = result[0];
-                new_result[2] = result[1];
-                new_result[3] = result[2];
-                new_result[4] = new_e;
-                new_result[5] = result[4];
-                new_result[6] = result[5];
-                new_result[7] = result[6];
+                new_result = {new_a, result[0:2], new_e, result[4:6]};
                 update_M = 1;
                 update_L = 1;
             end
             PIPE_END_2_STAGE: begin
                 next_state = PIPE_END_1_STAGE;
-                new_result[0] = new_a;
-                new_result[1] = result[0];
-                new_result[2] = result[1];
-                new_result[3] = result[2];
-                new_result[4] = new_e;
-                new_result[5] = result[4];
-                new_result[6] = result[5];
-                new_result[7] = result[6];
-                update_M = 0;
+                new_result = {new_a, result[0:2], new_e, result[4:6]};
+                update_M = 1;
                 update_L = 1;
             end
             PIPE_END_1_STAGE: begin
                 next_state = OUTPUT;
-                new_result[0] = new_a;
-                new_result[1] = result[0];
-                new_result[2] = result[1];
-                new_result[3] = result[2];
+                new_result[0:3] = {new_a, new_result[0:2]};
                 update_M = 0;
-                update_L = 0;
+                update_L = 1;
             end
             OUTPUT: begin
                 next_state = INIT;
@@ -120,14 +102,14 @@ module Pipe (
         endcase
     end
 
-    assign w = (counter < 9'd64) ? W[counter] : 0;
-    assign k = (counter < 9'd64) ? K[counter] : 0;
-    assign mux_1 = (state < 3'd2) ? result[3] : result[2];
-    assign mux_2 = (state < 3'd1) ? result[7] : result[6];
+    assign w = (counter <= 9'd64) ? W[counter - 1] : 0;
+    assign k = (counter <= 9'd64) ? K[counter - 1] : 0;
     assign new_M = w + k + mux_2;
     assign new_L = S1(result[e]) + ch(result[e], result[f], result[g]) + M;
     assign new_a = S0(result[a]) + maj(result[a], result[b], result[c]) + L;
-    assign new_e = mux_1 + L;
-    assign done = counter == 9'd66;
+    assign new_e = mux_1 + S1(result[e]) + ch(result[e], result[f], result[g]) + M;
+    assign mux_1 = (state <= 3'd2) ? result[3] : result[2];
+    assign mux_2 = (state <= 3'd1) ? result[7] : result[6];
+    assign done = counter == 9'd68;
 
 endmodule

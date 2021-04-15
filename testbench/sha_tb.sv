@@ -64,13 +64,14 @@ module sha_tb;
 
     logic[255:0] new_a;
 
-    // sha_hash_gb sha_hash_gb_0 (
+    // Cnter test_module (
     //     .clk(clk),
     //     .reset(reset),
     //     .H_in(H_in),
-    //     .W_in(W_in),
-    //     .H_out(H_out),
-    //     .done_out(done_out_gb)
+    //     .W(W_in),
+    //     .H_out(result_cnter),
+    //     .done(done_out_gb)
+    //     ,.test(new_a)
     // );
 
     Pipe tested_module (
@@ -119,7 +120,7 @@ module sha_tb;
         GetNextBlock(W_in);
         get_W_IN_64(W_in, W_in_64);
         sha_hash_gb(H_in, W_in, result_gb);
-        $monitor("%x", new_a);
+        // $monitor("%x", new_a);
         @(posedge clk);
         @(negedge clk);
         reset = 0;
@@ -127,7 +128,7 @@ module sha_tb;
         // wait(done_out_gb)
         // result_gb = result;
         wait(done_out_test);
-        $display("Golden Brick: %h\n        TEST: %h", result_gb, result_test);
+        $display("Golden Brick: %h\n        TEST: %h\n", result_gb, result_test);
         $finish;
     end
     
