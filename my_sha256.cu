@@ -141,15 +141,9 @@ int main(int argc, char **argv) {
 
  printf("@@@ Elapsed time (usec): %lld\n", elapsed);
 
- for(unsigned i = 0; i < BLOCKSIZE; i++){
-  //hostIn[i] = constIn[i];
-  for(unsigned j = 0; j < 8; j++){
-    printf("%x ",hostH[i*BLOCKSIZE+j]);
-  }
-  printf("\n");
-}
-//  cudaFree(deviceH);
-//  cudaFree(deviceK);
+  cudaFree(deviceH);
+  cudaFree(deviceK);
+  cudaFree(deviceIn);
 
   return 0;
 }
