@@ -15,7 +15,7 @@
 #include <sys/time.h>
 //#include <wb.h>
 
-#define BLOCKSIZE 1024
+#define BLOCKSIZE 32
 #define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
 #define ROTRIGHT(a,b) (((a) >> (b)) | ((a) << (32-(b))))
 #define EP0(x) (ROTRIGHT(x,2) ^ ROTRIGHT(x,13) ^ ROTRIGHT(x,22))
@@ -35,7 +35,7 @@ const uint32_t constK[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3
    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
-const uint32_t constIn[64*BLOCKSIZE] = {0x428a2f98};
+const uint32_t constIn[64*BLOCKSIZE] = {0};
 
 __global__ void pre_sha256_cuda(uint32_t* W){
   int startingIdx = 64*threadIdx.x + 16;
