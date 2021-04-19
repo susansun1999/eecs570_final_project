@@ -1,0 +1,14 @@
+#!/bin/bash
+# The interpreter used to execute the script
+
+#“#SBATCH” directives that convey submission options:
+
+#SBATCH --job-name=example_job
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=1000m 
+#SBATCH --time=01:00
+#SBATCH --partition=gpu
+#SBATCH --gpus-per-node=2
+nvcc my_sha256.cu
+./a.out
