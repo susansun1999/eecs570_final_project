@@ -15,7 +15,7 @@
 #include <sys/time.h>
 //#include <wb.h>
 
-#define BLOCKSIZE 32
+#define BLOCKSIZE 1024
 #define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
 #define ROTRIGHT(a,b) (((a) >> (b)) | ((a) << (32-(b))))
 #define EP0(x) (ROTRIGHT(x,2) ^ ROTRIGHT(x,13) ^ ROTRIGHT(x,22))
@@ -56,6 +56,7 @@ __global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
   uint32_t f = H[8*threadIdx.x + 5];
   uint32_t g = H[8*threadIdx.x + 6];
   uint32_t h = H[8*threadIdx.x + 7];
+  
   unsigned startingIdx = 64 * threadIdx.x;
   for (unsigned i = 0; i < 64; ++i) {
 		uint32_t t1 = h + EP1(e) + CH(e, f, g) + K[i] + W[startingIdx + i];
@@ -69,7 +70,6 @@ __global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
 		b = a;
 		a = t1 + t2;
 	}
-    /*
   H[8*threadIdx.x + 0] += a;
   H[8*threadIdx.x + 1] += b;
   H[8*threadIdx.x + 2] += c;
@@ -78,15 +78,6 @@ __global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
   H[8*threadIdx.x + 5] += f;
   H[8*threadIdx.x + 6] += g;
   H[8*threadIdx.x + 7] += h;
-  */
-  H[8*threadIdx.x + 0] = 1;
-  H[8*threadIdx.x + 1] = 1;
-  H[8*threadIdx.x + 2] = 1;
-  H[8*threadIdx.x + 3] = 1;
-  H[8*threadIdx.x + 4] = 1;
-  H[8*threadIdx.x + 5] = 1;
-  H[8*threadIdx.x + 6] = 1;
-  H[8*threadIdx.x + 7] = 1;
 }
 
 int main(int argc, char **argv) {
@@ -136,8 +127,6 @@ int main(int argc, char **argv) {
   sha256_cuda <<< numBlocks, blockSize >>> (deviceK, deviceH, deviceIn);
   cudaDeviceSynchronize();
 
-  cudaMemcpy(hostH,deviceH,8*BLOCKSIZE*sizeof(uint32_t),cudaMemcpyDeviceToHost);
-
  /* get elapsed time */
  gettimeofday(&tv,NULL);
  uint64_t end = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
@@ -145,6 +134,7 @@ int main(int argc, char **argv) {
 
  printf("@@@ Elapsed time (usec): %lld\n", elapsed);
 
+ cudaMemcpy(hostH,deviceH,8*BLOCKSIZE*sizeof(uint32_t),cudaMemcpyDeviceToHost);
 
   for(unsigned i = 0; i < BLOCKSIZE; i++){
     //hostIn[i] = constIn[i];
