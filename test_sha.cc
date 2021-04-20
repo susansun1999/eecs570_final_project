@@ -19,16 +19,17 @@ void printResult(const array<uint32_t, 8>* H)
     cout << endl;
 }
 
-int main()
+int main(int argc, char const *argv[])
 {
 //    istringstream is0("abc");
     ifstream is1("sha.js");
 	SHA256 SHA; 
-
+    unsigned times = atoi(argv[1]);
     const std::chrono::time_point<std::chrono::steady_clock> start =
         std::chrono::steady_clock::now();
  
-    const array<uint32_t, 8>* H = SHA.Hash(is1);
+    for(unsigned i = 0; i < times; i++)
+        const array<uint32_t, 8>* H = SHA.Hash(is1);
 
     const auto end = std::chrono::steady_clock::now();
  
