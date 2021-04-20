@@ -1,4 +1,6 @@
 #include<iostream>
+#include <sys/time.h>
+
 int32_t rightrotate(int32_t in, int bits){
     int32_t lower = in >> bits;
     int32_t upper = in << (32-bits);
@@ -64,6 +66,14 @@ int main(){
     uint32_t H[] = {
     0x6a09e667UL, 0xbb67ae85UL, 0x3c6ef372UL, 0xa54ff53aUL, 0x510e527fUL, 0x9b05688cUL, 0x1f83d9abUL, 0x5be0cd19UL
     };
+	struct timeval tv;
+  	gettimeofday(&tv,NULL);
+	uint64_t start = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
     SHA256(H);
+ gettimeofday(&tv,NULL);
+ uint64_t end = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
+ uint64_t elapsed = end - start;
+
+ printf("it: %d @@@ Elapsed time (usec): %lld\n",times, elapsed);
     return 0;
 }
