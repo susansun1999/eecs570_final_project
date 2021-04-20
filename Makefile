@@ -22,8 +22,7 @@ all:	simv
 # Modify starting here
 #####
 
-TESTBENCH = testbench/sha_tb.sv
-#TESTBENCH = testbench/globals.vh testbench/sha_hash_gb.sv testbench/sha_tb.sv 
+TESTBENCH = testbench/globals.vh testbench/sha_hash_gb.sv testbench/sha_tb.sv 
 SIMFILES = design/common.sv src/naive_design.sv
 #SIMFILES = design/common.sv design/pipeline/Pipe.sv design/cnter/top.sv
 #SYNFILES = Cnter.vg
