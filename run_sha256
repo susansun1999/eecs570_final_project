@@ -13,6 +13,17 @@
 #SBATCH --gpus=v100:1
 module load cuda
 nvcc my_sha256.cu
-./a.out
+
+./a.out 1
+./a.out 2
+./a.out 4
+./a.out 8
+./a.out 16
+./a.out 32
+./a.out 64
+./a.out 128
+./a.out 256
+./a.out 512
+./a.out 1024
 
 #squeue -u sunsusan

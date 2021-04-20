@@ -49,41 +49,45 @@ __global__ void pre_sha256_cuda(uint32_t* W){
   }
 }
 
-__global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
+__global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W, unsigned times){
   unsigned tx = blockIdx.x * BLOCKSIZE + threadIdx.x;
-  uint32_t a = H[8*tx + 0];
-  uint32_t b = H[8*tx + 1];
-  uint32_t c = H[8*tx + 2];
-  uint32_t d = H[8*tx + 3];
-  uint32_t e = H[8*tx + 4];
-  uint32_t f = H[8*tx + 5];
-  uint32_t g = H[8*tx + 6];
-  uint32_t h = H[8*tx + 7];
-  
   unsigned startingIdx = 64 * tx;
-  for (unsigned i = 0; i < 64; ++i) {
-		uint32_t t1 = h + EP1(e) + CH(e, f, g) + K[i] + W[startingIdx + i];
-		uint32_t t2 = EP0(a) + MAJ(a, b, c);
-		h = g;
-		g = f;
-		f = e;
-		e = d + t1;
-		d = c;
-		c = b;
-		b = a;
-		a = t1 + t2;
-	}
-  H[8*tx + 0] += a;
-  H[8*tx + 1] += b;
-  H[8*tx + 2] += c;
-  H[8*tx + 3] += d;
-  H[8*tx + 4] += e;
-  H[8*tx + 5] += f;
-  H[8*tx + 6] += g;
-  H[8*tx + 7] += h;
+
+  for(unsigned it = 0; it < times; it++){
+    uint32_t a = H[8*tx + 0];
+    uint32_t b = H[8*tx + 1];
+    uint32_t c = H[8*tx + 2];
+    uint32_t d = H[8*tx + 3];
+    uint32_t e = H[8*tx + 4];
+    uint32_t f = H[8*tx + 5];
+    uint32_t g = H[8*tx + 6];
+    uint32_t h = H[8*tx + 7];
+    
+    for (unsigned i = 0; i < 64; ++i) {
+      uint32_t t1 = h + EP1(e) + CH(e, f, g) + K[i] + W[startingIdx + i];
+      uint32_t t2 = EP0(a) + MAJ(a, b, c);
+      h = g;
+      g = f;
+      f = e;
+      e = d + t1;
+      d = c;
+      c = b;
+      b = a;
+      a = t1 + t2;
+    }
+    H[8*tx + 0] += a;
+    H[8*tx + 1] += b;
+    H[8*tx + 2] += c;
+    H[8*tx + 3] += d;
+    H[8*tx + 4] += e;
+    H[8*tx + 5] += f;
+    H[8*tx + 6] += g;
+    H[8*tx + 7] += h;
+  }
 }
 
 int main(int argc, char **argv) {
+  unsigned times = atoi(argv[1]);
   uint32_t* hostH = (uint32_t*)malloc(8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t));
   uint32_t* hostK = (uint32_t*)malloc(64*sizeof(uint32_t));
   uint32_t* hostIn = (uint32_t*)malloc(BLOCKSIZE*64*BLOCKNUM*sizeof(uint32_t));
@@ -120,7 +124,7 @@ int main(int argc, char **argv) {
   gettimeofday(&tv,NULL);
   uint64_t start = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
 
-  sha256_cuda <<< numBlocks, blockSize >>> (deviceK, deviceH, deviceIn);
+  sha256_cuda <<< numBlocks, blockSize >>> (deviceK, deviceH, deviceIn,times);
   cudaDeviceSynchronize();
 
  /* get elapsed time */
@@ -128,7 +132,7 @@ int main(int argc, char **argv) {
  uint64_t end = tv.tv_sec*(uint64_t)1000000+tv.tv_usec;
  uint64_t elapsed = end - start;
 
- printf("@@@ Elapsed time (usec): %lld\n", elapsed);
+ printf("it: %d @@@ Elapsed time (usec): %lld\n",times, elapsed);
 
  cudaMemcpy(hostH,deviceH,8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t),cudaMemcpyDeviceToHost);
 /*
