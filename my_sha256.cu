@@ -15,7 +15,8 @@
 #include <sys/time.h>
 //#include <wb.h>
 
-#define BLOCKSIZE 32
+#define BLOCKSIZE 1024
+#define BLOCKNUM  16
 #define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
 #define ROTRIGHT(a,b) (((a) >> (b)) | ((a) << (32-(b))))
 #define EP0(x) (ROTRIGHT(x,2) ^ ROTRIGHT(x,13) ^ ROTRIGHT(x,22))
@@ -35,11 +36,12 @@ const uint32_t constK[64] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3
    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
-const uint32_t constIn[64*BLOCKSIZE] = {0};
+const uint32_t constIn[64*BLOCKSIZE*BLOCKNUM] = {0};
 
 __global__ void pre_sha256_cuda(uint32_t* W){
-  int startingIdx = 64*threadIdx.x + 16;
-  int endingIdx = 64*threadIdx.x + 64;
+  unsigned tx = blockIdx.x * BLOCKSIZE + threadIdx.x;
+  int startingIdx = 64*tx + 16;
+  int endingIdx = 64*tx + 64;
   for(unsigned i = startingIdx; i < endingIdx; i++){
     uint32_t s0 = ROTRIGHT(W[i-15],7) xor ROTRIGHT(W[i-15],18) xor ROTRIGHT(W[i-15],3);
     uint32_t s1 = ROTRIGHT(W[i-2],17) xor ROTRIGHT(W[i-2],19) xor ROTRIGHT(W[i-2],10);
@@ -48,16 +50,17 @@ __global__ void pre_sha256_cuda(uint32_t* W){
 }
 
 __global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
-  uint32_t a = H[8*threadIdx.x + 0];
-  uint32_t b = H[8*threadIdx.x + 1];
-  uint32_t c = H[8*threadIdx.x + 2];
-  uint32_t d = H[8*threadIdx.x + 3];
-  uint32_t e = H[8*threadIdx.x + 4];
-  uint32_t f = H[8*threadIdx.x + 5];
-  uint32_t g = H[8*threadIdx.x + 6];
-  uint32_t h = H[8*threadIdx.x + 7];
+  unsigned tx = blockIdx.x * BLOCKSIZE + threadIdx.x;
+  uint32_t a = H[8*tx + 0];
+  uint32_t b = H[8*tx + 1];
+  uint32_t c = H[8*tx + 2];
+  uint32_t d = H[8*tx + 3];
+  uint32_t e = H[8*tx + 4];
+  uint32_t f = H[8*tx + 5];
+  uint32_t g = H[8*tx + 6];
+  uint32_t h = H[8*tx + 7];
   
-  unsigned startingIdx = 64 * threadIdx.x;
+  unsigned startingIdx = 64 * tx;
   for (unsigned i = 0; i < 64; ++i) {
 		uint32_t t1 = h + EP1(e) + CH(e, f, g) + K[i] + W[startingIdx + i];
 		uint32_t t2 = EP0(a) + MAJ(a, b, c);
@@ -70,50 +73,43 @@ __global__ void sha256_cuda(uint32_t*K, uint32_t*H, uint32_t* W){
 		b = a;
 		a = t1 + t2;
 	}
-  H[8*threadIdx.x + 0] += a;
-  H[8*threadIdx.x + 1] += b;
-  H[8*threadIdx.x + 2] += c;
-  H[8*threadIdx.x + 3] += d;
-  H[8*threadIdx.x + 4] += e;
-  H[8*threadIdx.x + 5] += f;
-  H[8*threadIdx.x + 6] += g;
-  H[8*threadIdx.x + 7] += h;
+  H[8*tx + 0] += a;
+  H[8*tx + 1] += b;
+  H[8*tx + 2] += c;
+  H[8*tx + 3] += d;
+  H[8*tx + 4] += e;
+  H[8*tx + 5] += f;
+  H[8*tx + 6] += g;
+  H[8*tx + 7] += h;
 }
 
 int main(int argc, char **argv) {
-  uint32_t* hostH = (uint32_t*)malloc(8*BLOCKSIZE*sizeof(uint32_t));
+  uint32_t* hostH = (uint32_t*)malloc(8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t));
   uint32_t* hostK = (uint32_t*)malloc(64*sizeof(uint32_t));
-  uint32_t* hostIn = (uint32_t*)malloc(BLOCKSIZE*64*sizeof(uint32_t));
-  for(unsigned i = 0; i < BLOCKSIZE*8; i++){
+  uint32_t* hostIn = (uint32_t*)malloc(BLOCKSIZE*64*BLOCKNUM*sizeof(uint32_t));
+  for(unsigned i = 0; i < BLOCKNUM*BLOCKSIZE*8; i++){
       hostH[i] = constH[i%8];
   }
-  for(unsigned i = 0; i < BLOCKSIZE; i++){
-      for(unsigned j = 0; j < 8; j++){
-          printf("%x ",hostH[i*8 + j]);
-      }
-      printf("\n");
-  }
-  printf("\n");
 
   for(unsigned i = 0; i < 64; i++){
     hostK[i] = constK[i];
   }
-  for(unsigned i = 0; i < BLOCKSIZE*64; i++){
+  for(unsigned i = 0; i < BLOCKNUM*BLOCKSIZE*64; i++){
     hostIn[i] = constIn[i];
   }
 
   uint32_t* deviceH, *deviceK;
   uint32_t* deviceIn; // W
 
-  cudaMalloc(&deviceH, 8*BLOCKSIZE *sizeof(uint32_t));
+  cudaMalloc(&deviceH, 8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t));
   cudaMalloc(&deviceK, 64*sizeof(uint32_t));
-  cudaMalloc(&deviceIn, 64*BLOCKSIZE*sizeof(uint32_t));
+  cudaMalloc(&deviceIn, 64*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t));
 
-  cudaMemcpy(deviceH,hostH,8*BLOCKSIZE*sizeof(uint32_t),cudaMemcpyHostToDevice);
+  cudaMemcpy(deviceH,hostH,8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t),cudaMemcpyHostToDevice);
   cudaMemcpy(deviceK,hostK,64*sizeof(uint32_t),cudaMemcpyHostToDevice);
-  cudaMemcpy(deviceIn,hostIn,64*BLOCKSIZE*sizeof(uint32_t),cudaMemcpyHostToDevice);
+  cudaMemcpy(deviceIn,hostIn,64*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t),cudaMemcpyHostToDevice);
 
-  unsigned numBlocks = 1;
+  unsigned numBlocks = BLOCKNUM;
   unsigned blockSize = BLOCKSIZE; // warp size
 
   pre_sha256_cuda <<< numBlocks, blockSize >>> (deviceIn);
@@ -134,9 +130,9 @@ int main(int argc, char **argv) {
 
  printf("@@@ Elapsed time (usec): %lld\n", elapsed);
 
- cudaMemcpy(hostH,deviceH,8*BLOCKSIZE*sizeof(uint32_t),cudaMemcpyDeviceToHost);
-
-  for(unsigned i = 0; i < BLOCKSIZE; i++){
+ cudaMemcpy(hostH,deviceH,8*BLOCKSIZE*BLOCKNUM*sizeof(uint32_t),cudaMemcpyDeviceToHost);
+/*
+  for(unsigned i = 0; i < BLOCKSIZE*BLOCKNUM; i++){
     //hostIn[i] = constIn[i];
     for(unsigned j = 0; j < 8; j++){
       printf("%x ",hostH[i*8+j]);
@@ -144,11 +140,14 @@ int main(int argc, char **argv) {
     printf("\n");
   }
   printf("\n");
-
+*/
 
   cudaFree(deviceH);
   cudaFree(deviceK);
   cudaFree(deviceIn);
 
+  free(hostH);
+  free(hostIn);
+  free(hostK);
   return 0;
 }
