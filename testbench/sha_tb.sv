@@ -74,13 +74,13 @@ module sha_tb;
     //     ,.test(new_a)
     // );
 
-    Pipe tested_module (
-        .clk(clk),
-        .reset(reset),
+    naive_design tested_module (
         .H_in(H_in),
         .W(W_in_64),
-        .H_out(result_test),
-        .done(done_out_test)
+        .clk(clk),
+        .reset(reset),
+        .done(done_out_test),
+        .H_out(result_test)
         // ,.test(new_a)
     );
 
