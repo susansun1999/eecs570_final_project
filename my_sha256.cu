@@ -16,7 +16,7 @@
 //#include <wb.h>
 
 #define BLOCKSIZE 1024
-#define BLOCKNUM  16
+#define BLOCKNUM  64
 #define ROTLEFT(a,b) (((a) << (b)) | ((a) >> (32-(b))))
 #define ROTRIGHT(a,b) (((a) >> (b)) | ((a) << (32-(b))))
 #define EP0(x) (ROTRIGHT(x,2) ^ ROTRIGHT(x,13) ^ ROTRIGHT(x,22))
