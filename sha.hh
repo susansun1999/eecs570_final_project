@@ -7,14 +7,13 @@ class SHA256
 {
     public:
     const std::array<uint32_t, 8>* Hash(std::istream& is);
+    void updateH(uint32_t* W);
 
     private:
     std::array<uint32_t, 8> H;
     
     static const std::array<uint32_t, 64> K;
     static const std::array<uint32_t, 8> H0;
-
-    void updateH(uint32_t* W);
 
     uint32_t ROTR(uint32_t x, int n) const
     {
